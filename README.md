@@ -80,14 +80,11 @@ https://github.com/afyqzarof/capstone-proposal/assets/83950596/f51e77c2-09c8-414
 
 https://github.com/afyqzarof/capstone-proposal/assets/83950596/1d96122c-522f-4939-9ebe-d1d7e7034902
 
-
 https://github.com/afyqzarof/capstone-proposal/assets/83950596/46ce49c4-df9e-4e64-b125-c7a33a26983e
-
-
 
 ### Data
 
-Describe your data and the relationships between them. You can show this visually using diagrams, or write it out.
+![image](https://github.com/afyqzarof/linked-list/assets/83950596/5bd95460-1ce6-488b-91a8-679608ec59cb)
 
 ### Endpoints
 
