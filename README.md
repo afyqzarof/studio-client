@@ -65,6 +65,8 @@ People that need space for articulating ideas
 
 ### Sitemap
 
+![architecture](https://github.com/afyqzarof/studio-client/assets/83950596/3816177c-5632-4bd3-96e4-20810457fa27)
+
 ![user flow](https://github.com/afyqzarof/linked-list/assets/83950596/73877b19-ede9-4f41-bfdf-9b23394e9042)
 
 ### Mockups
