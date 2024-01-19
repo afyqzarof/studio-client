@@ -34,16 +34,11 @@ People that need space for articulating ideas
 - Add videos from video platforms e.g. Youtube, TikTok
 - Add pictures from picture platforms e.g Instagram, Pinterest
 - Resize elements on the board
-- Organize elements on the board by relevance/concept/media type
-- Create a repository of references that are interlinked
 - Drag and drop elements around the board freely
 - Add text to inspiration board
-- Draw lines and arrows on inspiration board
-- Draw free-hand on board
 - Add colors with hex code on board
 - Users are able to share inspiration boards with other users
 - Built-in ideation help e.g. rhyme/synonym generation, color palette generation
-- Collaboration between users and sharing inspirations boards to be publicly viewed
 
 ## Implementation
 
@@ -88,16 +83,109 @@ https://github.com/afyqzarof/capstone-proposal/assets/83950596/46ce49c4-df9e-4e6
 
 ### Endpoints
 
-List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
+`GET` `/api/users/:user-id`
+
+- Fetch use details for a given user
+- Example Response:
+
+```json
+{
+  "id": 1,
+  "username": "nuclear.instruments",
+  "email": "user@example.com"
+}
+```
+
+`GET` `/api/users/:user-id/boards`
+
+- Fetch board details for a specific user
+- Example response:
+
+```json
+[
+  {
+    "id": 1,
+    "board_name": "My First Board",
+    "is_public": false
+  },
+  {
+    "id": 2,
+    "board_name": "Example Board",
+    "is_public": false
+  },
+  {
+    "id": 3,
+    "board_name": "music video inspo",
+    "is_public": true
+  }
+]
+```
+
+`GET` `/api/boards/:board-id/pins`
+
+- Fetch pins for a specific board
+- Example response:
+
+```json
+[
+  {
+    "id": "xFLA-XMirt",
+    "type": "YoutubeVidNode",
+    "data": { "youtube_id": "sDENI1Zx7Wc" },
+    "position": { "x": 300, "y": 200 }
+  },
+  {
+    "id": "mB_6kTKt3Y",
+    "type": "TextNode",
+    "data": { "text": "this is a text box" },
+    "position": { "x": 250, "y": 100 }
+  },
+  {
+    "id": "WVQoDv6ewX",
+    "type": "ColorSelectorNode",
+    "data": { "color": "#4c4cff" },
+    "position": { "x": 0, "y": 0 }
+  }
+]
+```
+
+`PUT` `/api/boards/:board-id/pins`
+
+- Update pins on a specific board when a user saves
+
+`post` `/api/users`
+
+- Initialize a new user upon registration
+
+`post` `/api/users/:user-id/boards`
+
+- Initialize a new board for a given user upon creation
+
+`get` `/api/boards/public`
+
+- get all boards that are set to "public"
 
 ### Auth
 
-Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented.
+Yes, depending on how difficult the implementation of authorization is.
 
 ## Roadmap
 
-Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build.
+- Front-end
+
+  - Build all pages defined above
+  - add drag and drop functionality
+  - implement adding pin functionality for text, colors, pictures and videos
+  - implement custom iframe for external sites i.e. youtube, tiktok, pinterest
+
+- Back-end
+  - Build end points specified above
+  - implement authorization if not too difficult
 
 ## Nice-to-haves
 
-Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing.
+- Organize elements on the board by relevance/concept/media type
+- Create a repository of references that are interlinked
+- Draw lines and arrows on inspiration board
+- Draw free-hand on board
+- Collaboration between users and sharing inspirations boards to be publicly viewed
