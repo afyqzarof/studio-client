@@ -1,0 +1,45 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+.tool {
+  &__title {
+    @include primary-btn;
+  }
+
+  &__item-container {
+    overflow: hidden;
+    transition: height 0.1s ease-out;
+
+    &--shown {
+      overflow: auto;
+      transition: height 0.1s ease-out;
+    }
+  }
+
+  &__item {
+    margin-top: 0.7rem;
+    @include secondary-btn;
+    color: colors.$secondary-gray;
+
+    &--cross-out {
+      &:hover {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &__input {
+    @include text-input;
+    width: 7rem;
+    padding: 0.2rem 0rem;
+    border: none;
+    border-bottom: 1px solid colors.$primary-dark;
+    background-color: transparent;
+    margin-top: 0.2rem;
+
+    &:focus {
+      outline: none;
+      background-color: colors.$primary-gray;
+    }
+  }
+}

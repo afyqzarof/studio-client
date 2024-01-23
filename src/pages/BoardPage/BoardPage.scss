@@ -1,0 +1,20 @@
+@use "../../styles/partials/mixins" as *;
+
+.board-wrapper {
+  height: 100vh;
+  @include flex(column);
+}
+
+.board {
+  width: 100vw;
+  flex: 1;
+}
+
+.view-container {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  height: 6rem;
+  @include flex(column, space-between, flex-end);
+}

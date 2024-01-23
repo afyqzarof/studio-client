@@ -1,0 +1,44 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.modal {
+  background: rgba(255, 255, 255, 0.178);
+  @include flex(column);
+  padding: 1rem;
+  border-radius: 3px;
+  // border: 1px dashed colors.$primary-main;
+
+  &__title {
+    @include sub-header;
+  }
+}
+.url-form {
+  @include flex(column);
+
+  &__input {
+    padding: 0.5rem;
+    font-family: primary-font;
+    @include text-input;
+    border: none;
+    border-bottom: 1px solid colors.$primary-dark;
+    background-color: transparent;
+    margin-bottom: 1rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+  &__btn {
+    @include primary-btn;
+    background-color: colors.$primary-main;
+    color: colors.$primary-light;
+    padding: 0.6rem 1rem;
+    border-radius: 3px;
+  }
+}
+
+.popup-overlay {
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}

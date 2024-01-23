@@ -1,10 +1,15 @@
 import "./ProjectCard.scss";
 import imgSrc from "../../assets/images/project-thumbnail.png";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProjectCard = () => {
   const [isShown, setIsShown] = useState(false);
+  const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate("/board/1");
+  };
   return (
     <article
       className="project"
@@ -14,7 +19,8 @@ const ProjectCard = () => {
       }}
       onMouseLeave={() => {
         setIsShown(false);
-      }}>
+      }}
+      onClick={handleClick}>
       <h2 className="project__title">project title</h2>
       <div
         className={

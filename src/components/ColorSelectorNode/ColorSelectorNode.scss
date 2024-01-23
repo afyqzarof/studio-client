@@ -1,0 +1,32 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colors";
+
+.color-select {
+  @include flex(column);
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+
+  &:hover {
+    border: 0.5px solid colors.$primary-dark;
+  }
+  &__color {
+    min-width: 10rem;
+    min-height: 10rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+  }
+
+  &__container {
+    margin-top: 1rem;
+    width: 100%;
+    @include flex(row, space-between);
+  }
+
+  &__input {
+    background: none;
+    border: none;
+    border-radius: 3px;
+  }
+}

@@ -1,0 +1,31 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.mode-container {
+  @include flex(row, space-between);
+  width: 10rem;
+
+  &__light {
+    @include secondary-btn;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid colors.$primary-dark;
+    border-radius: 3px;
+
+    &--dark {
+      color: colors.$secondary-gray;
+      border: none;
+    }
+  }
+  &__dark {
+    @include secondary-btn;
+    padding: 0.4rem 0.7rem;
+    color: colors.$secondary-gray;
+
+    &--dark {
+      color: colors.$primary-light;
+      background-color: colors.$primary-dark;
+      border-radius: 3px;
+    }
+  }
+}

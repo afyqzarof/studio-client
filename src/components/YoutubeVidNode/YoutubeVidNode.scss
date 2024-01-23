@@ -1,0 +1,18 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colors";
+
+.yt-container {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  &:hover {
+    border: 1px solid colors.$primary-dark;
+  }
+
+  &__video {
+    min-height: 15rem;
+    min-width: 20rem;
+    width: 100%;
+    height: 100%;
+  }
+}
