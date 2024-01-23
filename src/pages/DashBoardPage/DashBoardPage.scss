@@ -1,0 +1,94 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.page-wrapper {
+  @include flex(row, space-between, flex-start);
+  min-height: 100vh;
+  max-width: 100vw;
+}
+.main-wrapper {
+  flex: 1;
+  padding: 3rem 2rem;
+  min-height: 100vh;
+  height: 100%;
+  width: 10rem;
+  // overflow-x: scroll;
+}
+
+.dashboard-header {
+  @include flex(row, space-between);
+  width: 100%;
+  margin-bottom: 2rem;
+
+  &__title {
+    @include page-header;
+  }
+
+  &__nav {
+    width: 30%;
+  }
+}
+
+.dashboard-list {
+  @include flex(row, space-between);
+  width: 100%;
+
+  &__btn {
+    @include primary-btn;
+    background-color: colors.$primary-main;
+    color: colors.$primary-light;
+    padding: 0.5rem 1rem;
+    border-radius: 1px;
+  }
+}
+
+.dashboard-main {
+  @include flex(row, space-between, flex-start);
+  height: 100%;
+  min-height: 80vh;
+  width: 100%;
+
+  &__nav {
+    @include flex(column);
+  }
+
+  &__folder {
+    @include sub-header;
+    padding: 1rem 0;
+    border-bottom: 1px solid colors.$secondary-gray;
+    width: 14rem;
+    text-align: left;
+  }
+
+  &__projects {
+    margin-left: 1rem;
+    width: 10rem;
+    flex: 1;
+    padding: 0 2rem;
+    @include flex(row, flex-start);
+    overflow: scroll;
+  }
+}
+
+.explore-aside {
+  padding: 3rem 1.5rem;
+  background-color: colors.$primary-main;
+  min-height: 100vh;
+  height: 100%;
+
+  &__container {
+    @include flex(row, space-between, flex-start);
+  }
+
+  &__title {
+    @include page-header;
+    font-size: 1.5rem;
+    color: colors.$primary-light;
+    width: 10rem;
+  }
+
+  &__img {
+    transform: rotate(60deg);
+  }
+}

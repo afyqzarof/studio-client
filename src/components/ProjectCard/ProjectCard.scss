@@ -1,0 +1,39 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+.project {
+  margin-right: 2rem;
+  min-width: 35rem;
+  height: 40rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @include flex(column, space-between, flex-start);
+  padding: 1rem;
+
+  &__title {
+    @include sub-header;
+    z-index: 100;
+  }
+
+  &__details-container {
+    width: 30%;
+    opacity: 0;
+
+    &--shown {
+      opacity: 1;
+    }
+  }
+
+  &__caption {
+    @include caption;
+  }
+
+  &__category {
+    @include chip-large;
+  }
+
+  &__date {
+    @include chip-large;
+  }
+}

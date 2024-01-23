@@ -13,7 +13,7 @@ const LoginBox = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/board/1");
+    navigate("/1/dashboard");
   };
   return (
     <div className="form-wrapper">
