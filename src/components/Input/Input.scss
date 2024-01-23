@@ -1,0 +1,25 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+.input-container {
+  @include flex(column, center, flex-start);
+  margin: 1rem 0;
+  width: 100%;
+
+  &__label {
+    @include sub-header;
+    margin-bottom: 0.5rem;
+  }
+
+  &__input {
+    padding: 0.5rem;
+    @include text-input;
+    border: none;
+    border-bottom: 1px solid colors.$primary-dark;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
