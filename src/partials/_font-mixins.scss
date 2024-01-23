@@ -1,0 +1,126 @@
+@use "./typography";
+@use "./colors";
+
+@mixin tagline {
+  font-weight: 3rem;
+  line-height: 100%;
+  font-style: italic;
+  font-weight: 200;
+}
+
+@mixin page-header {
+  font-weight: 200;
+  font-size: 1.875rem;
+  line-height: 100%;
+  font-style: italic;
+}
+
+@mixin section-header {
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 100%;
+  font-style: italic;
+}
+
+@mixin sub-header {
+  font-family: secondary-font;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 120%;
+}
+
+@mixin body {
+  font-family: secondary-font;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 120%;
+}
+
+@mixin system-message {
+  font-family: secondary-font;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 120%;
+}
+
+@mixin caption {
+  font-weight: 400;
+  font-size: 0.625rem;
+  line-height: 120%;
+}
+
+@mixin footer {
+  font-weight: 200;
+  font-size: 0.875rem;
+  line-height: 120%;
+  font-style: italic;
+}
+
+@mixin text-input {
+  font-family: secondary-font;
+  font-size: 1rem;
+  line-height: 100%;
+}
+@mixin text-input-small {
+  font-family: secondary-font;
+  font-size: 0.875rem;
+  line-height: 100%;
+}
+
+@mixin chip-large {
+  font-family: secondary-font;
+  font-size: 0.875rem;
+  line-height: 140%;
+}
+
+@mixin chip-small {
+  font-family: secondary-font;
+  font-size: 0.75rem;
+  line-height: 140%;
+}
+
+@mixin nav-btn {
+  font-family: secondary-font;
+  font-size: 1.25rem;
+  line-height: 120%;
+
+  &:hover {
+    color: colors.$primary-main;
+  }
+}
+
+@mixin context-menu {
+  font-size: 0.875rem;
+  line-height: 100%;
+}
+
+@mixin primary-btn {
+  font-family: primary-font;
+  font-size: 1.25rem;
+  font-style: normal;
+  line-height: 100%;
+  &:hover {
+    font-style: italic;
+  }
+}
+
+@mixin secondary-btn {
+  font-family: primary-font;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 100%;
+  &:hover {
+    font-style: italic;
+  }
+}
+
+@mixin tertiary-btn {
+  font-family: primary-font;
+  font-size: 0.75rem;
+  font-style: normal;
+  line-height: 100%;
+  text-decoration: underline;
+  &:hover {
+    font-style: italic;
+  }
+}
