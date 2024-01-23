@@ -5,7 +5,7 @@ import {
   getTriadicColors,
 } from "../utils/color-methods";
 import { useReactFlow, useOnSelectionChange } from "reactflow";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { nanoid } from "nanoid";
 
 const useColorTools = () => {
@@ -13,16 +13,18 @@ const useColorTools = () => {
   const [isColorSelected, setIsColorSelected] = useState(false);
   const [selectedNode, setSelectedNode] = useState(null);
 
-  useOnSelectionChange({
-    onChange: ({ nodes }) => {
-      if (nodes.length === 1 && nodes[0].type === "ColorSelectorNode") {
-        setSelectedNode(nodes[0]);
-        setIsColorSelected(true);
-      } else {
-        setIsColorSelected(false);
-      }
-    },
-  });
+  useOnSelectionChange(
+    useCallback({
+      onChange: ({ nodes }) => {
+        if (nodes.length === 1 && nodes[0].type === "ColorSelectorNode") {
+          setSelectedNode(nodes[0]);
+          setIsColorSelected(true);
+        } else {
+          setIsColorSelected(false);
+        }
+      },
+    })
+  );
   const colorTools = [
     {
       id: "5",

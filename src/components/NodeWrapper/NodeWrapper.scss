@@ -1,0 +1,11 @@
+@use "../../styles/partials/colors";
+
+.node-wrapper {
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+
+  &:hover {
+    border: 1px solid colors.$primary-dark;
+  }
+}

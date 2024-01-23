@@ -33,12 +33,12 @@ const useTools = () => {
       name: "text",
       onClick: addTextBox,
     },
-    { id: "n58mzZ", name: "line", onClick: () => {} },
-    {
-      id: "TbXW6L",
-      name: "pencil",
-      onClick: () => {},
-    },
+    { id: "n58mzZ", name: "line", onClick: () => {}, notWorking: true },
+    // {
+    //   id: "TbXW6L",
+    //   name: "shape",
+    //   onClick: () => {},
+    // },
   ];
   return { tools };
 };

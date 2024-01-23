@@ -1,4 +1,4 @@
-function hexToHSL(H) {
+const hexToHSL = (H) => {
   // Convert hex to RGB first
   let r = 0,
     g = 0,
@@ -38,9 +38,9 @@ function hexToHSL(H) {
   l = +(l * 100).toFixed(0);
 
   return "hsl(" + h + "," + s + "%," + l + "%)";
-}
+};
 
-function HSLToHex(h, s, l) {
+const HSLToHex = (h, s, l) => {
   s /= 100;
   l /= 100;
 
@@ -87,18 +87,18 @@ function HSLToHex(h, s, l) {
   if (b.length == 1) b = "0" + b;
 
   return "#" + r + g + b;
-}
+};
 
-function parseHSL(str) {
+const parseHSL = (str) => {
   let hsl, h, s, l;
   hsl = str.replace(/[^\d,]/g, "").split(","); // strip non digits ('%')
   h = Number(hsl[0]); // convert to number
   s = Number(hsl[1]);
   l = Number(hsl[2]);
   return [h, s, l]; // return parts
-}
+};
 
-function harmonize(color, start, end, interval) {
+const harmonize = (color, start, end, interval) => {
   const colors = [color];
   const [h, s, l] = parseHSL(color);
 
@@ -109,7 +109,7 @@ function harmonize(color, start, end, interval) {
   }
 
   return colors;
-}
+};
 
 const getComplementaryColor = (hexColor) => {
   const hslColor = hexToHSL(hexColor);
