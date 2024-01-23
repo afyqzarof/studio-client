@@ -39,7 +39,11 @@ const ToolMenu = ({
         )}
         {list.map((item) => {
           if (item.notWorking) {
-            return <WipBtn name={item.name} />;
+            return (
+              <li key={item.id}>
+                <WipBtn name={item.name} />;
+              </li>
+            );
           }
           return (
             <li key={item.id}>

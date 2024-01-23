@@ -3,7 +3,8 @@
     "id": "xFLA-XMirt",
     "type": "YoutubeVidNode",
     "data": { "youtube_id": "sDENI1Zx7Wc" },
-    "position": { "x": 300, "y": 200 }
+    "position": { "x": 600, "y": 200 },
+    "style": {}
   },
   {
     "id": "mB_6kTKt3Y",
@@ -15,6 +16,7 @@
     "id": "WVQoDv6ewX",
     "type": "ColorSelectorNode",
     "data": { "color": "#4c4cff" },
-    "position": { "x": 0, "y": 0 }
+    "position": { "x": 0, "y": 0 },
+    "style": { "height": 230, "width": 200 }
   }
 ]

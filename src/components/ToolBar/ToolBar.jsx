@@ -2,13 +2,12 @@ import ToolMenu from "../ToolMenu/ToolMenu";
 import "./ToolBar.scss";
 import { useReactFlow } from "reactflow";
 import ModalInput from "../ModalInput/ModalInput";
-import useColorTools from "../../hooks/useColorTools";
 import useTools from "../../hooks/useTools";
 import { useState } from "react";
+import ColorTools from "../ColorTools/ColorTools";
 
 const ToolBar = () => {
   const { getNodes } = useReactFlow();
-  const { isColorSelected, colorTools } = useColorTools();
   const { tools } = useTools();
   const [chosenWord, setChosenWord] = useState("");
 
@@ -55,12 +54,7 @@ const ToolBar = () => {
         handleWordChange={handleWordChange}
         chosenWord={chosenWord}
       />
-      <ToolMenu
-        className={isColorSelected ? "" : "tool--hidden"}
-        title="on color"
-        list={colorTools}
-        heightValue="6rem"
-      />
+      <ColorTools />
     </nav>
   );
 };
