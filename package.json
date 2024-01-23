@@ -10,8 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.6.5",
+    "nanoid": "^5.0.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.3",
+    "react-type-animation": "^3.2.0",
+    "reactflow": "^11.10.2",
+    "reactjs-popup": "^2.0.6",
+    "sass": "^1.70.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
