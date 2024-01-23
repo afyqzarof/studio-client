@@ -1,0 +1,28 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.homepage {
+  @include flex(row, space-between);
+  padding: 0 2rem;
+  height: 100vh;
+
+  &__logo-container {
+    @include flex(column, space-between, flex-start);
+    height: 17rem;
+  }
+
+  &__img {
+    width: 20rem;
+  }
+
+  &__descr {
+    @include section-header;
+    color: colors.$primary-main;
+    margin-top: 0.5rem;
+
+    &--hidden {
+      display: none;
+    }
+  }
+}

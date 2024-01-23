@@ -1,0 +1,10 @@
+@use "../../styles/partials/font-mixins" as *;
+
+.type-animation {
+  @include tagline;
+
+  &--block {
+    display: block;
+    margin: 0.2rem 0;
+  }
+}
