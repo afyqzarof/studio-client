@@ -1,22 +1,28 @@
-import { useState } from "react";
 import "./ModalUpload.scss";
 import Popup from "reactjs-popup";
 import axios from "axios";
+import { useDropzone } from "react-dropzone";
 
 const ModalUpload = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  const [file, setFile] = useState(null);
 
   const handleCreateUploadPin = async (e) => {
     e.preventDefault();
+    const file = acceptedFiles[0];
+
     const formData = new FormData();
     formData.append("file", file);
     const { data } = await axios.post(baseUrl + "/api/upload", formData);
     console.log(data);
   };
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    maxFiles: 1,
+    accept: {
+      "image/jpeg": [".jpg", ".jpeg"],
+      "image/png": [".png"],
+    },
+    maxSize: 500000,
+  });
   return (
     <Popup
       trigger={<button className="btn-container__btn">upload</button>}
@@ -32,11 +38,17 @@ const ModalUpload = () => {
               handleCreateUploadPin(e);
               close();
             }}>
-            <input type="file" name="file" onChange={handleFileChange} />
+            <div {...getRootProps({ className: "dropzone" })}>
+              <input {...getInputProps()} name="file" />
+              <p>Drag 'n' drop some files here, or click to select files</p>
+            </div>
 
-            <button type="submit" className="file-form__btn">
-              create pin
-            </button>
+            <p>{acceptedFiles.length === 0 ? "" : acceptedFiles[0].path}</p>
+            {acceptedFiles.length === 0 || (
+              <button type="submit" className="file-form__btn">
+                create pin
+              </button>
+            )}
           </form>
         </article>
       )}
