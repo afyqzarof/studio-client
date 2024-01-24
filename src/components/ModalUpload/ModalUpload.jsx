@@ -1,13 +1,21 @@
-import "./UploadModal.scss";
+import { useState } from "react";
+import "./ModalUpload.scss";
 import Popup from "reactjs-popup";
+import axios from "axios";
 
-const ModalInput = () => {
-  const handleCreateUploadPin = (e) => {
+const ModalUpload = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const [file, setFile] = useState(null);
+
+  const handleCreateUploadPin = async (e) => {
     e.preventDefault();
-    console.log(e.target.files);
+    const formData = new FormData();
+    formData.append("file", file);
+    const { data } = await axios.post(baseUrl + "/api/upload", formData);
+    console.log(data);
   };
   const handleFileChange = (e) => {
-    console.log(e.target.files[0]);
+    setFile(e.target.files[0]);
   };
   return (
     <Popup
@@ -36,4 +44,4 @@ const ModalInput = () => {
   );
 };
 
-export default ModalInput;
+export default ModalUpload;

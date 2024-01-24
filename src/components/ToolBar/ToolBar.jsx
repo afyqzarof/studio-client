@@ -5,7 +5,7 @@ import ModalInput from "../ModalInput/ModalInput";
 import useTools from "../../hooks/useTools";
 import { useState } from "react";
 import ColorTools from "../ColorTools/ColorTools";
-import UploadModal from "../UploadModal/UploadModal";
+import ModalUpload from "../ModalUpload/ModalUpload";
 
 const ToolBar = () => {
   const { getNodes } = useReactFlow();
@@ -45,7 +45,7 @@ const ToolBar = () => {
         afyq's dev button
       </button> */}
       {/* <button className="btn-container__btn">upload</button> */}
-      <UploadModal />
+      <ModalUpload />
       <ModalInput />
       <ToolMenu title="tools" list={tools} heightValue="6rem" />
       <ToolMenu
