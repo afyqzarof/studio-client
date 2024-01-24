@@ -1,10 +1,10 @@
 import "./TestingPage.scss";
-import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import UploadModal from "../../components/UploadModal/UploadModal";
 
 const TestingPage = () => {
   return (
     <main className="test-main">
-      <ProjectCard />
+      <UploadModal />
     </main>
   );
 };

@@ -1,0 +1,24 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.dropzone {
+  margin-top: 1rem;
+  background-color: #ffffffc0;
+  height: 35vh;
+  @include flex;
+  padding: 2rem;
+  border: 1px colors.$primary-main dashed;
+}
+
+.file-form {
+  @include flex(column);
+  &__btn {
+    @include primary-btn;
+    background-color: colors.$primary-main;
+    color: colors.$primary-light;
+    padding: 0.6rem;
+    border-radius: 2px;
+    margin-top: 1rem;
+  }
+}

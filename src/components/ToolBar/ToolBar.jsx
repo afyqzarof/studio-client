@@ -5,6 +5,7 @@ import ModalInput from "../ModalInput/ModalInput";
 import useTools from "../../hooks/useTools";
 import { useState } from "react";
 import ColorTools from "../ColorTools/ColorTools";
+import UploadModal from "../UploadModal/UploadModal";
 
 const ToolBar = () => {
   const { getNodes } = useReactFlow();
@@ -36,14 +37,15 @@ const ToolBar = () => {
 
   return (
     <nav className="tool-nav">
-      <button
+      {/* <button
         className="btn-container__btn"
         onClick={() => {
           console.log(getNodes());
         }}>
         afyq's dev button
-      </button>
-      <button className="btn-container__btn">upload</button>
+      </button> */}
+      {/* <button className="btn-container__btn">upload</button> */}
+      <UploadModal />
       <ModalInput />
       <ToolMenu title="tools" list={tools} heightValue="6rem" />
       <ToolMenu
