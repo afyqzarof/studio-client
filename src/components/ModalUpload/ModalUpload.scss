@@ -29,9 +29,25 @@
   &__name {
     margin-top: 1rem;
   }
+
+  &__info {
+    @include body;
+    color: colors.$primary-main;
+  }
 }
 
-.modal {
+.upload {
+  // background-color: colors.$modal-bg;
+  padding: 1rem;
+  width: 45rem;
+  border-radius: 2px;
+  @include flex(column);
+  &__title {
+    @include sub-header;
+    font-size: 2rem;
+    color: colors.$primary-main;
+    align-self: flex-start;
+  }
   &__cancel {
     margin-top: 1rem;
     @include secondary-btn;

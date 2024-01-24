@@ -3,7 +3,7 @@
 @use "../../styles/partials/colors";
 
 .modal {
-  background: rgba(255, 255, 255, 0.178);
+  background: colors.$modal-bg;
   @include flex(column);
   padding: 1rem;
   border-radius: 3px;

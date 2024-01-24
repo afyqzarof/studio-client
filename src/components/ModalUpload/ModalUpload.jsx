@@ -52,8 +52,8 @@ const ModalUpload = () => {
       modal
       nested>
       {(close) => (
-        <article className="modal">
-          <h2 className="modal__title">
+        <article className="upload">
+          <h2 className="upload__title">
             {!myFiles ? "upload a file" : "file preview"}
           </h2>
           <form
@@ -64,23 +64,30 @@ const ModalUpload = () => {
               close();
             }}>
             {!myFiles ? (
-              <div {...getRootProps({ className: "dropzone" })}>
-                <input {...getInputProps()} name="file" />
-                <p>Drag 'n' drop some files here, or click to select files</p>
-              </div>
-            ) : (
-              <img src={myFiles[0].preview} className="file-form__preview" />
-            )}
+              <>
+                <div {...getRootProps({ className: "dropzone" })}>
+                  <input {...getInputProps()} name="file" />
+                  <p>Drag 'n' drop some files here, or click to select files</p>
+                </div>
 
-            <p className="file-form__name">{myFiles && myFiles[0].path}</p>
-            {myFiles && (
-              <button type="submit" className="file-form__btn">
-                create pin
-              </button>
+                <p className="file-form__info">
+                  please make sure your files are .jgp, .jpeg or .png and don't
+                  exceed 500KB
+                </p>
+              </>
+            ) : (
+              <>
+                <img src={myFiles[0].preview} className="file-form__preview" />
+                <p className="file-form__name">{myFiles[0].path}</p>
+
+                <button type="submit" className="file-form__btn">
+                  create pin
+                </button>
+              </>
             )}
           </form>
           {myFiles && (
-            <button onClick={handleCancel} className="modal__cancel">
+            <button onClick={handleCancel} className="upload__cancel">
               Cancel
             </button>
           )}
