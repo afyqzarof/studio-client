@@ -13,6 +13,10 @@
 
 .file-form {
   @include flex(column);
+  &__preview {
+    height: 35vh;
+    margin-top: 1rem;
+  }
   &__btn {
     @include primary-btn;
     background-color: colors.$primary-main;
@@ -20,5 +24,17 @@
     padding: 0.6rem;
     border-radius: 2px;
     margin-top: 1rem;
+  }
+
+  &__name {
+    margin-top: 1rem;
+  }
+}
+
+.modal {
+  &__cancel {
+    margin-top: 1rem;
+    @include secondary-btn;
+    text-decoration: underline;
   }
 }
