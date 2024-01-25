@@ -22,7 +22,7 @@
   {
     "id": "FsdAEOf6oja",
     "type": "ImageNode",
-    "data": { "file": "1706130106652.png" },
+    "data": { "file": "test.png" },
     "position": { "x": 100, "y": 400 },
     "style": { "height": 230, "width": 200 }
   }

@@ -3,6 +3,9 @@ import Popup from "reactjs-popup";
 import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import { useState, useCallback } from "react";
+import { useReactFlow } from "reactflow";
+import { nanoid } from "nanoid";
+import getRandomCoords from "../../utils/get-random-coords";
 
 const ModalUpload = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -10,6 +13,7 @@ const ModalUpload = () => {
 
   const onDrop = useCallback(
     (acceptedFiles) => {
+      console.log("drop");
       setMyFiles(
         acceptedFiles.map((file) =>
           Object.assign(file, {
@@ -21,6 +25,7 @@ const ModalUpload = () => {
     [myFiles]
   );
 
+  const { addNodes } = useReactFlow();
   const handleCreateUploadPin = async (e) => {
     e.preventDefault();
 
@@ -30,17 +35,24 @@ const ModalUpload = () => {
     const formData = new FormData();
     formData.append("file", file);
     const { data } = await axios.post(baseUrl + "/api/upload", formData);
-    console.log(data);
+    addNodes({
+      id: nanoid(10),
+      type: "ImageNode",
+      position: getRandomCoords(),
+      data: {
+        file: data.filename,
+      },
+    });
     setMyFiles(null);
   };
   const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
     maxFiles: 1,
     accept: {
       "image/jpeg": [".jpg", ".jpeg"],
       "image/png": [".png"],
     },
     maxSize: 500000,
-    onDrop,
   });
   const handleCancel = () => {
     setMyFiles(null);
