@@ -10,7 +10,6 @@ const ModalUpload = () => {
 
   const onDrop = useCallback(
     (acceptedFiles) => {
-      // setMyFiles([...acceptedFiles]);
       setMyFiles(
         acceptedFiles.map((file) =>
           Object.assign(file, {

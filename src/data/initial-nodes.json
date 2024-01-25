@@ -18,5 +18,12 @@
     "data": { "color": "#4c4cff" },
     "position": { "x": 0, "y": 0 },
     "style": { "height": 230, "width": 200 }
+  },
+  {
+    "id": "FsdAEOf6oja",
+    "type": "ImageNode",
+    "data": { "color": "#4c4cff" },
+    "position": { "x": 100, "y": 400 },
+    "style": { "height": 230, "width": 200 }
   }
 ]

@@ -8,11 +8,13 @@ import ContextMenu from "../ContextMenu/ContextMenu";
 import initialNodes from "../../data/initial-nodes.json";
 import TextNode from "../TextNode/TextNode";
 import ToolBar from "../ToolBar/ToolBar";
+import ImageNode from "../ImageNode/ImageNode";
 
 const nodeTypes = {
   ColorSelectorNode,
   YoutubeVidNode,
   TextNode,
+  ImageNode,
 };
 const Flow = ({ isGrid }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
