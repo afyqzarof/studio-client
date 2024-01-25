@@ -1,15 +1,17 @@
 import "./ModalUpload.scss";
-import Popup from "reactjs-popup";
+// import Popup from "reactjs-popup";
 import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import { useState, useCallback } from "react";
 import { useReactFlow } from "reactflow";
 import { nanoid } from "nanoid";
 import getRandomCoords from "../../utils/get-random-coords";
+import Modal from "react-modal";
 
 const ModalUpload = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [myFiles, setMyFiles] = useState(null);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const onDrop = useCallback(
     (acceptedFiles) => {
@@ -44,6 +46,7 @@ const ModalUpload = () => {
       },
     });
     setMyFiles(null);
+    closeModal();
   };
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
@@ -57,12 +60,23 @@ const ModalUpload = () => {
   const handleCancel = () => {
     setMyFiles(null);
   };
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   return (
-    <Popup
-      trigger={<button className="btn-container__btn">upload</button>}
-      modal
-      nested>
-      {(close) => (
+    <>
+      <button onClick={openModal} className="btn-container__btn">
+        upload
+      </button>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal">
         <article className="upload">
           <h2 className="upload__title">
             {!myFiles ? "upload a file" : "file preview"}
@@ -103,8 +117,8 @@ const ModalUpload = () => {
             </button>
           )}
         </article>
-      )}
-    </Popup>
+      </Modal>
+    </>
   );
 };
 

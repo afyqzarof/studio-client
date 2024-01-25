@@ -2,6 +2,20 @@
 @use "../../styles/partials/font-mixins" as *;
 @use "../../styles/partials/colors";
 
+.ReactModal__Overlay {
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background-color: transparent !important;
+  @include flex;
+}
+.ReactModal__Content {
+  background-color: transparent !important;
+  border: none !important;
+  @include flex;
+  width: fit-content;
+  position: relative !important;
+}
+
 .dropzone {
   margin-top: 1rem;
   background-color: #ffffffc0;
@@ -39,7 +53,7 @@
 .upload {
   // background-color: colors.$modal-bg;
   padding: 1rem;
-  width: 45rem;
+  width: auto;
   border-radius: 2px;
   @include flex(column);
   &__title {
