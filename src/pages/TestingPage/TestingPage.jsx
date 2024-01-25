@@ -1,6 +1,7 @@
 import "./TestingPage.scss";
 import { useDropzone } from "react-dropzone";
 import { useState, useCallback } from "react";
+import Popup from "reactjs-popup";
 const TestingPage = () => {
   const [myFiles, setMyFiles] = useState(null);
 
@@ -18,25 +19,31 @@ const TestingPage = () => {
     [myFiles]
   );
   const { getRootProps, getInputProps } = useDropzone({
+    noDragEventsBubbling: true,
     onDrop,
   });
 
   return (
-    <section className="container">
-      <div {...getRootProps({ className: "dropzone" })}>
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
-      </div>
-      <aside>
-        <h4>Files</h4>
-      </aside>
-      <button
-        onClick={() => {
-          console.log(myFiles);
-        }}>
-        click
-      </button>
-    </section>
+    <Popup
+      trigger={<button className="btn-container__btn">upload</button>}
+      modal
+      nested>
+      <section className="container">
+        <div {...getRootProps({ className: "dropzone" })}>
+          <input {...getInputProps()} />
+          <p>Drag 'n' drop some files here, or click to select files</p>
+        </div>
+        <aside>
+          <h4>Files</h4>
+        </aside>
+        <button
+          onClick={() => {
+            console.log(myFiles);
+          }}>
+          click
+        </button>
+      </section>
+    </Popup>
   );
 };
 

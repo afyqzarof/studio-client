@@ -1,6 +1,11 @@
 import "./ModalInput.scss";
 import Popup from "reactjs-popup";
-import { getDomain, getYoutubeId } from "../../utils/get-domain";
+import {
+  getDomain,
+  getYoutubeId,
+  getYoutuId,
+  isUrlValid,
+} from "../../utils/get-domain";
 import { useReactFlow } from "reactflow";
 import { nanoid } from "nanoid";
 import getRandomCoords from "../../utils/get-random-coords";
@@ -10,6 +15,11 @@ const ModalInput = () => {
   const handleCreateUrlPin = (e) => {
     e.preventDefault();
     const url = e.target.url.value;
+    if (!isUrlValid(url)) {
+      console.log("not valid url");
+
+      return;
+    }
     const domain = getDomain(url);
     if (domain === "youtube") {
       const youtubeId = getYoutubeId(url);
@@ -19,6 +29,18 @@ const ModalInput = () => {
         position: getRandomCoords(),
         data: {
           youtube_id: youtubeId,
+        },
+      });
+      return;
+    }
+    if (domain === "youtu") {
+      const youtuId = getYoutuId(url);
+      addNodes({
+        id: nanoid(10),
+        type: "YoutubeVidNode",
+        position: getRandomCoords(),
+        data: {
+          youtube_id: youtuId,
         },
       });
     }
@@ -47,7 +69,6 @@ const ModalInput = () => {
               create pin
             </button>
           </form>
-          {/* <button onClick={close}>&times;</button> */}
         </article>
       )}
     </Popup>

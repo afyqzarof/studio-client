@@ -7,6 +7,7 @@
   @include flex(column);
   padding: 1rem;
   border-radius: 3px;
+  width: 35vw;
   // border: 1px dashed colors.$primary-main;
 
   &__title {
@@ -15,6 +16,7 @@
 }
 .url-form {
   @include flex(column);
+  width: 100%;
 
   &__input {
     padding: 0.5rem;
@@ -24,6 +26,7 @@
     border-bottom: 1px solid colors.$primary-dark;
     background-color: transparent;
     margin-bottom: 1rem;
+    width: 100%;
 
     &:focus {
       outline: none;
@@ -35,6 +38,7 @@
     color: colors.$primary-light;
     padding: 0.6rem 1rem;
     border-radius: 3px;
+    margin-top: 1rem;
   }
 }
 
