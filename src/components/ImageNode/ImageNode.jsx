@@ -3,8 +3,9 @@ import { NodeResizer } from "reactflow";
 import "./ImageNode.scss";
 import NodeWrapper from "../NodeWrapper/NodeWrapper";
 
-const ImageNode = memo(({ selected, data, id }) => {
+const ImageNode = memo(({ selected, data }) => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
+
   return (
     <>
       <NodeResizer
@@ -12,10 +13,11 @@ const ImageNode = memo(({ selected, data, id }) => {
         isVisible={selected}
         minWidth={50}
         minHeight={50}
+        keepAspectRatio={true}
       />
       <NodeWrapper>
         <img
-          src={baseUrl + "/api/upload/" + "1706130106652.png"}
+          src={baseUrl + "/api/upload/" + data.file}
           className="image-node"
         />
       </NodeWrapper>

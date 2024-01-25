@@ -1,9 +1,10 @@
 @use "../../styles/partials/colors";
-
+@use "../../styles/partials/mixins" as *;
 .node-wrapper {
   padding: 1rem;
   width: 100%;
   height: 100%;
+  @include flex;
 
   &:hover {
     border: 1px solid colors.$primary-dark;
