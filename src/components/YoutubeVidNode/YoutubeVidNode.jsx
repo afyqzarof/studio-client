@@ -1,6 +1,6 @@
 import "./YoutubeVidNode.scss";
 import { memo } from "react";
-import { NodeResizer, useReactFlow } from "reactflow";
+import { NodeResizer } from "reactflow";
 
 const YoutubeVidNode = memo(({ selected, data }) => {
   return (

@@ -25,5 +25,11 @@
     "data": { "file": "test.png" },
     "position": { "x": 100, "y": 400 },
     "style": { "height": 230, "width": 200 }
+  },
+  {
+    "id": "bDepAWb6le",
+    "type": "SpotifyNode",
+    "data": { "track_id": "5ug0eU9nS6gRqJ8Xqgsx8x" },
+    "position": { "x": 400, "y": -200 }
   }
 ]
