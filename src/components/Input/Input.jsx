@@ -1,6 +1,13 @@
 import "./Input.scss";
 
-const Input = ({ name, label, placeholder, className }) => {
+const Input = ({
+  name,
+  label,
+  placeholder,
+  className,
+  isPassword,
+  handleChange,
+}) => {
   return (
     <div className={`input-container ${className}`}>
       <label htmlFor={name} className="input-container__label">
@@ -8,10 +15,11 @@ const Input = ({ name, label, placeholder, className }) => {
       </label>
       <input
         className="input-container__input"
-        type="text"
+        type={isPassword ? "password" : "text"}
         name={name}
         id={name}
         placeholder={placeholder}
+        onChange={handleChange}
       />
     </div>
   );
