@@ -15,14 +15,13 @@ const BoardPage = () => {
   return (
     <>
       <div className="board-wrapper">
-        <BoardHeader />
         <div className="view-container">
           <GridBtn isGrid={isGrid} handleChangeGrid={handleChangeGrid} />
           <DarkModeBtn />
         </div>
         <main className="board">
           <ReactFlowProvider>
-            {/* <ToolBar /> */}
+            <BoardHeader />
             <Flow isGrid={isGrid} />
           </ReactFlowProvider>
         </main>

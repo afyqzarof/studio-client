@@ -18,6 +18,7 @@ const ImageNode = memo(({ selected, data }) => {
       <NodeWrapper>
         <img
           src={baseUrl + "/api/upload/" + data.file}
+          alt={data.file}
           className="image-node"
         />
       </NodeWrapper>

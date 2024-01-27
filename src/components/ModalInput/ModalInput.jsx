@@ -5,6 +5,7 @@ import {
   getYoutubeId,
   getYoutuId,
   isUrlValid,
+  getSpotifyId,
 } from "../../utils/get-domain";
 import { useReactFlow } from "reactflow";
 import { nanoid } from "nanoid";
@@ -41,6 +42,17 @@ const ModalInput = () => {
         position: getRandomCoords(),
         data: {
           youtube_id: youtuId,
+        },
+      });
+    }
+    if (domain === "spotify") {
+      const trackId = getSpotifyId(url);
+      addNodes({
+        id: nanoid(10),
+        type: "SpotifyNode",
+        position: getRandomCoords(),
+        data: {
+          track_id: trackId,
         },
       });
     }

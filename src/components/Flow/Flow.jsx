@@ -9,12 +9,14 @@ import initialNodes from "../../data/initial-nodes.json";
 import TextNode from "../TextNode/TextNode";
 import ToolBar from "../ToolBar/ToolBar";
 import ImageNode from "../ImageNode/ImageNode";
+import SpotifyNode from "../SpotifyNode/SpotifyNode";
 
 const nodeTypes = {
   ColorSelectorNode,
   YoutubeVidNode,
   TextNode,
   ImageNode,
+  SpotifyNode,
 };
 const Flow = ({ isGrid }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
