@@ -29,4 +29,10 @@ const getYoutuId = (url) => {
   const domainArray = url.split("?")[0].split("/");
   return domainArray[domainArray.length - 1];
 };
-export { isUrlValid, getDomain, getYoutubeId, getYoutuId };
+
+//https://open.spotify.com/track/5LsmuKO5tsF8budo3nVbRp?si=e691837d9fd84b58
+const getSpotifyId = (url) => {
+  const domainArray = url.split("?")[0].split("/");
+  return domainArray[domainArray.length - 1];
+};
+export { isUrlValid, getDomain, getYoutubeId, getYoutuId, getSpotifyId };
