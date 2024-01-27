@@ -3,9 +3,14 @@ import "./BoardHeader.scss";
 import upIconDefault from "../../assets/icons/arrow-N-default.svg";
 import upIconSelected from "../../assets/icons/arrow-N-selected.svg";
 import { useState } from "react";
+import { useReactFlow } from "reactflow";
 
 const BoardHeader = () => {
   const [isIconSelected, setIsIconSelected] = useState(false);
+  const { getNodes } = useReactFlow();
+  const handleSave = () => {
+    console.log(getNodes());
+  };
 
   return (
     <header className="board-header">
@@ -29,7 +34,9 @@ const BoardHeader = () => {
         <ul className="nav__right-container">
           <button className="nav__btn">collaborate</button>
           <button className="nav__btn">publish</button>
-          <button className="nav__btn">save</button>
+          <button className="nav__btn" onClick={handleSave}>
+            save
+          </button>
         </ul>
       </nav>
     </header>
