@@ -30,7 +30,16 @@ const LoginBox = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLogin) {
-      console.log("do login");
+      const userDetails = {
+        username: formFields.username,
+        password: formFields.password,
+      };
+      const { data } = await axios.post(
+        baseUrl + "/api/users/login",
+        userDetails
+      );
+
+      localStorage.setItem("token", data.token);
       return;
     }
 
@@ -65,6 +74,7 @@ const LoginBox = () => {
           placeholder="enter email"
           className={isLogin ? "form--login" : "form--register"}
           handleChange={handleChange}
+          tabIndex={isLogin && -1}
         />
         <Input
           name="password"
@@ -80,6 +90,7 @@ const LoginBox = () => {
           className={isLogin ? "form--login" : "form--register"}
           isPassword={true}
           handleChange={handleChange}
+          tabIndex={isLogin && -1}
         />
         <button className="form__btn" type="submit">
           {isLogin ? "login" : "verify account"}

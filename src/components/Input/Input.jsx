@@ -7,6 +7,7 @@ const Input = ({
   className,
   isPassword,
   handleChange,
+  tabIndex,
 }) => {
   return (
     <div className={`input-container ${className}`}>
@@ -20,6 +21,7 @@ const Input = ({
         id={name}
         placeholder={placeholder}
         onChange={handleChange}
+        tabIndex={tabIndex}
       />
     </div>
   );
