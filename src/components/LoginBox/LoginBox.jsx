@@ -3,10 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Input from "../../components/Input/Input";
 import axios from "axios";
+import InputError from "../InputError/InputError";
 
 const LoginBox = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [formFields, setFormFields] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [formErrors, setFormErrors] = useState({
     username: "",
     email: "",
     password: "",
@@ -22,13 +29,55 @@ const LoginBox = () => {
   const handleChange = (e) => {
     setFormFields({
       ...formFields,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.trim(),
     });
-    console.log(formFields);
+
+    setFormErrors({
+      ...formErrors,
+      [e.target.name]: "",
+    });
   };
 
+  const isFormValid = () => {
+    setFormErrors({
+      username: !formFields.username ? "this field is required" : "",
+      email: !formFields.email ? "this field is required" : "",
+      password: !formFields.password ? "this field is required" : "",
+      confirmPassword: !formFields.confirmPassword
+        ? "this field is required"
+        : "",
+    });
+    console.log(formErrors);
+
+    if (formFields.password !== formFields.confirmPassword) {
+      setFormErrors({
+        ...formErrors,
+        password: "passwords must match",
+        confirmPassword: "passwords must match",
+      });
+    }
+
+    if (
+      !!formFields.email &&
+      !formFields.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+    ) {
+      setFormErrors({
+        ...formErrors,
+        email: "please enter a valid email address",
+      });
+    }
+    if (isLogin && !!formFields.username && !!formFields.password) {
+      return true;
+    }
+    return false;
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isFormValid()) {
+      return;
+    }
+    console.log("form valid");
+
     if (isLogin) {
       const userDetails = {
         username: formFields.username,
@@ -44,8 +93,6 @@ const LoginBox = () => {
     }
 
     //REGISTER
-    // console.log(baseUrl);
-
     const newUser = {
       email: e.target.email.value,
       username: e.target.email.value,
@@ -53,10 +100,15 @@ const LoginBox = () => {
     };
     try {
       await axios.post(baseUrl + "/api/users/register", newUser);
+      const user = {
+        username: formFields.username,
+        password: formFields.password,
+      };
+      const { data } = await axios.post(baseUrl + "/api/users/login", user);
+      localStorage.setItem("token", data.token);
     } catch (error) {
       e.target.reset();
     }
-
     // navigate("/1/dashboard");
   };
   return (
@@ -67,21 +119,26 @@ const LoginBox = () => {
           label="username"
           placeholder="enter username"
           handleChange={handleChange}
+          msg={formErrors.username}
         />
+
         <Input
           name="email"
           label="email"
           placeholder="enter email"
           className={isLogin ? "form--login" : "form--register"}
           handleChange={handleChange}
-          tabIndex={isLogin && -1}
+          tabIndex={isLogin ? -1 : 0}
+          msg={formErrors.email}
         />
+
         <Input
           name="password"
           label="password"
           placeholder="enter password"
           isPassword={true}
           handleChange={handleChange}
+          msg={formErrors.password}
         />
         <Input
           name="confirmPassword"
@@ -90,7 +147,8 @@ const LoginBox = () => {
           className={isLogin ? "form--login" : "form--register"}
           isPassword={true}
           handleChange={handleChange}
-          tabIndex={isLogin && -1}
+          tabIndex={isLogin ? -1 : 0}
+          msg={formErrors.confirmPassword}
         />
         <button className="form__btn" type="submit">
           {isLogin ? "login" : "verify account"}

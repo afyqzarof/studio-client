@@ -1,0 +1,7 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/font-mixins" as *;
+
+.error-msg {
+  @include body;
+  color: colors.$error;
+}

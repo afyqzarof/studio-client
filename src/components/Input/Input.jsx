@@ -1,3 +1,4 @@
+import InputError from "../InputError/InputError";
 import "./Input.scss";
 
 const Input = ({
@@ -8,6 +9,7 @@ const Input = ({
   isPassword,
   handleChange,
   tabIndex,
+  msg,
 }) => {
   return (
     <div className={`input-container ${className}`}>
@@ -23,6 +25,7 @@ const Input = ({
         onChange={handleChange}
         tabIndex={tabIndex}
       />
+      {msg && <InputError msg={msg} />}
     </div>
   );
 };
