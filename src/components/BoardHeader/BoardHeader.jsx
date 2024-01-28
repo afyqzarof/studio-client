@@ -9,7 +9,20 @@ const BoardHeader = () => {
   const [isIconSelected, setIsIconSelected] = useState(false);
   const { getNodes } = useReactFlow();
   const handleSave = () => {
-    console.log(getNodes());
+    const pins = getNodes();
+    const formattedPins = pins.map((pin) => {
+      return {
+        board_id: 3,
+        width: pin.width,
+        height: pin.height,
+        id: pin.id,
+        type: pin.type,
+        data: pin.data,
+        x_coord: pin.position.x,
+        y_coord: pin.position.y,
+      };
+    });
+    console.log(formattedPins);
   };
 
   return (
