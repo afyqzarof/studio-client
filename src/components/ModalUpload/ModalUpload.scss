@@ -5,15 +5,14 @@
 .ReactModal__Overlay {
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  background-color: rgba(0, 0, 0, 0.283) !important;
+  background-color: colors.$modal-overlay !important;
   @include flex;
   z-index: 30;
 }
 .ReactModal__Content {
   background-color: white !important;
-  // background-color: rgba(0, 0, 0, 0.283) !important;
   border: none !important;
-  @include flex;
+  @include flex(row, space-between);
   width: fit-content;
   position: relative !important;
 }
@@ -22,17 +21,29 @@
   margin-top: 1rem;
   background-color: #ffffffc0;
   height: 35vh;
-  @include flex;
+  @include flex(row, space-between, flex-start);
   padding: 2rem;
   border: 1px colors.$primary-main dashed;
   width: 100%;
+  flex: 1;
 }
 
 .file-form {
-  @include flex(column);
+  @include flex(row, space-between, flex-start);
+  width: 100%;
+  &__left {
+    margin-right: 1rem;
+  }
+  &__info-left {
+    height: 100%;
+    @include flex(column, space-between, flex-start);
+  }
   &__preview {
     height: 35vh;
-    margin-top: 1rem;
+    margin-left: 2rem;
+    max-width: 40vw;
+    object-fit: cover;
+    object-position: center;
   }
   &__btn {
     @include primary-btn;
@@ -54,6 +65,7 @@
     color: colors.$primary-dark;
     margin-top: 1rem;
     align-self: flex-start;
+    width: 20rem;
   }
 }
 
@@ -62,6 +74,7 @@
   width: auto;
   border-radius: 2px;
   @include flex(column, center, flex-start);
+  flex: 1;
   &__dnd {
     width: 60%;
   }
@@ -76,5 +89,6 @@
     @include secondary-btn;
     text-decoration: underline;
     color: colors.$primary-dark;
+    cursor: pointer;
   }
 }
