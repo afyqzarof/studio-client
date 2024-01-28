@@ -7,7 +7,8 @@
   left: 2rem;
   z-index: 10;
   @include flex(column, space-between, flex-start);
-  min-height: 12rem;
+  // min-height: 12rem;
+  height: auto;
 }
 .btn-container {
   margin-bottom: 0.7rem;
@@ -15,6 +16,7 @@
   &__btn {
     @include primary-btn;
     margin-bottom: 0.5rem;
+    margin-top: 1rem;
   }
 }
 

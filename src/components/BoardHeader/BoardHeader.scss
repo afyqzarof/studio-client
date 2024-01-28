@@ -11,7 +11,7 @@
 .nav {
   @include flex(row, space-between);
   padding: 1rem 3rem;
-  border-bottom: 1px solid colors.$primary-dark;
+  // border-bottom: 1px solid colors.$primary-dark;
 
   &__right {
     @include flex(row, space-between);

@@ -92,7 +92,9 @@ const ModalUpload = () => {
               <>
                 <div {...getRootProps({ className: "dropzone" })}>
                   <input {...getInputProps()} name="file" />
-                  <p>Drag 'n' drop some files here, or click to select files</p>
+                  <p className="upload__dnd">
+                    drag and drop some files here, or click to select files
+                  </p>
                 </div>
 
                 <p className="file-form__info">
@@ -113,7 +115,7 @@ const ModalUpload = () => {
           </form>
           {myFiles && (
             <button onClick={handleCancel} className="upload__cancel">
-              Cancel
+              cancel
             </button>
           )}
         </article>

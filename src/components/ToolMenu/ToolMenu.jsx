@@ -41,7 +41,7 @@ const ToolMenu = ({
           if (item.notWorking) {
             return (
               <li key={item.id}>
-                <WipBtn name={item.name} />;
+                <WipBtn name={item.name} />
               </li>
             );
           }

@@ -4,6 +4,7 @@
 .tool {
   &__title {
     @include primary-btn;
+    margin-top: 1rem;
   }
 
   &__item-container {
