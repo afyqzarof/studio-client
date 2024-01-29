@@ -16,6 +16,7 @@
   @include flex(column, space-between, flex-start);
   padding: 1rem;
   transition: all 80ms ease-in;
+  position: relative;
 
   &:hover {
     transform: translateY(2rem);
@@ -26,6 +27,13 @@
     z-index: 100;
     position: absolute;
     // margin-left: 1rem;
+  }
+
+  &__author {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0;
+    @include body;
   }
 
   &__details-container {

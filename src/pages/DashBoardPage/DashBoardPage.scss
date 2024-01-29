@@ -3,13 +3,10 @@
 @use "../../styles/partials/colors";
 
 .page-wrapper {
-  @include flex(row, space-between, flex-start);
+  @include flex(column, space-between, flex-start);
   max-height: 100vh;
-  max-width: 100vw;
+  width: 100vw;
   background-color: colors.$primary-gray;
-}
-.main-wrapper {
-  flex: 1;
   padding: 3rem 2rem;
   min-height: 100vh;
   height: 100%;
@@ -19,6 +16,7 @@
 .new-project {
   @include flex(row, flex-end);
   margin-bottom: 1rem;
+  width: 100%;
   &__btn {
     @include secondary-btn;
     background-color: colors.$primary-main;

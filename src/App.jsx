@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import BoardPage from "./pages/BoardPage/BoardPage";
 import TestingPage from "./pages/TestingPage/TestingPage";
 import DashBoardPage from "./pages/DashBoardPage/DashBoardPage";
+import ExplorePage from "./pages/ExplorePage/ExplorePage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard" element={<DashBoardPage />} />
         <Route path="/board/:boardId" element={<BoardPage />} />
+        <Route path="/explore" element={<ExplorePage />} />
         <Route path="/test" element={<TestingPage />} />
       </Routes>
     </BrowserRouter>
