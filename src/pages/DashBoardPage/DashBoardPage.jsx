@@ -1,6 +1,7 @@
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import "./DashBoardPage.scss";
 import MainHeader from "../../components/MainHeader/MainHeader";
+import boardData from "../../data/boards-data";
 
 const DashBoardPage = () => {
   return (
@@ -17,9 +18,16 @@ const DashBoardPage = () => {
             <button className="dashboard-main__folder">project folder</button> */}
           </nav>
           <section className="dashboard-main__projects">
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
+            {boardData.map((board) => (
+              <ProjectCard
+                title={board.title}
+                imgSrc={board.imgSrc}
+                description={board.description}
+                date={board.date}
+                category={board.category}
+                boardId={board.id}
+              />
+            ))}
           </section>
         </main>
       </div>

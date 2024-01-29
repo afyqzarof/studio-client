@@ -23,9 +23,8 @@ const nodeTypes = {
 const Flow = ({ isGrid }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const { boardId } = useParams();
-  const [initialNodes, setInitialNodes] = useState([]);
+
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  // console.log(initialNodes);
 
   useEffect(() => {
     const fetchPins = async () => {
@@ -47,16 +46,10 @@ const Flow = ({ isGrid }) => {
           },
         };
       });
-      console.log(formattedPins);
-
-      setInitialNodes(formattedPins);
       setNodes(formattedPins);
     };
     fetchPins();
   }, []);
-  if (!initialNodes) {
-    return <p>Loading...</p>;
-  }
   const [menu, setMenu] = useState(null);
   const ref = useRef(null);
   const onNodeContextMenu = useCallback(
