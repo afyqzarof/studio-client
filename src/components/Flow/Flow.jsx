@@ -1,15 +1,17 @@
-import ReactFlow, { Background, useNodesState, useReactFlow } from "reactflow";
+import ReactFlow, { Background, useNodesState } from "reactflow";
 import "reactflow/dist/base.css";
 import YoutubeVidNode from "../YoutubeVidNode/YoutubeVidNode";
 import ColorSelectorNode from "../ColorSelectorNode/ColorSelectorNode";
 import "./Flow.scss";
-import { useRef, useCallback, useState } from "react";
+import { useRef, useCallback, useState, useEffect } from "react";
 import ContextMenu from "../ContextMenu/ContextMenu";
-import initialNodes from "../../data/initial-nodes.json";
+// import initialNodes from "../../data/initial-nodes.json";
 import TextNode from "../TextNode/TextNode";
 import ToolBar from "../ToolBar/ToolBar";
 import ImageNode from "../ImageNode/ImageNode";
 import SpotifyNode from "../SpotifyNode/SpotifyNode";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const nodeTypes = {
   ColorSelectorNode,
@@ -19,7 +21,42 @@ const nodeTypes = {
   SpotifyNode,
 };
 const Flow = ({ isGrid }) => {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const { boardId } = useParams();
+  const [initialNodes, setInitialNodes] = useState([]);
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  // console.log(initialNodes);
+
+  useEffect(() => {
+    const fetchPins = async () => {
+      const { data } = await axios.get(
+        baseUrl + "/api/boards/" + boardId + "/pins"
+      );
+      const formattedPins = data.map((pin) => {
+        return {
+          id: pin.id,
+          type: pin.type,
+          data: JSON.parse(pin.data),
+          position: {
+            x: pin.x_coord,
+            y: pin.y_coord,
+          },
+          style: {
+            height: pin.height,
+            width: pin.height,
+          },
+        };
+      });
+      console.log(formattedPins);
+
+      setInitialNodes(formattedPins);
+      setNodes(formattedPins);
+    };
+    fetchPins();
+  }, []);
+  if (!initialNodes) {
+    return <p>Loading...</p>;
+  }
   const [menu, setMenu] = useState(null);
   const ref = useRef(null);
   const onNodeContextMenu = useCallback(
