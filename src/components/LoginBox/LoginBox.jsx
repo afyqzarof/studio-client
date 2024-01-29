@@ -73,6 +73,7 @@ const LoginBox = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    navigate("/dashboard");
     if (!isFormValid()) {
       return;
     }

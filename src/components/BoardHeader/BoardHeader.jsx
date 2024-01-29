@@ -29,7 +29,7 @@ const BoardHeader = () => {
     <header className="board-header">
       <nav className="nav">
         <div className="nav__right">
-          <Link to="/login">
+          <Link to="/dashboard">
             <img
               onMouseEnter={() => {
                 setIsIconSelected(true);
