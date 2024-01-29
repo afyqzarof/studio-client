@@ -19,12 +19,12 @@ const BoardPage = () => {
           <GridBtn isGrid={isGrid} handleChangeGrid={handleChangeGrid} />
           <DarkModeBtn />
         </div>
-        <main className="board">
-          <ReactFlowProvider>
-            <BoardHeader />
+        <ReactFlowProvider>
+          <BoardHeader />
+          <main className="board">
             <Flow isGrid={isGrid} />
-          </ReactFlowProvider>
-        </main>
+          </main>
+        </ReactFlowProvider>
       </div>
     </>
   );
