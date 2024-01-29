@@ -23,6 +23,7 @@
     color: colors.$secondary-gray;
 
     &--cross-out {
+      cursor: not-allowed;
       &:hover {
         text-decoration: line-through;
       }
