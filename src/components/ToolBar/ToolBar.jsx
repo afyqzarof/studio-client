@@ -11,80 +11,18 @@ import { nanoid } from "nanoid";
 import getRandomCoords from "../../utils/get-random-coords";
 import Modal from "react-modal";
 import ModalDefinition from "../ModalDefinition/ModalDefinition";
+import useWordTools from "../../hooks/useWordTools";
 
 const ToolBar = () => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+  const {
+    wordTools,
+    chosenWord,
+    handleWordChange,
+    closeModal,
+    definitions,
+    isModalOpen,
+  } = useWordTools();
   const { tools } = useTools();
-  const [chosenWord, setChosenWord] = useState("");
-  const baseUrl = import.meta.env.VITE_BASE_URL;
-  const { addNodes } = useReactFlow();
-
-  const handleWordChange = (e) => {
-    const word = e.target.value;
-    setChosenWord(word.replace(/ |[0-9]|[^\w\s]|_/g, ""));
-  };
-  const addWordNode = async (type) => {
-    if (!chosenWord) {
-      return;
-    }
-    const { data: words } = await axios.get(
-      baseUrl + "/api/word/" + chosenWord + "/" + type
-    );
-
-    if (words.length === 0) {
-      return;
-    }
-
-    addNodes({
-      id: nanoid(10),
-      type: "TextNode",
-      data: { text: words.join(", ") },
-      position: getRandomCoords(),
-    });
-  };
-
-  const getWordDefinition = async () => {
-    if (!chosenWord) {
-      return;
-    }
-    const { data: definition } = await axios.get(
-      baseUrl + "/api/word/" + chosenWord + "/definition"
-    );
-    console.log(definition);
-    openModal();
-  };
-
-  const wordTools = [
-    { id: 1, name: "look up word", onClick: getWordDefinition },
-    {
-      id: 2,
-      name: "find rhyme",
-      onClick: () => {
-        addWordNode("rhyme");
-      },
-    },
-    {
-      id: 3,
-      name: "find synonym",
-      onClick: () => {
-        addWordNode("synonym");
-      },
-    },
-    {
-      id: 4,
-      name: "find antonym",
-      onClick: () => {
-        addWordNode("antonym");
-      },
-    },
-  ];
 
   return (
     <>
@@ -102,7 +40,12 @@ const ToolBar = () => {
         />
         <ColorTools />
       </nav>
-      <ModalDefinition modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <ModalDefinition
+        modalIsOpen={isModalOpen}
+        closeModal={closeModal}
+        definitions={definitions}
+        chosenWord={chosenWord}
+      />
     </>
   );
 };
