@@ -2,6 +2,7 @@ import { useState } from "react";
 import MainHeader from "../../components/MainHeader/MainHeader";
 import "./ExplorePage.scss";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import exploreBoardsData from "../../data/explore-boards-data";
 
 const ExplorePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -84,13 +85,19 @@ const ExplorePage = () => {
           </div>
         </nav>
         <section className="explore-boards">
-          <ProjectCard
-            title={"Title"}
-            description="design work for work"
-            date="04.08.18"
-            category="interior design"
-            author="nuclear.instruments"
-          />
+          {exploreBoardsData.map((board) => (
+            <div key={board.id}>
+              <ProjectCard
+                title={board.title}
+                description={board.description}
+                date={board.date}
+                category={board.category}
+                author={board.author}
+                imgSrc={board.imgSrc}
+                boardId={board.id}
+              />
+            </div>
+          ))}
           <ProjectCard
             title={"Title"}
             description="design work for work"
