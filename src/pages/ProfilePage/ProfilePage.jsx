@@ -1,8 +1,10 @@
 import { useState } from "react";
 import MainHeader from "../../components/MainHeader/MainHeader";
 import "./ProfilePage.scss";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
+  const navigate = useNavigate();
   const [formFields, setFormFields] = useState({
     name: "nuclear.instruments",
     bio: "independent bedroom artist / software engineer",
@@ -34,6 +36,9 @@ const ProfilePage = () => {
       ...formFields,
       [e.target.name]: e.target.value,
     });
+  };
+  const handleLogout = () => {
+    navigate("/");
   };
   return (
     <div className="page-wrapper">
@@ -79,7 +84,9 @@ const ProfilePage = () => {
         </div>
         <section className="feedback">
           <button className="feedback__btn">give us feedback</button>
-          <button className="feedback__btn">log out</button>
+          <button className="feedback__btn" onClick={handleLogout}>
+            log out
+          </button>
         </section>
       </main>
     </div>

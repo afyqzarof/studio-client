@@ -1,0 +1,28 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.def {
+  padding: 0.5rem;
+  max-width: 40rem;
+
+  &__word {
+    @include sub-header;
+    font-size: 3.5rem;
+  }
+
+  &__wrapper {
+    margin-top: 1.5rem;
+  }
+
+  &__subtitle {
+    @include sub-header;
+    margin-bottom: 0.6rem;
+  }
+
+  &__meaning {
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    list-style-type: square;
+  }
+}

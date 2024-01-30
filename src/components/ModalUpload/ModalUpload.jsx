@@ -74,6 +74,7 @@ const ModalUpload = () => {
         upload
       </button>
       <Modal
+        ariaHideApp={false}
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal">

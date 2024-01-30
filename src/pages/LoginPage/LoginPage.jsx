@@ -2,6 +2,7 @@ import "./LoginPage.scss";
 import LoginBox from "../../components/LoginBox/LoginBox";
 import { useState } from "react";
 import logo from "../../assets/logos/logo-small.svg";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const [isLoginShown, setIsLoginShown] = useState(false);
@@ -59,9 +60,9 @@ const LoginPage = () => {
               boards can be published for others to view, as well.
             </p>
             <div className="info__link-container">
-              <a href="" className="info__link">
+              <Link to="/dashboard" className="info__link">
                 view example
-              </a>
+              </Link>
             </div>
           </article>
         </div>
@@ -76,9 +77,9 @@ const LoginPage = () => {
               need some inspiration
             </p>
             <div className="info__link-container">
-              <a href="" className="info__link">
+              <Link to="/dashboard" className="info__link">
                 explore a bit
-              </a>
+              </Link>
             </div>
           </article>
         </div>
