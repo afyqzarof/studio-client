@@ -9,8 +9,18 @@ import ModalUpload from "../ModalUpload/ModalUpload";
 import { useReactFlow } from "reactflow";
 import { nanoid } from "nanoid";
 import getRandomCoords from "../../utils/get-random-coords";
+import Modal from "react-modal";
+import ModalDefinition from "../ModalDefinition/ModalDefinition";
 
 const ToolBar = () => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   const { tools } = useTools();
   const [chosenWord, setChosenWord] = useState("");
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -48,6 +58,7 @@ const ToolBar = () => {
       baseUrl + "/api/word/" + chosenWord + "/definition"
     );
     console.log(definition);
+    openModal();
   };
 
   const wordTools = [
@@ -76,20 +87,23 @@ const ToolBar = () => {
   ];
 
   return (
-    <nav className="tool-nav">
-      <ModalUpload />
-      <ModalInput />
-      <ToolMenu title="tools" list={tools} heightValue="6rem" />
-      <ToolMenu
-        title="word"
-        list={wordTools}
-        heightValue="10rem"
-        isWordTool={true}
-        handleWordChange={handleWordChange}
-        chosenWord={chosenWord}
-      />
-      <ColorTools />
-    </nav>
+    <>
+      <nav className="tool-nav">
+        <ModalUpload />
+        <ModalInput />
+        <ToolMenu title="tools" list={tools} heightValue="6rem" />
+        <ToolMenu
+          title="word"
+          list={wordTools}
+          heightValue="10rem"
+          isWordTool={true}
+          handleWordChange={handleWordChange}
+          chosenWord={chosenWord}
+        />
+        <ColorTools />
+      </nav>
+      <ModalDefinition modalIsOpen={modalIsOpen} closeModal={closeModal} />
+    </>
   );
 };
 
