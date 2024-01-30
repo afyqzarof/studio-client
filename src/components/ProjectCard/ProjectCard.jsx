@@ -17,7 +17,11 @@ const ProjectCard = ({
   const realImgSrc = !imgSrc ? placeholder : imgSrc;
 
   const handleClick = () => {
-    navigate("/board/" + boardId);
+    if (!author) {
+      navigate("/board/" + boardId);
+      return;
+    }
+    navigate("/explore/" + boardId);
   };
   return (
     <article className="project-wrapper">

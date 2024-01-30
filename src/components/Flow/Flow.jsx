@@ -14,15 +14,15 @@ import PinterestNode from "../PinterestNode/PinterestNode";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const nodeTypes = {
-  ColorSelectorNode,
-  YoutubeVidNode,
-  TextNode,
-  ImageNode,
-  SpotifyNode,
-  PinterestNode,
-};
 const Flow = ({ isGrid }) => {
+  const nodeTypes = {
+    ColorSelectorNode,
+    YoutubeVidNode,
+    TextNode,
+    ImageNode,
+    SpotifyNode,
+    PinterestNode,
+  };
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const { boardId } = useParams();
 
