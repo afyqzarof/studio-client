@@ -9,7 +9,7 @@ export default [
     category: "indie",
     description: "very cool",
     imgSrc: board1,
-    id: 1,
+    id: "TMFld0860EctVn2",
   },
   {
     title: "blowgun mv",
@@ -17,7 +17,7 @@ export default [
     category: "music",
     description: "inspiration for music video",
     imgSrc: board2,
-    id: 2,
+    id: "dcU4VO1Ik0Oa6cX",
   },
   {
     title: "fashion",
@@ -25,6 +25,6 @@ export default [
     category: "music",
     description: "all about the fit",
     imgSrc: board3,
-    id: 3,
+    id: "edMDU5I-YtRe0Pu",
   },
 ];

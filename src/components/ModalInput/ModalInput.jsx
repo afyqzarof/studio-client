@@ -6,6 +6,7 @@ import {
   getYoutuId,
   isUrlValid,
   getSpotifyId,
+  getPinterestId,
 } from "../../utils/get-domain";
 import { useReactFlow } from "reactflow";
 import { nanoid } from "nanoid";
@@ -53,6 +54,22 @@ const ModalInput = () => {
         position: getRandomCoords(),
         data: {
           track_id: trackId,
+        },
+      });
+      return;
+    }
+    if (domain === "pinterest") {
+      const pinterestId = getPinterestId(url);
+      addNodes({
+        id: nanoid(10),
+        type: "PinterestNode",
+        position: getRandomCoords(),
+        data: {
+          id: pinterestId,
+        },
+        style: {
+          width: 400,
+          height: 600,
         },
       });
     }

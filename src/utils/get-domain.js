@@ -35,4 +35,17 @@ const getSpotifyId = (url) => {
   const domainArray = url.split("?")[0].split("/");
   return domainArray[domainArray.length - 1];
 };
-export { isUrlValid, getDomain, getYoutubeId, getYoutuId, getSpotifyId };
+// https://www.pinterest.co.uk/pin/766597167849640881/
+const getPinterestId = (url) => {
+  const array = url.split("/");
+  const index = array.findIndex((el) => el === "pin");
+  return array[index + 1];
+};
+export {
+  isUrlValid,
+  getDomain,
+  getYoutubeId,
+  getYoutuId,
+  getSpotifyId,
+  getPinterestId,
+};

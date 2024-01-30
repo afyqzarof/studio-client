@@ -10,6 +10,7 @@ import TextNode from "../TextNode/TextNode";
 import ToolBar from "../ToolBar/ToolBar";
 import ImageNode from "../ImageNode/ImageNode";
 import SpotifyNode from "../SpotifyNode/SpotifyNode";
+import PinterestNode from "../PinterestNode/PinterestNode";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -19,6 +20,7 @@ const nodeTypes = {
   TextNode,
   ImageNode,
   SpotifyNode,
+  PinterestNode,
 };
 const Flow = ({ isGrid }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
