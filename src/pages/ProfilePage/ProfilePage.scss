@@ -1,0 +1,68 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.profile-main {
+  width: 100%;
+  flex: 1;
+  @include flex(row, space-between, flex-start);
+  padding-top: 5rem;
+
+  &__left {
+    width: 100%;
+  }
+}
+
+.profile {
+  @include flex(row, space-between, flex-start);
+  flex: 1;
+  width: 80%;
+  margin-bottom: 3rem;
+
+  &__title {
+    @include sub-header;
+  }
+
+  &__inputs {
+    @include flex(column, space-between, flex-start);
+    width: 100%;
+    margin-left: 12rem;
+  }
+  &__input-wrapper {
+    @include flex(row, flex-start, flex-start);
+    height: 2rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  &__input {
+    align-self: flex-end;
+    flex: 1;
+    @include text-input;
+    height: 100%;
+    border: none;
+    padding: 0.5rem;
+    &:hover {
+      background-color: colors.$accent;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__label {
+    @include body;
+    margin-right: 1rem;
+  }
+}
+
+.feedback {
+  flex: 1;
+  @include flex(column, flex-start, flex-end);
+  min-width: 18rem;
+
+  &__btn {
+    @include secondary-btn;
+    margin-bottom: 2rem;
+    margin-right: 4rem;
+  }
+}

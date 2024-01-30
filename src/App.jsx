@@ -7,6 +7,7 @@ import TestingPage from "./pages/TestingPage/TestingPage";
 import DashBoardPage from "./pages/DashBoardPage/DashBoardPage";
 import ExplorePage from "./pages/ExplorePage/ExplorePage";
 import ExploreBoardPage from "./pages/ExploreBoardPage/ExploreBoardPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/board/:boardId" element={<BoardPage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/explore/:boardId" element={<ExploreBoardPage />} />
+        <Route path="/account" element={<ProfilePage />} />
         <Route path="/test" element={<TestingPage />} />
       </Routes>
     </BrowserRouter>
