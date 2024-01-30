@@ -5,7 +5,7 @@ import "./ProfilePage.scss";
 const ProfilePage = () => {
   const [formFields, setFormFields] = useState({
     name: "nuclear.instruments",
-    bio: "independent bedroom pop/sad boi",
+    bio: "independent bedroom artist / software engineer",
     link: "https://www.instagram.com/nuclear.instruments",
     email: "user@example.com",
     password: "password123",
