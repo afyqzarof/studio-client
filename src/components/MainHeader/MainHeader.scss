@@ -1,0 +1,22 @@
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colors";
+.dash-nav {
+  background-color: colors.$primary-light;
+  width: 25rem;
+  padding: 0.8rem;
+
+  &__link {
+    @include nav-btn;
+    margin-right: 1.5rem;
+    color: colors.$secondary-gray;
+
+    &.active {
+      color: colors.$primary-dark;
+    }
+  }
+}
+
+.dash-header {
+  margin-bottom: 1rem;
+}

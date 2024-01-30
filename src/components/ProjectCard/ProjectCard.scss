@@ -1,0 +1,60 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.project-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.project {
+  margin-right: 2rem;
+  min-width: 45rem;
+  height: 35rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @include flex(column, space-between, flex-start);
+  padding: 1rem;
+  transition: all 80ms ease-in;
+  position: relative;
+
+  &:hover {
+    transform: translateY(2rem);
+  }
+
+  &__title {
+    @include sub-header;
+    z-index: 100;
+    position: absolute;
+    // margin-left: 1rem;
+  }
+
+  &__author {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0;
+    @include body;
+  }
+
+  &__details-container {
+    width: 30%;
+    opacity: 0;
+
+    &--shown {
+      opacity: 1;
+    }
+  }
+
+  &__caption {
+    @include caption;
+    font-family: secondary-font;
+  }
+
+  &__category {
+    @include chip-large;
+  }
+
+  &__date {
+    @include chip-large;
+  }
+}

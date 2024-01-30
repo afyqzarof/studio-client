@@ -1,0 +1,39 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.form-wrapper {
+  background-color: colors.$primary-light;
+  padding: 1rem;
+  width: 20rem;
+}
+
+.change-form {
+  margin-top: 1.5rem;
+  @include secondary-btn;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+}
+
+.form {
+  &__btn {
+    margin-top: 2.5rem;
+    padding: 0.5rem 1.5rem;
+    @include primary-btn;
+    background-color: colors.$primary-main;
+    color: colors.$primary-light;
+    border-radius: 5px;
+    border: none;
+  }
+  &--login {
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+  }
+
+  &--register {
+    height: 6rem;
+    transition: height 0.3s ease-out;
+  }
+}

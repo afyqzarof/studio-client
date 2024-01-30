@@ -1,0 +1,34 @@
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/mixins" as *;
+
+.tool-nav {
+  position: absolute;
+  bottom: 25%;
+  left: 2rem;
+  z-index: 10;
+  @include flex(column, space-between, flex-start);
+  // min-height: 12rem;
+  height: auto;
+}
+.btn-container {
+  margin-bottom: 0.7rem;
+
+  &__btn {
+    @include primary-btn;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+}
+
+.tool {
+  &--hidden {
+    display: none;
+    // transition: all 0.1s ease-out;
+    // height: 0px;
+    // overflow: hidden;
+  }
+}
+
+.Toastify__toast-container--top-right {
+  top: 30rem;
+}

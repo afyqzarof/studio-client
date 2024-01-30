@@ -1,0 +1,95 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.login-main {
+  padding: 4rem;
+  @include flex(row, space-between);
+  height: 100vh;
+  min-height: 100vh;
+
+  &--gray {
+    background-color: colors.$primary-gray;
+  }
+}
+
+.login-nav {
+  @include flex(column, space-between, flex-start);
+  height: 30%;
+  &__title {
+    @include page-header;
+  }
+  &__span {
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  &__btn-container {
+    @include flex(column, space-between, flex-start);
+  }
+
+  &__btn {
+    @include primary-btn;
+    padding: 0.5rem 1.5rem;
+    margin: 0.3rem 0;
+    background-color: colors.$primary-main;
+    color: colors.$primary-light;
+    border-radius: 3px;
+    width: 100%;
+  }
+}
+
+.login-box {
+  flex: 1;
+  padding: 0 20%;
+  display: none;
+
+  &--shown {
+    display: block;
+  }
+}
+
+.info {
+  height: 100vh;
+  padding: 15rem 4rem;
+  @include flex(row, flex-start, flex-end);
+  &__left {
+    @include flex(column, space-between, flex-start);
+    height: 100%;
+    width: 30rem;
+  }
+
+  &__right {
+    width: 30rem;
+    margin-left: 10rem;
+    padding-bottom: 3rem;
+  }
+
+  &__title {
+    @include section-header;
+    margin-bottom: 1rem;
+  }
+
+  &__paragraph {
+    @include body;
+    margin-bottom: 0.5rem;
+  }
+
+  &__link-container {
+    margin-top: 3rem;
+  }
+
+  &__link {
+    color: colors.$primary-dark;
+    text-decoration: underline;
+  }
+}
+
+.login-footer {
+  @include flex(row, flex-end, flex-end);
+  padding: 1rem;
+
+  &__name {
+    margin-right: 1rem;
+  }
+}

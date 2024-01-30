@@ -1,0 +1,44 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.board-header {
+  background-color: colors.$primary-light;
+  z-index: 100;
+  width: 100%;
+}
+
+.nav {
+  @include flex(row, space-between);
+  padding: 1rem 3rem;
+  // border-bottom: 1px solid colors.$primary-dark;
+
+  &__right {
+    @include flex(row, space-between);
+  }
+
+  &__icon {
+    width: 2.5rem;
+    transform: rotate(-45deg);
+    margin-right: 2rem;
+  }
+
+  &__title {
+    @include sub-header;
+    width: 9rem;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__right-container {
+    @include flex(row, space-between);
+  }
+
+  &__btn {
+    @include nav-btn;
+    margin-left: 3rem;
+  }
+}

@@ -1,0 +1,59 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.page-wrapper {
+  @include flex(column, space-between, flex-start);
+  max-height: 100vh;
+  width: 100vw;
+  background-color: colors.$primary-gray;
+  padding: 3rem 2rem;
+  min-height: 100vh;
+  height: 100%;
+  max-height: 80vh;
+}
+
+.new-project {
+  @include flex(row, flex-end);
+  margin-bottom: 1rem;
+  width: 100%;
+  &__btn {
+    @include secondary-btn;
+    background-color: colors.$primary-main;
+    color: colors.$primary-light;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+  }
+}
+
+.dashboard-main {
+  @include flex(row, space-between, flex-start);
+  max-height: 100%;
+  width: 100%;
+
+  &__nav {
+    @include flex(column, flex-start);
+    background-color: colors.$primary-light;
+    height: 80vh;
+    padding-left: 1rem;
+  }
+
+  &__folder {
+    @include nav-btn;
+    padding: 1rem 0;
+    // border-bottom: 1px solid colors.$secondary-gray;
+    width: 14rem;
+    text-align: left;
+  }
+
+  &__projects {
+    max-height: 80vh;
+    margin-left: 1rem;
+    width: 10rem;
+    flex: 1;
+    // padding: 0 15rem;
+
+    @include flex(column, flex-start, center);
+    overflow: scroll;
+  }
+}

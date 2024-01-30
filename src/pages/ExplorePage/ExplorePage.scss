@@ -1,0 +1,70 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+.explore-main {
+  @include flex(row, space-between, flex-start);
+  max-height: 100%;
+  width: 100%;
+}
+
+.explore-nav {
+  @include flex(column, flex-start, flex-start);
+  background-color: colors.$primary-light;
+  height: 80vh;
+  padding: 1rem 1.5rem;
+}
+
+.categories {
+  @include flex(column, flex-start, flex-start);
+  &__wrapper {
+    margin-bottom: 0.8rem;
+  }
+  &__label {
+    color: colors.$secondary-gray;
+    &--all {
+      margin-bottom: 1.5rem;
+    }
+    @include nav-btn;
+  }
+
+  &__radio {
+    display: none;
+    &:checked {
+      & + label {
+        color: colors.$primary-dark;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+.filter {
+  @include flex(column, flex-start, flex-start);
+  margin-top: 2rem;
+  &__input {
+    display: none;
+  }
+  &__label {
+    color: colors.$secondary-gray;
+    margin-bottom: 0.8rem;
+    @include nav-btn;
+  }
+  &__radio {
+    display: none;
+    &:checked {
+      & + label {
+        color: colors.$primary-dark;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+.explore-boards {
+  flex: 1;
+  max-height: 80vh;
+  margin-left: 1rem;
+  width: 10rem;
+  @include flex(column, flex-start, center);
+  overflow: scroll;
+}

@@ -1,0 +1,7 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colors";
+.test-main {
+  @include flex(column, space-evenly);
+  height: 100vh;
+  background-color: colors.$primary-gray;
+}

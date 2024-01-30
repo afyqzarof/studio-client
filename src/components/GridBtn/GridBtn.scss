@@ -1,0 +1,15 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.grid-btn {
+  @include secondary-btn;
+  color: colors.$primary-light;
+  background-color: colors.$primary-dark;
+  padding: 0.5rem;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: colors.$secondary-gray;
+  }
+}
