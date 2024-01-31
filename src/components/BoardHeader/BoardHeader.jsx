@@ -28,14 +28,7 @@ const BoardHeader = () => {
     console.log(formattedPins);
   };
 
-  const downloadImage = async (dataUrl) => {
-    // const a = document.createElement("a");
-    // console.log(dataUrl);
-
-    // // a.setAttribute("download", "reactflow.png");
-    // a.setAttribute("href", dataUrl);
-
-    // a.click();
+  const postThumbnail = async (dataUrl) => {
     const arr = dataUrl.split(",");
     const mime = arr[0].match(/:(.*?);/)[1];
     const bstr = atob(arr[arr.length - 1]);
@@ -44,21 +37,16 @@ const BoardHeader = () => {
     while (n--) {
       u8arr[n] = bstr.charCodeAt(n);
     }
-    const thumbnailFile = new File([u8arr], "thumbnail.png", { type: mime });
+    const thumbnailFile = new File([u8arr], "thumbnail.jpg", { type: mime });
     console.log(thumbnailFile);
     const formData = new FormData();
     formData.append("file", thumbnailFile);
     const { data } = await axios.post(baseUrl + "/api/upload", formData);
     console.log(data);
-
-    // return newFile;
   };
   const imageWidth = 1024;
   const imageHeight = 768;
-  const onClick = () => {
-    // we calculate a transform for the nodes so that all nodes are visible
-    // we then overwrite the transform of the `.react-flow__viewport` element
-    // with the style option of the html-to-image library
+  const onClick = async () => {
     const nodesBounds = getNodesBounds(getNodes());
     const transform = getViewportForBounds(
       nodesBounds,
@@ -68,16 +56,20 @@ const BoardHeader = () => {
       2
     );
 
-    toPng(document.querySelector(".react-flow__viewport"), {
-      backgroundColor: "#fff",
-      width: imageWidth,
-      height: imageHeight,
-      style: {
+    const pngFile = await toPng(
+      document.querySelector(".react-flow__viewport"),
+      {
+        backgroundColor: "#fff",
         width: imageWidth,
         height: imageHeight,
-        transform: `translate(${transform[0]}px, ${transform[1]}px) scale(${transform[2]})`,
-      },
-    }).then(downloadImage);
+        style: {
+          width: imageWidth,
+          height: imageHeight,
+          transform: `translate(${transform[0]}px, ${transform[1]}px) scale(${transform[2]})`,
+        },
+      }
+    );
+    postThumbnail(pngFile);
   };
 
   return (
