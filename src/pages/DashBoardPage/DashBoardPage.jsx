@@ -11,7 +11,6 @@ const DashBoardPage = () => {
   useEffect(() => {
     const fetchUserBoards = async () => {
       const token = localStorage.getItem("token");
-      console.log(token);
 
       const { data } = await axios.get(baseUrl + "/api/users/boards", {
         headers: { Authorization: `Bearer ${token}` },
@@ -31,18 +30,23 @@ const DashBoardPage = () => {
           <button className="dashboard-main__folder">show all</button>
         </nav>
         <ul className="dashboard-main__projects">
-          {boards.map((board) => (
-            <li key={board.id}>
-              <ProjectCard
-                title={board.title}
-                imgSrc={baseUrl + "/api/thumbnails/" + board.thumbnail}
-                description={board.description}
-                date={board.date}
-                category={board.category}
-                boardId={board.id}
-              />
-            </li>
-          ))}
+          {boards.map((board) => {
+            const date = new Date(board.created_at);
+            const formattedDate = date.toLocaleDateString().replace(/\//g, ".");
+
+            return (
+              <li key={board.id}>
+                <ProjectCard
+                  title={board.title}
+                  imgSrc={baseUrl + "/api/thumbnails/" + board.thumbnail}
+                  description={board.description}
+                  date={formattedDate}
+                  category={board.category}
+                  boardId={board.id}
+                />
+              </li>
+            );
+          })}
         </ul>
       </main>
     </div>

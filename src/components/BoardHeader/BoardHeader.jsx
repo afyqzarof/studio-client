@@ -14,7 +14,7 @@ const BoardHeader = () => {
   const { getNodes } = useReactFlow();
   const { boardId } = useParams();
 
-  const [title, setTitle] = useState(null);
+  const [title, setTitle] = useState("");
   useEffect(() => {
     const fetchBoard = async () => {
       const { data } = await axios.get(baseUrl + "/api/boards/" + boardId);
@@ -82,6 +82,9 @@ const BoardHeader = () => {
     );
     postThumbnail(pngFile);
   };
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
 
   return (
     <header className="board-header">
@@ -100,7 +103,12 @@ const BoardHeader = () => {
               className="nav__icon"
             />
           </Link>
-          <input className="nav__title" placeholder="untitled" value={title} />
+          <input
+            className="nav__title"
+            placeholder="untitled"
+            value={title}
+            onChange={handleTitleChange}
+          />
         </div>
         <ul className="nav__right-container">
           <button className="nav__btn">collaborate</button>
