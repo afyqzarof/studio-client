@@ -5,8 +5,10 @@ import upIconSelected from "../../assets/icons/arrow-N-selected.svg";
 import { useState } from "react";
 import { useReactFlow, getViewportForBounds, getNodesBounds } from "reactflow";
 import { toPng } from "html-to-image";
+import axios from "axios";
 
 const BoardHeader = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   const [isIconSelected, setIsIconSelected] = useState(false);
   const { getNodes } = useReactFlow();
   const handleSave = () => {
@@ -26,13 +28,31 @@ const BoardHeader = () => {
     console.log(formattedPins);
   };
 
-  function downloadImage(dataUrl) {
-    const a = document.createElement("a");
+  const downloadImage = async (dataUrl) => {
+    // const a = document.createElement("a");
+    // console.log(dataUrl);
 
-    a.setAttribute("download", "reactflow.png");
-    a.setAttribute("href", dataUrl);
-    a.click();
-  }
+    // // a.setAttribute("download", "reactflow.png");
+    // a.setAttribute("href", dataUrl);
+
+    // a.click();
+    const arr = dataUrl.split(",");
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[arr.length - 1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    const thumbnailFile = new File([u8arr], "thumbnail.png", { type: mime });
+    console.log(thumbnailFile);
+    const formData = new FormData();
+    formData.append("file", thumbnailFile);
+    const { data } = await axios.post(baseUrl + "/api/upload", formData);
+    console.log(data);
+
+    // return newFile;
+  };
   const imageWidth = 1024;
   const imageHeight = 768;
   const onClick = () => {
