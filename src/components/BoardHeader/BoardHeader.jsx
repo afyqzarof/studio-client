@@ -2,15 +2,26 @@ import { Link } from "react-router-dom";
 import "./BoardHeader.scss";
 import upIconDefault from "../../assets/icons/arrow-N-default.svg";
 import upIconSelected from "../../assets/icons/arrow-N-selected.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useReactFlow, getViewportForBounds, getNodesBounds } from "reactflow";
 import { toPng } from "html-to-image";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const BoardHeader = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [isIconSelected, setIsIconSelected] = useState(false);
   const { getNodes } = useReactFlow();
+  const { boardId } = useParams();
+
+  const [title, setTitle] = useState(null);
+  useEffect(() => {
+    const fetchBoard = async () => {
+      const { data } = await axios.get(baseUrl + "/api/boards/" + boardId);
+      setTitle(data.title);
+    };
+    fetchBoard();
+  }, []);
   const handleSave = () => {
     const pins = getNodes();
     const formattedPins = pins.map((pin) => {
@@ -89,7 +100,7 @@ const BoardHeader = () => {
               className="nav__icon"
             />
           </Link>
-          <input className="nav__title" placeholder="untitled" />
+          <input className="nav__title" placeholder="untitled" value={title} />
         </div>
         <ul className="nav__right-container">
           <button className="nav__btn">collaborate</button>
