@@ -36,7 +36,7 @@ const ModalUpload = () => {
 
     const formData = new FormData();
     formData.append("file", file);
-    const { data } = await axios.post(baseUrl + "/api/upload", formData);
+    const { data } = await axios.post(baseUrl + "/upload", formData);
     addNodes({
       id: nanoid(10),
       type: "ImageNode",

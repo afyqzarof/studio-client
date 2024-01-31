@@ -27,7 +27,7 @@ const useWordTools = () => {
       return;
     }
     const { data: words } = await axios.get(
-      baseUrl + "/api/word/" + chosenWord + "/" + type
+      baseUrl + "/word/" + chosenWord + "/" + type
     );
 
     if (words.length === 0) {
@@ -48,7 +48,7 @@ const useWordTools = () => {
     }
     try {
       const { data } = await axios.get(
-        baseUrl + "/api/word/" + chosenWord + "/definition"
+        baseUrl + "/word/" + chosenWord + "/definition"
       );
       console.log(data);
       setDefinitions(data);

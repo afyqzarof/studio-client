@@ -12,7 +12,7 @@ const DashBoardPage = () => {
     const fetchUserBoards = async () => {
       const token = localStorage.getItem("token");
 
-      const { data } = await axios.get(baseUrl + "/api/users/boards", {
+      const { data } = await axios.get(baseUrl + "/users/boards", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBoards(data);
@@ -38,7 +38,7 @@ const DashBoardPage = () => {
               <li key={board.id}>
                 <ProjectCard
                   title={board.title}
-                  imgSrc={baseUrl + "/api/thumbnails/" + board.thumbnail}
+                  imgSrc={baseUrl + "/thumbnails/" + board.thumbnail}
                   description={board.description}
                   date={formattedDate}
                   category={board.category}
