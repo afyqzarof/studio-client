@@ -62,6 +62,7 @@
 
   &__btn {
     @include secondary-btn;
+    @include cta-underline;
     margin-bottom: 2rem;
     margin-right: 4rem;
   }

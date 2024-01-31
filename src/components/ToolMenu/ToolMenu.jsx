@@ -18,7 +18,11 @@ const ToolMenu = ({
   };
   return (
     <section className={className ? `tool ${className}` : "tool"}>
-      <button className={"tool__title"} onClick={showItems}>
+      <button
+        className={
+          isItemShown ? "tool__title tool__title--active" : "tool__title"
+        }
+        onClick={showItems}>
         {title}
       </button>
 
@@ -35,6 +39,7 @@ const ToolMenu = ({
             name="word"
             className="tool__input"
             value={chosenWord}
+            placeholder="enter word"
           />
         )}
         {list.map((item) => {

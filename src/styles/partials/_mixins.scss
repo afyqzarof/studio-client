@@ -1,3 +1,4 @@
+@use "../partials/colors";
 @mixin flex(
   $flex-direction: row,
   $justify-content: center,
@@ -7,4 +8,21 @@
   flex-direction: $flex-direction;
   align-items: $align-items;
   justify-content: $justify-content;
+}
+
+@mixin cta-btn {
+  background-color: colors.$secondary-dark;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: colors.$primary-main;
+  }
+}
+
+@mixin cta-underline {
+  color: colors.$secondary-dark;
+
+  &:hover {
+    color: colors.$primary-main;
+  }
 }

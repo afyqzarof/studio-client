@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useReactFlow } from "reactflow";
 import "./ContextMenu.scss";
+import { nanoid } from "nanoid";
 
 const ContextMenu = ({ id, top, left, right, bottom, ...props }) => {
   const { getNode, setNodes, addNodes, setEdges } = useReactFlow();
@@ -11,7 +12,7 @@ const ContextMenu = ({ id, top, left, right, bottom, ...props }) => {
       y: node.position.y + 50,
     };
 
-    addNodes({ ...node, id: `${node.id}-copy`, position });
+    addNodes({ ...node, id: nanoid(10), position });
   }, [id, getNode, addNodes]);
 
   const deleteNode = useCallback(() => {
@@ -24,11 +25,13 @@ const ContextMenu = ({ id, top, left, right, bottom, ...props }) => {
       style={{ top, left, right, bottom }}
       className="context-menu"
       {...props}>
-      <p style={{ margin: "0.5em" }}>
-        <small>node: {id}</small>
+      <p className="context-menu__node">node id: {id}</p>
+      <p onClick={duplicateNode} className="context-menu__btn">
+        duplicate
       </p>
-      <button onClick={duplicateNode}>duplicate</button>
-      <button onClick={deleteNode}>delete</button>
+      <p onClick={deleteNode} className="context-menu__btn">
+        delete
+      </p>
     </div>
   );
 };

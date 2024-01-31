@@ -10,19 +10,19 @@ import { useState } from "react";
 import { useIsGrid } from "../../hooks/useIsGrid";
 
 const BoardPage = () => {
-  const { isGrid, handleChangeGrid } = useIsGrid(false);
+  // const { isGrid, handleChangeGrid } = useIsGrid(false);
 
   return (
     <>
       <div className="board-wrapper">
-        <div className="view-container">
+        {/* <div className="view-container">
           <GridBtn isGrid={isGrid} handleChangeGrid={handleChangeGrid} />
           <DarkModeBtn />
-        </div>
+        </div> */}
         <ReactFlowProvider>
           <BoardHeader />
           <main className="board">
-            <Flow isGrid={isGrid} />
+            <Flow />
           </main>
         </ReactFlowProvider>
       </div>

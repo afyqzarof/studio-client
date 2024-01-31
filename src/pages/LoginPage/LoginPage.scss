@@ -30,11 +30,10 @@
 
   &__btn {
     @include primary-btn;
+    @include cta-btn;
     padding: 0.5rem 1.5rem;
     margin: 0.3rem 0;
-    background-color: colors.$primary-dark;
     color: colors.$primary-light;
-    border-radius: 3px;
     width: 100%;
   }
 }
@@ -80,7 +79,7 @@
   }
 
   &__link {
-    color: colors.$primary-dark;
+    @include cta-underline;
     text-decoration: underline;
   }
 }

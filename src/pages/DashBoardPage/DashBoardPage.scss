@@ -19,10 +19,9 @@
   width: 100%;
   &__btn {
     @include secondary-btn;
-    background-color: colors.$primary-main;
+    @include cta-btn;
     color: colors.$primary-light;
     padding: 0.5rem 1rem;
-    border-radius: 2px;
   }
 }
 
