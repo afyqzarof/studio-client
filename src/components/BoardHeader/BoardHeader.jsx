@@ -19,8 +19,8 @@ const BoardHeader = () => {
         id: pin.id,
         type: pin.type,
         data: pin.data,
-        x_coord: pin.position.x,
-        y_coord: pin.position.y,
+        x_coord: Math.floor(pin.position.x),
+        y_coord: Math.floor(pin.position.y),
       };
     });
     console.log(formattedPins);
