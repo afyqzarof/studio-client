@@ -31,5 +31,13 @@
   src: url(/src/assets/fonts/serif/CorporateAPro-Medium.woff2),
     url(/src/assets/fonts/serif/CorporateAPro-Medium.woff),
     url(/src/assets/fonts/serif/CorporateAPro-Medium.ttf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: secondary-font;
+  src: url(/src/assets//fonts/serif/CorporateAPro-Regular.woff2),
+    url(/src/assets//fonts/serif/CorporateAPro-Regular.woff),
+    url(/src/assets//fonts/serif/CorporateAPro-Regular.ttf);
   font-weight: 400;
 }

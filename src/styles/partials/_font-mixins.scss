@@ -2,23 +2,23 @@
 @use "./colors";
 
 @mixin tagline {
-  font-weight: 3rem;
+  font-size: 3.313rem;
   line-height: 100%;
   font-style: italic;
   font-weight: 200;
 }
 
 @mixin page-header {
-  font-weight: 200;
-  font-size: 1.875rem;
+  font-weight: 300;
+  font-size: 2.1875rem;
   line-height: 100%;
   font-style: italic;
 }
 
 @mixin section-header {
   font-weight: 300;
-  font-size: 1.5rem;
-  line-height: 100%;
+  font-size: 1.6875rem;
+  line-height: 120%;
   font-style: italic;
 }
 
