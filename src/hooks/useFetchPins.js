@@ -12,7 +12,7 @@ const useFetchPins = () => {
   useEffect(() => {
     const fetchPins = async () => {
       const { data } = await axios.get(
-        baseUrl + "/api/boards/" + boardId + "/pins"
+        baseUrl + "/boards/" + boardId + "/pins"
       );
       const formattedPins = data.map((pin) => {
         return {

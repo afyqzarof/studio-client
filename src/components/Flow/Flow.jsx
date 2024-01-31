@@ -1,4 +1,4 @@
-import ReactFlow, { Background } from "reactflow";
+import ReactFlow, { Background, MiniMap } from "reactflow";
 import "reactflow/dist/base.css";
 import "./Flow.scss";
 import { useRef, useCallback, useState } from "react";
@@ -42,11 +42,12 @@ const Flow = ({ isGrid }) => {
         panOnScroll
         onNodesChange={onNodesChange}
         selectionOnDrag
-        snapToGrid={isGrid}
+        // snapToGrid={isGrid}
         nodeTypes={nodeTypes}
         onPaneClick={onPaneClick}
         onNodeContextMenu={onNodeContextMenu}>
         <Background variant="dots" />
+        <MiniMap zoomable pannable />
         {menu && <ContextMenu onClick={onPaneClick} {...menu} />}
       </ReactFlow>
     </>

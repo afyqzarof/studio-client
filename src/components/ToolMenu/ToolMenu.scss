@@ -5,6 +5,10 @@
   &__title {
     @include primary-btn;
     margin-top: 1rem;
+
+    &--active {
+      font-style: italic;
+    }
   }
 
   &__item-container {
@@ -41,7 +45,9 @@
 
     &:focus {
       outline: none;
-      // background-color: colors.$primary-gray;
+    }
+    &::placeholder {
+      color: #bbb8b8;
     }
   }
 }

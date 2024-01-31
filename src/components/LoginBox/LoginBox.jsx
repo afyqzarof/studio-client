@@ -84,10 +84,7 @@ const LoginBox = () => {
         username: formFields.username,
         password: formFields.password,
       };
-      const { data } = await axios.post(
-        baseUrl + "/api/users/login",
-        userDetails
-      );
+      const { data } = await axios.post(baseUrl + "/users/login", userDetails);
 
       localStorage.setItem("token", data.token);
       return;
@@ -100,12 +97,12 @@ const LoginBox = () => {
       password: e.target.password.value,
     };
     try {
-      await axios.post(baseUrl + "/api/users/register", newUser);
+      await axios.post(baseUrl + "/users/register", newUser);
       const user = {
         username: formFields.username,
         password: formFields.password,
       };
-      const { data } = await axios.post(baseUrl + "/api/users/login", user);
+      const { data } = await axios.post(baseUrl + "/users/login", user);
       localStorage.setItem("token", data.token);
     } catch (error) {
       e.target.reset();

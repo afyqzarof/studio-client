@@ -2,15 +2,15 @@
 @use "./colors";
 
 @mixin tagline {
-  font-weight: 3rem;
+  font-size: 3.25rem;
   line-height: 100%;
   font-style: italic;
   font-weight: 200;
 }
 
 @mixin page-header {
-  font-weight: 200;
-  font-size: 1.875rem;
+  font-weight: 300;
+  font-size: 2.125rem;
   line-height: 100%;
   font-style: italic;
 }
@@ -18,34 +18,33 @@
 @mixin section-header {
   font-weight: 300;
   font-size: 1.5rem;
-  line-height: 100%;
-  font-style: italic;
+  line-height: 120%;
 }
 
 @mixin sub-header {
   font-family: secondary-font;
-  font-weight: 400;
-  font-size: 1.25rem;
+  font-weight: 500;
+  font-size: 1.5rem;
   line-height: 120%;
 }
 
 @mixin body {
   font-family: secondary-font;
-  font-weight: 400;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.125rem;
   line-height: 120%;
 }
 
 @mixin system-message {
   font-family: secondary-font;
-  font-weight: 400;
-  font-size: 0.875rem;
+  font-weight: 500;
+  font-size: 1.125rem;
   line-height: 120%;
 }
 
 @mixin caption {
-  font-weight: 400;
-  font-size: 0.625rem;
+  font-weight: 300;
+  font-size: 14px;
   line-height: 120%;
 }
 
@@ -58,24 +57,25 @@
 
 @mixin text-input {
   font-family: secondary-font;
-  font-size: 1rem;
+  font-size: 1.25rem;
   line-height: 100%;
+  font-weight: 400;
 }
 @mixin text-input-small {
   font-family: secondary-font;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 100%;
 }
 
 @mixin chip-large {
   font-family: secondary-font;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 140%;
 }
 
 @mixin chip-small {
   font-family: secondary-font;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 140%;
 }
 
@@ -89,9 +89,28 @@
   }
 }
 
+@mixin main-nav-btn {
+  font-family: secondary-font;
+  font-size: 1rem;
+  line-height: 120%;
+  &:hover {
+    color: colors.$primary-main;
+  }
+}
+
+@mixin small-nav-btn {
+  font-family: secondary-font;
+  font-size: 0.75rem;
+  line-height: 120%;
+  &:hover {
+    color: colors.$primary-main;
+  }
+}
+
 @mixin context-menu {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   line-height: 100%;
+  font-weight: 300;
 }
 
 @mixin primary-btn {
@@ -106,7 +125,7 @@
 
 @mixin secondary-btn {
   font-family: primary-font;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-style: normal;
   line-height: 100%;
   &:hover {
@@ -116,7 +135,7 @@
 
 @mixin tertiary-btn {
   font-family: primary-font;
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-style: normal;
   line-height: 100%;
   text-decoration: underline;

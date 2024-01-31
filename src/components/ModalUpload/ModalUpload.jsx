@@ -15,7 +15,7 @@ const ModalUpload = () => {
 
   const onDrop = useCallback(
     (acceptedFiles) => {
-      console.log("drop");
+      // console.log("drop");
       setMyFiles(
         acceptedFiles.map((file) =>
           Object.assign(file, {
@@ -32,11 +32,11 @@ const ModalUpload = () => {
     e.preventDefault();
 
     const file = myFiles[0];
-    console.log(file);
+    // console.log(file);
 
     const formData = new FormData();
     formData.append("file", file);
-    const { data } = await axios.post(baseUrl + "/api/upload", formData);
+    const { data } = await axios.post(baseUrl + "/upload", formData);
     addNodes({
       id: nanoid(10),
       type: "ImageNode",
@@ -86,23 +86,19 @@ const ModalUpload = () => {
               handleCreateUploadPin(e);
               close();
             }}>
-            {/* <h2 className="upload__title">
-              {!myFiles ? "upload a file" : "file preview"}
-            </h2> */}
             {!myFiles ? (
               <>
                 <div className="file-form__left">
                   <h2 className="upload__title">upload a file</h2>
                   <p className="file-form__info">
-                    please make sure your files are .jgp, .jpeg <br /> or .png
-                    and don't exceed 500KB
+                    please make sure your file does not exceed 500kb. we support
+                    .jpg, .png, .jpeg
                   </p>
                 </div>
                 <div {...getRootProps({ className: "dropzone" })}>
                   <input {...getInputProps()} name="file" />
                   <p className="upload__dnd">
-                    drag and drop some files here,
-                    <br /> or click to select files
+                    drag and drop or click to select files
                   </p>
                 </div>
               </>
@@ -111,18 +107,23 @@ const ModalUpload = () => {
                 <div className="file-form__info-left">
                   <div>
                     <h2 className="upload__title">file preview</h2>
-                    <p className="file-form__name">{myFiles[0].path}</p>
                   </div>
                   <div>
-                    <button type="submit" className="file-form__btn">
-                      create pin
-                    </button>
                     <p onClick={handleCancel} className="upload__cancel">
                       cancel
                     </p>
+                    <button type="submit" className="file-form__btn">
+                      create pin
+                    </button>
                   </div>
                 </div>
-                <img src={myFiles[0].preview} className="file-form__preview" />
+                <div>
+                  <img
+                    src={myFiles[0].preview}
+                    className="file-form__preview"
+                  />
+                  <p className="file-form__name">{myFiles[0].path}</p>
+                </div>
               </>
             )}
           </form>

@@ -17,7 +17,7 @@ const BoardHeader = () => {
   const [title, setTitle] = useState("");
   useEffect(() => {
     const fetchBoard = async () => {
-      const { data } = await axios.get(baseUrl + "/api/boards/" + boardId);
+      const { data } = await axios.get(baseUrl + "/boards/" + boardId);
       setTitle(data.title);
     };
     fetchBoard();
@@ -52,7 +52,7 @@ const BoardHeader = () => {
     console.log(thumbnailFile);
     const formData = new FormData();
     formData.append("file", thumbnailFile);
-    const { data } = await axios.post(baseUrl + "/api/upload", formData);
+    const { data } = await axios.post(baseUrl + "/upload", formData);
     console.log(data);
   };
   const imageWidth = 1024;

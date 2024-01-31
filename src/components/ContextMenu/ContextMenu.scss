@@ -1,19 +1,28 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
 .context-menu {
-  background: white;
-  border-style: solid;
-  box-shadow: 10px 19px 20px rgba(0, 0, 0, 10%);
   position: absolute;
   z-index: 10;
-}
+  background-color: colors.$secondary-dark;
 
-.context-menu button {
-  border: none;
-  display: block;
-  padding: 0.5em;
-  text-align: left;
-  width: 100%;
-}
-
-.context-menu button:hover {
-  background: white;
+  &__node {
+    @include context-menu;
+    color: colors.$primary-gray;
+    border: none;
+    display: block;
+    padding: 0.5em;
+    text-align: left;
+    width: 100%;
+    padding: 0.4rem 0.3rem;
+    cursor: default;
+  }
+  &__btn {
+    @extend .context-menu__node;
+    &:hover {
+      background-color: colors.$accent;
+      color: colors.$secondary-dark;
+    }
+  }
 }
