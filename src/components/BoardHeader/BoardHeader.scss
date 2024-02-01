@@ -13,8 +13,9 @@
   padding: 1rem 3rem;
   // border-bottom: 1px solid colors.$primary-dark;
 
-  &__right {
+  &__left {
     @include flex(row, space-between);
+    width: 50%;
   }
 
   &__icon {
@@ -25,7 +26,7 @@
 
   &__title {
     @include sub-header;
-    width: 9rem;
+    flex: 1;
     border: none;
 
     &:focus {

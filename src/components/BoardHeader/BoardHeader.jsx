@@ -13,8 +13,8 @@ const BoardHeader = () => {
   const [isIconSelected, setIsIconSelected] = useState(false);
   const { getNodes } = useReactFlow();
   const { boardId } = useParams();
-
   const [title, setTitle] = useState("");
+
   useEffect(() => {
     const fetchBoard = async () => {
       const { data } = await axios.get(baseUrl + "/boards/" + boardId);
@@ -22,7 +22,7 @@ const BoardHeader = () => {
     };
     fetchBoard();
   }, []);
-  const handleSave = () => {
+  const handleSave = async () => {
     const pins = getNodes();
     const formattedPins = pins.map((pin) => {
       return {
@@ -36,7 +36,13 @@ const BoardHeader = () => {
         y_coord: Math.floor(pin.position.y),
       };
     });
-    console.log(formattedPins);
+    if (!title) {
+      const boardBody = {
+        boardId: boardId,
+        title: title,
+      };
+      await axios.patch(baseUrl + "/boards/save", boardBody);
+    }
   };
 
   const postThumbnail = async (dataUrl) => {
@@ -89,7 +95,7 @@ const BoardHeader = () => {
   return (
     <header className="board-header">
       <nav className="nav">
-        <div className="nav__right">
+        <div className="nav__left">
           <Link to="/dashboard">
             <img
               onMouseEnter={() => {
@@ -106,7 +112,7 @@ const BoardHeader = () => {
           <input
             className="nav__title"
             placeholder="untitled"
-            value={title}
+            value={!title ? "" : title}
             onChange={handleTitleChange}
           />
         </div>
