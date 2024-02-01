@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./BoardHeader.scss";
 import upIconDefault from "../../assets/icons/arrow-N-default.svg";
 import upIconSelected from "../../assets/icons/arrow-N-selected.svg";
 import { useEffect, useState } from "react";
-import { useReactFlow, getViewportForBounds, getNodesBounds } from "reactflow";
-import { toPng } from "html-to-image";
+import { useReactFlow } from "reactflow";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import useHandleThumbnail from "../../hooks/useHandleThumbnail";
@@ -17,11 +16,24 @@ const BoardHeader = () => {
   const { getNodes } = useReactFlow();
   const { boardId } = useParams();
   const { handleThumbnail } = useHandleThumbnail();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+      return;
+    }
     const fetchBoard = async () => {
-      const { data } = await axios.get(baseUrl + "/boards/" + boardId);
-      setTitle(data.title);
+      try {
+        const { data } = await axios.get(baseUrl + "/boards/" + boardId, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setTitle(data.title);
+      } catch (error) {
+        navigate("/dashboard");
+        console.log(error);
+      }
     };
     fetchBoard();
   }, []);

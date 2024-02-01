@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Input from "../../components/Input/Input";
 import axios from "axios";
-import InputError from "../InputError/InputError";
 
 const LoginBox = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -47,14 +46,14 @@ const LoginBox = () => {
         ? "this field is required"
         : "",
     });
-    console.log(formErrors);
 
-    if (formFields.password !== formFields.confirmPassword) {
+    if (!isLogin && formFields.password !== formFields.confirmPassword) {
       setFormErrors({
         ...formErrors,
         password: "passwords must match",
         confirmPassword: "passwords must match",
       });
+      return false;
     }
 
     if (
@@ -65,18 +64,32 @@ const LoginBox = () => {
         ...formErrors,
         email: "please enter a valid email address",
       });
+      return false;
     }
     if (isLogin && !!formFields.username && !!formFields.password) {
+      return true;
+    }
+
+    if (
+      !isLogin &&
+      !!formFields.username &&
+      !!formFields.password &&
+      !!formFields.email &&
+      !!formFields.confirmPassword
+    ) {
+      console.log(formFields.username);
+
       return true;
     }
     return false;
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/dashboard");
+    // navigate("/dashboard");
     if (!isFormValid()) {
       return;
     }
+
     console.log("form valid");
 
     if (isLogin) {
@@ -84,18 +97,36 @@ const LoginBox = () => {
         username: formFields.username,
         password: formFields.password,
       };
-      const { data } = await axios.post(baseUrl + "/users/login", userDetails);
+      try {
+        const { data } = await axios.post(
+          baseUrl + "/users/login",
+          userDetails
+        );
 
-      localStorage.setItem("token", data.token);
-      return;
+        localStorage.setItem("token", data.token);
+        navigate("/dashboard");
+        return;
+      } catch (error) {
+        setFormErrors({
+          ...formErrors,
+          password: "unrecognized password",
+        });
+        setFormFields({
+          username: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+      }
     }
 
     //REGISTER
     const newUser = {
-      email: e.target.email.value,
-      username: e.target.email.value,
-      password: e.target.password.value,
+      email: formFields.email,
+      username: formFields.username,
+      password: formFields.password,
     };
+    // console.log(newUser);
     try {
       await axios.post(baseUrl + "/users/register", newUser);
       const user = {
@@ -104,10 +135,17 @@ const LoginBox = () => {
       };
       const { data } = await axios.post(baseUrl + "/users/login", user);
       localStorage.setItem("token", data.token);
+      navigate("/dashboard");
     } catch (error) {
+      console.log(error);
+      setFormFields({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
       e.target.reset();
     }
-    // navigate("/1/dashboard");
   };
   return (
     <div className="form-wrapper">

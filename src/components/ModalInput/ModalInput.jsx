@@ -82,6 +82,9 @@ const ModalInput = () => {
       {(close) => (
         <article className="modal">
           <h2 className="modal__title">enter a url</h2>
+          <p className="modal__paragraph">
+            we currently support youtube, pinterest and spotify
+          </p>
           <form
             className="url-form"
             onSubmit={(e) => {

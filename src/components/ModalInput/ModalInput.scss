@@ -12,6 +12,11 @@
   &__title {
     @include section-header;
     font-size: 2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  &__paragraph {
+    @include body;
     margin-bottom: 1rem;
   }
 }

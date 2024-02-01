@@ -7,11 +7,18 @@ import { useNavigate } from "react-router-dom";
 
 const DashBoardPage = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedFilter, setSelectedFilter] = useState("recent");
   const [boards, setBoards] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchUserBoards = async () => {
       const token = localStorage.getItem("token");
+
+      if (!token) {
+        navigate("/login");
+        return;
+      }
 
       const { data } = await axios.get(baseUrl + "/users/boards", {
         headers: { Authorization: `Bearer ${token}` },

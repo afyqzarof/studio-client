@@ -27,7 +27,10 @@ const ExplorePage = () => {
   ];
   useEffect(() => {
     const getExploreBoards = async () => {
-      const { data } = await axios.get(baseUrl + "/boards/public");
+      const token = localStorage.getItem("token");
+      const { data } = await axios.get(baseUrl + "/boards/public", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       setExploreBoards(data);
     };
