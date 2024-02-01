@@ -13,6 +13,11 @@ const DashBoardPage = () => {
     const fetchUserBoards = async () => {
       const token = localStorage.getItem("token");
 
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+
       const { data } = await axios.get(baseUrl + "/users/boards", {
         headers: { Authorization: `Bearer ${token}` },
       });

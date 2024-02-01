@@ -3,7 +3,6 @@ import "./App.scss";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import BoardPage from "./pages/BoardPage/BoardPage";
-import TestingPage from "./pages/TestingPage/TestingPage";
 import DashBoardPage from "./pages/DashBoardPage/DashBoardPage";
 import ExplorePage from "./pages/ExplorePage/ExplorePage";
 import ExploreBoardPage from "./pages/ExploreBoardPage/ExploreBoardPage";
@@ -20,7 +19,6 @@ function App() {
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/explore/:boardId" element={<ExploreBoardPage />} />
         <Route path="/account" element={<ProfilePage />} />
-        <Route path="/test" element={<TestingPage />} />
       </Routes>
     </BrowserRouter>
   );

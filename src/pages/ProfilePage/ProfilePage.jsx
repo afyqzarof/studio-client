@@ -38,6 +38,7 @@ const ProfilePage = () => {
     });
   };
   const handleLogout = () => {
+    localStorage.removeItem("token");
     navigate("/");
   };
   return (
@@ -49,7 +50,7 @@ const ProfilePage = () => {
             <h1 className="profile__title">profile</h1>
             <div className="profile__inputs">
               {profileInputs.map((type) => (
-                <div className="profile__input-wrapper">
+                <div className="profile__input-wrapper" key={type.id}>
                   <label htmlFor={type.id} className="profile__label">
                     {type.name}
                   </label>
