@@ -7,13 +7,16 @@ import { useReactFlow, getViewportForBounds, getNodesBounds } from "reactflow";
 import { toPng } from "html-to-image";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import useHandleThumbnail from "../../hooks/useHandleThumbnail";
 
 const BoardHeader = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [isIconSelected, setIsIconSelected] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [title, setTitle] = useState("");
   const { getNodes } = useReactFlow();
   const { boardId } = useParams();
-  const [title, setTitle] = useState("");
+  const { handleThumbnail } = useHandleThumbnail();
 
   useEffect(() => {
     const fetchBoard = async () => {
@@ -23,10 +26,11 @@ const BoardHeader = () => {
     fetchBoard();
   }, []);
   const handleSave = async () => {
+    setIsLoading(true);
     const pins = getNodes();
     const formattedPins = pins.map((pin) => {
       return {
-        board_id: 3,
+        board_id: boardId,
         width: pin.width,
         height: pin.height,
         id: pin.id,
@@ -36,57 +40,22 @@ const BoardHeader = () => {
         y_coord: Math.floor(pin.position.y),
       };
     });
-    if (!title) {
+    const { filename } = await handleThumbnail();
+    if (title) {
       const boardBody = {
-        boardId: boardId,
-        title: title,
+        boardId,
+        title,
+        filename,
       };
+      console.log(boardBody);
+
       await axios.patch(baseUrl + "/boards/save", boardBody);
     }
-  };
 
-  const postThumbnail = async (dataUrl) => {
-    const arr = dataUrl.split(",");
-    const mime = arr[0].match(/:(.*?);/)[1];
-    const bstr = atob(arr[arr.length - 1]);
-    let n = bstr.length;
-    const u8arr = new Uint8Array(n);
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-    const thumbnailFile = new File([u8arr], "thumbnail.jpg", { type: mime });
-    console.log(thumbnailFile);
-    const formData = new FormData();
-    formData.append("file", thumbnailFile);
-    const { data } = await axios.post(baseUrl + "/upload", formData);
-    console.log(data);
-  };
-  const imageWidth = 1024;
-  const imageHeight = 768;
-  const onClick = async () => {
-    const nodesBounds = getNodesBounds(getNodes());
-    const transform = getViewportForBounds(
-      nodesBounds,
-      imageWidth,
-      imageHeight,
-      0.5,
-      2
-    );
-
-    const pngFile = await toPng(
-      document.querySelector(".react-flow__viewport"),
-      {
-        backgroundColor: "#fff",
-        width: imageWidth,
-        height: imageHeight,
-        style: {
-          width: imageWidth,
-          height: imageHeight,
-          transform: `translate(${transform[0]}px, ${transform[1]}px) scale(${transform[2]})`,
-        },
-      }
-    );
-    postThumbnail(pngFile);
+    await axios.patch(baseUrl + "/boards/" + boardId + "/pins", {
+      newPins: formattedPins,
+    });
+    setIsLoading(false);
   };
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -117,12 +86,10 @@ const BoardHeader = () => {
           />
         </div>
         <ul className="nav__right-container">
-          <button className="nav__btn">collaborate</button>
-          <button className="nav__btn" onClick={onClick}>
-            publish
-          </button>
+          {/* <button className="nav__btn">collaborate</button>
+          <button className="nav__btn">publish</button> */}
           <button className="nav__btn" onClick={handleSave}>
-            save
+            {isLoading ? "loading" : "save"}
           </button>
         </ul>
       </nav>
