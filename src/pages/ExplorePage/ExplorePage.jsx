@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MainHeader from "../../components/MainHeader/MainHeader";
 import "./ExplorePage.scss";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
-import exploreBoardsData from "../../data/explore-boards-data";
+import axios from "axios";
+import formatDate from "../../utils/format-date";
 
 const ExplorePage = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const [exploreBoards, setExploreBoards] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedFilter, setSelectedFilter] = useState("recent");
   const handleCategoryChange = (e) => {
@@ -22,6 +25,14 @@ const ExplorePage = () => {
     { label: "commercial", id: "commercial" },
     { label: "interior design", id: "interiorDesign" },
   ];
+  useEffect(() => {
+    const getExploreBoards = async () => {
+      const { data } = await axios.get(baseUrl + "/boards/public");
+
+      setExploreBoards(data);
+    };
+    getExploreBoards();
+  }, []);
   return (
     <div className="page-wrapper">
       <MainHeader />
@@ -85,20 +96,20 @@ const ExplorePage = () => {
           </div>
         </nav>
         <section className="explore-boards">
-          {exploreBoardsData.map((board) => (
+          {exploreBoards.map((board) => (
             <div key={board.id}>
               <ProjectCard
                 title={board.title}
                 description={board.description}
-                date={board.date}
+                date={formatDate(board.created_at)}
                 category={board.category}
-                author={board.author}
-                imgSrc={board.imgSrc}
+                author={board.username}
+                imgSrc={baseUrl + "/thumbnails/" + board.thumbnail}
                 boardId={board.id}
               />
             </div>
           ))}
-          <ProjectCard
+          {/* <ProjectCard
             title={"Title"}
             description="design work for work"
             date="04.08.18"
@@ -111,7 +122,7 @@ const ExplorePage = () => {
             date="04.08.18"
             category="interior design"
             author="Imzzz"
-          />
+          /> */}
         </section>
       </main>
     </div>

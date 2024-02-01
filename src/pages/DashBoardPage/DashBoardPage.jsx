@@ -1,7 +1,6 @@
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import "./DashBoardPage.scss";
 import MainHeader from "../../components/MainHeader/MainHeader";
-import boardData from "../../data/boards-data";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -42,7 +41,6 @@ const DashBoardPage = () => {
           {boards.map((board) => {
             const date = new Date(board.created_at);
             const formattedDate = date.toLocaleDateString().replace(/\//g, ".");
-
             return (
               <li key={board.id}>
                 <ProjectCard
