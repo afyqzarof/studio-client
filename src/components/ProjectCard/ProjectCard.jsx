@@ -1,7 +1,6 @@
 import "./ProjectCard.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import placeholder from "../../assets/images/project-thumbnail.png";
 
 const ProjectCard = ({
   title,
@@ -14,7 +13,6 @@ const ProjectCard = ({
 }) => {
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
-  const realImgSrc = !imgSrc ? placeholder : imgSrc;
 
   const handleClick = () => {
     if (!author) {
@@ -25,10 +23,10 @@ const ProjectCard = ({
   };
   return (
     <article className="project-wrapper">
-      <h2 className="project__title">{title}</h2>
+      <h2 className="project__title">{!title ? "untitled" : title}</h2>
       <div
         className="project"
-        style={{ backgroundImage: `url(${realImgSrc})` }}
+        style={{ backgroundImage: `url(${imgSrc})` }}
         onMouseEnter={() => {
           setIsShown(true);
         }}

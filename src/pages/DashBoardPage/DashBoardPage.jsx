@@ -1,7 +1,6 @@
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import "./DashBoardPage.scss";
 import MainHeader from "../../components/MainHeader/MainHeader";
-import boardData from "../../data/boards-data";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -22,9 +21,23 @@ const DashBoardPage = () => {
     fetchUserBoards();
   }, []);
 
-  const handleNewProject = () => {
-    // initialise a new board
-    navigate("/board/1");
+  const handleNewProject = async () => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+
+    try {
+      const { data } = await axios.post(
+        baseUrl + "/boards/new",
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      const { id: boardId } = data;
+      navigate("/board/" + boardId);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="page-wrapper">
@@ -42,7 +55,6 @@ const DashBoardPage = () => {
           {boards.map((board) => {
             const date = new Date(board.created_at);
             const formattedDate = date.toLocaleDateString().replace(/\//g, ".");
-
             return (
               <li key={board.id}>
                 <ProjectCard
