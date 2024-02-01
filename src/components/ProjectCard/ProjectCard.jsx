@@ -23,7 +23,7 @@ const ProjectCard = ({
   };
   return (
     <article className="project-wrapper">
-      <h2 className="project__title">{title}</h2>
+      <h2 className="project__title">{!title ? "untitled" : title}</h2>
       <div
         className="project"
         style={{ backgroundImage: `url(${imgSrc})` }}

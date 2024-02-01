@@ -21,9 +21,23 @@ const DashBoardPage = () => {
     fetchUserBoards();
   }, []);
 
-  const handleNewProject = () => {
-    // initialise a new board
-    navigate("/board/1");
+  const handleNewProject = async () => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+
+    try {
+      const { data } = await axios.post(
+        baseUrl + "/boards/new",
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      const { id: boardId } = data;
+      navigate("/board/" + boardId);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="page-wrapper">
