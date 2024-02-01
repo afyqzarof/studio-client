@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const DashBoardPage = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedFilter, setSelectedFilter] = useState("recent");
   const [boards, setBoards] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
