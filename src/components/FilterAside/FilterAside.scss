@@ -1,0 +1,49 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.categories {
+  @include flex(column, flex-start, flex-start);
+  &__wrapper {
+    margin-bottom: 0.8rem;
+  }
+  &__label {
+    color: colors.$secondary-gray;
+    &--all {
+      margin-bottom: 1.5rem;
+    }
+    @include nav-btn;
+  }
+
+  &__radio {
+    display: none;
+    &:checked {
+      & + label {
+        color: colors.$primary-dark;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+.filter {
+  @include flex(column, flex-start, flex-start);
+  margin-top: 2rem;
+  &__input {
+    display: none;
+  }
+  &__label {
+    color: colors.$secondary-gray;
+    margin-bottom: 0.8rem;
+    @include nav-btn;
+  }
+  &__radio {
+    display: none;
+    &:checked {
+      & + label {
+        color: colors.$primary-dark;
+        font-style: italic;
+      }
+    }
+  }
+}
