@@ -59,7 +59,6 @@ const BoardHeader = () => {
         title,
         filename,
       };
-      console.log(boardBody);
 
       await axios.patch(baseUrl + "/boards/save", boardBody);
     }

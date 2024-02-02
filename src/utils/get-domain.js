@@ -20,7 +20,6 @@ const getYoutubeId = (url) => {
   const urlArray = url.split("?");
   const queryParams = urlArray[1].split("&");
   const index = queryParams.findIndex((el) => el.includes("v"));
-  console.log(index);
 
   return queryParams[index].split("=")[1];
 };
