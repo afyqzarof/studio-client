@@ -15,7 +15,7 @@ const useHandleThumbnail = () => {
       u8arr[n] = bstr.charCodeAt(n);
     }
     const thumbnailFile = new File([u8arr], "thumbnail.jpg", { type: mime });
-    console.log(thumbnailFile);
+
     const formData = new FormData();
     formData.append("file", thumbnailFile);
     const { data } = await axios.post(baseUrl + "/upload/thumbnail", formData);
