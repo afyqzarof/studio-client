@@ -31,10 +31,10 @@
   width: 100%;
 
   &__nav {
-    @include flex(column, flex-start);
+    @include flex(column, flex-start, flex-start);
     background-color: colors.$primary-light;
     height: 80vh;
-    padding-left: 1rem;
+    padding: 1rem 1.5rem;
   }
 
   &__folder {
