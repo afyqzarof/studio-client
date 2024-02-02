@@ -4,13 +4,18 @@ import MainHeader from "../../components/MainHeader/MainHeader";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import useFilterAside from "../../hooks/useFilterAside";
+import FilterAside from "../../components/FilterAside/FilterAside";
 
 const DashBoardPage = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedFilter, setSelectedFilter] = useState("recent");
   const [boards, setBoards] = useState([]);
   const navigate = useNavigate();
+  const { filterOptions, handleOptionChange } = useFilterAside(
+    boards,
+    setBoards
+  );
+
   useEffect(() => {
     const fetchUserBoards = async () => {
       const token = localStorage.getItem("token");
@@ -56,7 +61,11 @@ const DashBoardPage = () => {
       </div>
       <main className="dashboard-main">
         <nav className="dashboard-main__nav">
-          <button className="dashboard-main__folder">show all</button>
+          <FilterAside
+            filterOptions={filterOptions}
+            handleOptionChange={handleOptionChange}
+            categories={[]}
+          />
         </nav>
         <ul className="dashboard-main__projects">
           {boards.map((board) => {
