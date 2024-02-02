@@ -7,7 +7,6 @@
   left: 2rem;
   z-index: 10;
   @include flex(column, space-between, flex-start);
-  // min-height: 12rem;
   height: auto;
 }
 .btn-container {
@@ -23,12 +22,5 @@
 .tool {
   &--hidden {
     display: none;
-    // transition: all 0.1s ease-out;
-    // height: 0px;
-    // overflow: hidden;
   }
-}
-
-.Toastify__toast-container--top-right {
-  top: 30rem;
 }

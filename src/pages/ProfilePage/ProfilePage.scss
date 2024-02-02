@@ -53,6 +53,17 @@
     @include body;
     margin-right: 1rem;
   }
+
+  &__btn {
+    @include secondary-btn;
+    @include cta-btn;
+    color: colors.$primary-light;
+    padding: 0.3rem 0.6rem;
+
+    &--hidden {
+      display: none;
+    }
+  }
 }
 
 .feedback {
@@ -62,6 +73,7 @@
 
   &__btn {
     @include secondary-btn;
+    @include cta-underline;
     margin-bottom: 2rem;
     margin-right: 4rem;
   }

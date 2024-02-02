@@ -6,12 +6,18 @@
   background: colors.$primary-light;
   @include flex(column, center, flex-start);
   padding: 1rem;
-  border-radius: 3px;
+  border-radius: 2px;
   width: 35vw;
 
   &__title {
-    @include sub-header;
+    @include section-header;
     font-size: 2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  &__paragraph {
+    @include body;
+    margin-bottom: 1rem;
   }
 }
 .url-form {
@@ -34,10 +40,9 @@
   }
   &__btn {
     @include primary-btn;
-    background-color: colors.$primary-main;
+    @include cta-btn;
     color: colors.$primary-light;
     padding: 0.6rem 1rem;
-    border-radius: 3px;
     margin-top: 1rem;
     align-self: flex-start;
   }

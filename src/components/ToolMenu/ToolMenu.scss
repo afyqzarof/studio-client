@@ -5,6 +5,10 @@
   &__title {
     @include primary-btn;
     margin-top: 1rem;
+
+    &--active {
+      font-style: italic;
+    }
   }
 
   &__item-container {
@@ -37,11 +41,13 @@
     border: none;
     border-bottom: 1px solid colors.$primary-dark;
     background-color: transparent;
-    margin-top: 0.2rem;
+    margin-top: 0.3rem;
 
     &:focus {
       outline: none;
-      background-color: colors.$primary-gray;
+    }
+    &::placeholder {
+      color: #bbb8b8;
     }
   }
 }
