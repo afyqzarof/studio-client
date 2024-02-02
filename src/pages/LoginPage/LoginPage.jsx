@@ -60,7 +60,7 @@ const LoginPage = () => {
               boards can be published for others to view, as well.
             </p>
             <div className="info__link-container">
-              <Link to="/board/demo" className="info__link">
+              <Link to="/dashboard/demo" className="info__link">
                 view example
               </Link>
             </div>
