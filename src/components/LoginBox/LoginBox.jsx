@@ -144,7 +144,7 @@ const LoginBox = () => {
         password: "",
         confirmPassword: "",
       });
-      e.target.reset();
+      // e.target.reset();
     }
   };
   return (

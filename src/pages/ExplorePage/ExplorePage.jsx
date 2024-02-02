@@ -26,7 +26,7 @@ const ExplorePage = () => {
   ];
   useEffect(() => {
     const getExploreBoards = async () => {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token") ?? "demo";
       const { data } = await axios.get(baseUrl + "/boards/public", {
         headers: { Authorization: `Bearer ${token}` },
       });
