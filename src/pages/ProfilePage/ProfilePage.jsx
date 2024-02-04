@@ -103,7 +103,7 @@ const ProfilePage = () => {
       <MainHeader />
       <main className="profile-main">
         <div className="profile-main__left">
-          <form className="profile" onSubmit={handleUpdateProfile}>
+          <section className="profile">
             <h1 className="profile__title">profile</h1>
             <div className="profile__inputs">
               {profileInputs.map((type) => (
@@ -146,6 +146,7 @@ const ProfilePage = () => {
                 />
               ) : (
                 <button
+                  onClick={handleUpdateProfile}
                   className={
                     isSave
                       ? "profile__btn"
@@ -155,7 +156,7 @@ const ProfilePage = () => {
                 </button>
               )}
             </div>
-          </form>
+          </section>
           <section>
             <h2 className="profile__title">settings</h2>
           </section>

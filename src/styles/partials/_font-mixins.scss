@@ -81,7 +81,7 @@
 
 @mixin nav-btn {
   font-family: secondary-font;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   line-height: 120%;
 
   &:hover {
@@ -89,9 +89,9 @@
   }
 }
 
-@mixin main-nav-btn {
+@mixin side-nav-btn {
   font-family: secondary-font;
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 120%;
   &:hover {
     color: colors.$primary-main;

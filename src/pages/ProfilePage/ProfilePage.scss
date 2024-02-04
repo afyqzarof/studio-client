@@ -7,6 +7,7 @@
   flex: 1;
   @include flex(row, space-between, flex-start);
   padding-top: 5rem;
+  padding-left: 0.625rem;
 
   &__left {
     width: 100%;
@@ -29,7 +30,7 @@
     margin-left: 12rem;
   }
   &__input-wrapper {
-    @include flex(row, flex-start, flex-start);
+    @include flex(row, flex-start);
     height: 2rem;
     width: 100%;
     margin-bottom: 1rem;
