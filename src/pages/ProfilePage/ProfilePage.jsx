@@ -3,6 +3,8 @@ import MainHeader from "../../components/MainHeader/MainHeader";
 import "./ProfilePage.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import useIsDemo from "../../hooks/useIsDemo";
+import DemoBtn from "../../components/DemoBtn/DemoBtn";
 
 const ProfilePage = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -15,8 +17,19 @@ const ProfilePage = () => {
     email: "",
     password: "password goes here",
   });
+  const isDemo = useIsDemo();
 
   useEffect(() => {
+    if (isDemo) {
+      setFormFields({
+        name: "your username here",
+        bio: "",
+        link: "",
+        email: "demo@email.com",
+        password: "password goes here",
+      });
+      return;
+    }
     const token = localStorage.getItem("token");
     if (!token) {
       navigate("/login");
@@ -121,12 +134,26 @@ const ProfilePage = () => {
                   value={formFields.password}
                 />
               </div>
-              <button
-                className={
-                  isSave ? "profile__btn" : "profile__btn profile__btn--hidden"
-                }>
-                save
-              </button>
+              {isDemo ? (
+                <DemoBtn
+                  className={
+                    isSave
+                      ? "profile__btn"
+                      : "profile__btn profile__btn--hidden"
+                  }
+                  name="save"
+                  isUpload={true}
+                />
+              ) : (
+                <button
+                  className={
+                    isSave
+                      ? "profile__btn"
+                      : "profile__btn profile__btn--hidden"
+                  }>
+                  save
+                </button>
+              )}
             </div>
           </form>
           <section>

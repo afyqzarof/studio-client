@@ -1,5 +1,5 @@
 import "./ModalUpload.scss";
-// import Popup from "reactjs-popup";
+import useIsDemo from "../../hooks/useIsDemo";
 import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import { useState, useCallback } from "react";
@@ -7,21 +7,29 @@ import { useReactFlow } from "reactflow";
 import { nanoid } from "nanoid";
 import getRandomCoords from "../../utils/get-random-coords";
 import Modal from "react-modal";
+import DemoBtn from "../DemoBtn/DemoBtn";
 
 const ModalUpload = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [myFiles, setMyFiles] = useState(null);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const isDemo = useIsDemo();
+  const [isFileBig, setIsFileBig] = useState(false);
 
   const onDrop = useCallback(
     (acceptedFiles) => {
-      setMyFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
-        )
-      );
+      if (acceptedFiles.length !== 0) {
+        setIsFileBig(false);
+        setMyFiles(
+          acceptedFiles.map((file) =>
+            Object.assign(file, {
+              preview: URL.createObjectURL(file),
+            })
+          )
+        );
+        return;
+      }
+      setIsFileBig(true);
     },
     [myFiles]
   );
@@ -56,6 +64,7 @@ const ModalUpload = () => {
     maxSize: 500000,
   });
   const handleCancel = () => {
+    setIsFileBig(false);
     setMyFiles(null);
   };
 
@@ -64,6 +73,7 @@ const ModalUpload = () => {
   }
 
   function closeModal() {
+    setIsFileBig(false);
     setIsOpen(false);
   }
   return (
@@ -92,6 +102,9 @@ const ModalUpload = () => {
                     please make sure your file does not exceed 500kb. we support
                     .jpg, .png, .jpeg
                   </p>
+                  <p className="file-form__info file-form__info--red">
+                    {isFileBig && "file is too large"}
+                  </p>
                 </div>
                 <div {...getRootProps({ className: "dropzone" })}>
                   <input {...getInputProps()} name="file" />
@@ -110,9 +123,17 @@ const ModalUpload = () => {
                     <p onClick={handleCancel} className="upload__cancel">
                       cancel
                     </p>
-                    <button type="submit" className="file-form__btn">
-                      create pin
-                    </button>
+                    {isDemo ? (
+                      <DemoBtn
+                        className="file-form__btn"
+                        isUpload={true}
+                        name="create pin"
+                      />
+                    ) : (
+                      <button type="submit" className="file-form__btn">
+                        create pin
+                      </button>
+                    )}
                   </div>
                 </div>
                 <div>

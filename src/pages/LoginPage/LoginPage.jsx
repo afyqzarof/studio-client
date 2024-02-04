@@ -60,9 +60,9 @@ const LoginPage = () => {
               boards can be published for others to view, as well.
             </p>
             <div className="info__link-container">
-              {/* <Link to="/board/demo" className="info__link">
+              <Link to="/demo/dashboard" className="info__link">
                 view example
-              </Link> */}
+              </Link>
             </div>
           </article>
         </div>
@@ -77,7 +77,7 @@ const LoginPage = () => {
               need some inspiration
             </p>
             <div className="info__link-container">
-              <Link to="/explore" className="info__link">
+              <Link to="/demo/explore" className="info__link">
                 explore a bit
               </Link>
             </div>

@@ -6,9 +6,11 @@ import axios from "axios";
 import formatDate from "../../utils/format-date";
 import FilterAside from "../../components/FilterAside/FilterAside";
 import useFilterAside from "../../hooks/useFilterAside";
+import useIsDemo from "../../hooks/useIsDemo";
 
 const ExplorePage = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
+  const isDemo = useIsDemo();
   const [exploreBoards, setExploreBoards] = useState([]);
   const { filterOptions, handleOptionChange } = useFilterAside(
     exploreBoards,
@@ -26,7 +28,7 @@ const ExplorePage = () => {
   ];
   useEffect(() => {
     const getExploreBoards = async () => {
-      const token = localStorage.getItem("token") ?? "demo";
+      const token = isDemo ? "demo" : localStorage.getItem("token");
       const { data } = await axios.get(baseUrl + "/boards/public", {
         headers: { Authorization: `Bearer ${token}` },
       });

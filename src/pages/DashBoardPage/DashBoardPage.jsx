@@ -3,9 +3,11 @@ import "./DashBoardPage.scss";
 import MainHeader from "../../components/MainHeader/MainHeader";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import useFilterAside from "../../hooks/useFilterAside";
 import FilterAside from "../../components/FilterAside/FilterAside";
+import demoBoards from "../../data/demo-dashboard";
+import useIsDemo from "../../hooks/useIsDemo";
 
 const DashBoardPage = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -15,11 +17,15 @@ const DashBoardPage = () => {
     boards,
     setBoards
   );
+  const isDemo = useIsDemo();
 
   useEffect(() => {
+    if (isDemo) {
+      setBoards(demoBoards);
+      return;
+    }
     const fetchUserBoards = async () => {
       const token = localStorage.getItem("token");
-
       if (!token) {
         navigate("/login");
         return;
@@ -34,8 +40,12 @@ const DashBoardPage = () => {
   }, []);
 
   const handleNewProject = async () => {
-    const token = localStorage.getItem("token");
+    if (isDemo) {
+      navigate("/demo/board/new-board");
+      return;
+    }
 
+    const token = localStorage.getItem("token");
     try {
       const { data } = await axios.post(
         baseUrl + "/boards/new",
@@ -74,7 +84,11 @@ const DashBoardPage = () => {
               <li key={board.id}>
                 <ProjectCard
                   title={board.title}
-                  imgSrc={baseUrl + "/thumbnails/" + board.thumbnail}
+                  imgSrc={
+                    isDemo
+                      ? board.thumbnail
+                      : baseUrl + "/thumbnails/" + board.thumbnail
+                  }
                   description={board.description}
                   date={formattedDate}
                   category={board.category}
@@ -88,6 +102,5 @@ const DashBoardPage = () => {
     </div>
   );
 };
-``;
 
 export default DashBoardPage;
