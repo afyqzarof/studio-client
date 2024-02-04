@@ -17,15 +17,16 @@ const ProjectCard = ({
   const isDemo = useIsDemo();
 
   const handleClick = () => {
+    if (author) {
+      navigate("/explore/" + boardId);
+      return;
+    }
     if (isDemo) {
       navigate("/demo/board/" + boardId);
       return;
     }
-    if (!author) {
-      navigate("/board/" + boardId);
-      return;
-    }
-    navigate("/explore/" + boardId);
+
+    navigate("/board/" + boardId);
   };
   return (
     <article className="project-wrapper">

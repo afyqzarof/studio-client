@@ -40,8 +40,12 @@ const DashBoardPage = () => {
   }, []);
 
   const handleNewProject = async () => {
-    const token = localStorage.getItem("token");
+    if (isDemo) {
+      navigate("/demo/board/new-board");
+      return;
+    }
 
+    const token = localStorage.getItem("token");
     try {
       const { data } = await axios.post(
         baseUrl + "/boards/new",

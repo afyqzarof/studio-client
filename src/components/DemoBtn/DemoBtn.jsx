@@ -1,13 +1,15 @@
 import "./DemoBtn.scss";
 
-const DemoBtn = ({ className }) => {
+const DemoBtn = ({ className, isUpload, name }) => {
   return (
-    <button className={"tooltip " + className}>
-      save
-      <div className="tooltip__text">
-        <p>please login to save :)</p>
+    <div className={"tooltip " + className}>
+      <p>{name}</p>
+      <div
+        className="tooltip__text"
+        style={isUpload ? { left: 0, width: "14rem" } : { right: 0 }}>
+        <p>please login to {name} :)</p>
       </div>
-    </button>
+    </div>
   );
 };
 

@@ -22,6 +22,7 @@ function App() {
         <Route path="/demo/explore" element={<ExplorePage />} />
         <Route path="/demo/dashboard" element={<DashBoardPage />} />
         <Route path="/demo/board/:boardId" element={<BoardPage />} />
+        <Route path="/demo/account" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );

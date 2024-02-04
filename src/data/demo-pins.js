@@ -1,3 +1,8 @@
+import image1 from "../assets/uploads/demo-1.jpeg";
+import image2 from "../assets/uploads/demo-2.jpeg";
+import image3 from "../assets/uploads/demo-3.jpeg";
+import image4 from "../assets/uploads/demo-4.png";
+
 export default [
   {
     board_id: "demo-1",
@@ -14,7 +19,7 @@ export default [
   {
     board_id: "demo-1",
     width: 218,
-    height: 70,
+    height: 200,
     id: "mB_6kTKt3Y",
     type: "TextNode",
     data: {
@@ -42,15 +47,15 @@ export default [
     id: "FsdAEOf6oja",
     type: "ImageNode",
     data: {
-      file: "test.png",
+      file: image4,
     },
     x_coord: 100,
     y_coord: 400,
   },
   {
     board_id: "demo-1",
-    width: 500,
-    height: 182,
+    width: 600,
+    height: 300,
     id: "bDepAWb6le",
     type: "SpotifyNode",
     data: {
@@ -61,7 +66,7 @@ export default [
   },
 
   {
-    board_id: "dcU4VO1Ik0Oa6cX",
+    board_id: "demo-2",
     width: 596,
     height: 596,
     id: "-cFgaF47WA",
@@ -69,11 +74,11 @@ export default [
     x_coord: 512,
     y_coord: 270,
     data: {
-      file: "1706444532897.jpeg",
+      file: image3,
     },
   },
   {
-    board_id: "dcU4VO1Ik0Oa6cX",
+    board_id: "demo-2",
     width: 664,
     height: 467,
     id: "sNmHdBcFPy",
@@ -85,7 +90,7 @@ export default [
     },
   },
   {
-    board_id: "dcU4VO1Ik0Oa6cX",
+    board_id: "demo-2",
     width: 338,
     height: 700,
     id: "4KZozsrb40",
@@ -99,7 +104,7 @@ export default [
   },
 
   {
-    board_id: "dcU4VO1Ik0Oa6cX",
+    board_id: "demo-2",
     width: 192,
     height: 235,
     id: "qjPTLOFQgz",
@@ -112,7 +117,7 @@ export default [
     y_coord: 458,
   },
   {
-    board_id: "dcU4VO1Ik0Oa6cX",
+    board_id: "demo-2",
     width: 192,
     height: 235,
     id: "Re5lcAPv9U",
@@ -126,7 +131,7 @@ export default [
   },
 
   {
-    board_id: "dcU4VO1Ik0Oa6cX",
+    board_id: "demo-2",
     width: 218,
     height: 245,
     id: "slQ8bqjNiT",
@@ -140,19 +145,19 @@ export default [
   },
 
   {
-    board_id: "edMDU5I-YtRe0Pu",
+    board_id: "demo-3",
     width: 582,
     height: 721,
     id: "WAV6IwtZiJ",
     type: "ImageNode",
     data: {
-      file: "1706445605365.jpeg",
+      file: image1,
     },
     x_coord: 881,
     y_coord: 548,
   },
   {
-    board_id: "edMDU5I-YtRe0Pu",
+    board_id: "demo-3",
     width: 192,
     height: 235,
     id: "_dZbMA53TD",
@@ -164,7 +169,7 @@ export default [
     y_coord: 180,
   },
   {
-    board_id: "edMDU5I-YtRe0Pu",
+    board_id: "demo-3",
     width: 192,
     height: 235,
     id: "ga3lCXN6Q-",
@@ -176,7 +181,7 @@ export default [
     y_coord: 172,
   },
   {
-    board_id: "edMDU5I-YtRe0Pu",
+    board_id: "demo-3",
     width: 192,
     height: 235,
     id: "wZoeXPH_nA-copy",
@@ -188,19 +193,19 @@ export default [
     y_coord: 172,
   },
   {
-    board_id: "edMDU5I-YtRe0Pu",
+    board_id: "demo-3",
     width: 596,
     height: 816,
     id: "0WS0qnJicp",
     type: "ImageNode",
     data: {
-      file: "1706445392414.jpeg",
+      file: image2,
     },
     x_coord: 192,
     y_coord: 201,
   },
   {
-    board_id: "edMDU5I-YtRe0Pu",
+    board_id: "demo-3",
     width: 192,
     height: 235,
     id: "hwunvYLOFa",

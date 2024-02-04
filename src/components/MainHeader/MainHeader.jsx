@@ -3,7 +3,8 @@ import "./MainHeader.scss";
 import { NavLink } from "react-router-dom";
 
 const MainHeader = () => {
-  const isDemo = useIsDemo;
+  const isDemo = useIsDemo();
+
   return (
     <header className="dash-header">
       <nav className="dash-nav">

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./BoardHeader.scss";
 import upIconDefault from "../../assets/icons/arrow-N-default.svg";
 import upIconSelected from "../../assets/icons/arrow-N-selected.svg";
@@ -25,7 +25,7 @@ const BoardHeader = () => {
   useEffect(() => {
     if (isDemo) {
       const demoBoard = demoBoards.find((board) => board.id === boardId);
-      setTitle(demoBoard.title);
+      setTitle(!demoBoard ? "" : demoBoard.title);
       return;
     }
     const token = localStorage.getItem("token");
@@ -83,12 +83,19 @@ const BoardHeader = () => {
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
-
+  const handleBack = async () => {
+    if (isDemo) {
+      navigate("/demo/dashboard");
+      return;
+    }
+    await handleSave();
+    navigate("/dashboard");
+  };
   return (
     <header className="board-header">
       <nav className="nav">
         <div className="nav__left">
-          <Link to={isDemo ? "/demo/dashboard" : "/dashboard"}>
+          <div onClick={handleBack}>
             <img
               onMouseEnter={() => {
                 setIsIconSelected(true);
@@ -100,7 +107,7 @@ const BoardHeader = () => {
               alt="up arrow"
               className="nav__icon"
             />
-          </Link>
+          </div>
           <input
             className="nav__title"
             placeholder="untitled"
@@ -113,7 +120,7 @@ const BoardHeader = () => {
           <button className="nav__btn">publish</button> */}
 
           {isDemo ? (
-            <DemoBtn className={"nav__btn"} />
+            <DemoBtn className={"nav__btn"} name="save" />
           ) : (
             <button className="nav__btn" onClick={handleSave}>
               {isLoading ? "loading" : "save"}

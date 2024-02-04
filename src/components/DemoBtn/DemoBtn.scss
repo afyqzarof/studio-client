@@ -8,6 +8,7 @@
 
   &__text {
     @include body;
+    @include flex;
     visibility: hidden;
     position: absolute;
     top: 100%;
@@ -17,7 +18,7 @@
     padding: 0.3rem;
     margin-top: 0.5rem;
     border-radius: 2px;
-    width: 13rem;
+    width: 11rem;
   }
 }
 
