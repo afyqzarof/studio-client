@@ -7,6 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import useFilterAside from "../../hooks/useFilterAside";
 import FilterAside from "../../components/FilterAside/FilterAside";
 import demoBoards from "../../data/demo-dashboard";
+import useIsDemo from "../../hooks/useIsDemo";
 
 const DashBoardPage = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -16,10 +17,10 @@ const DashBoardPage = () => {
     boards,
     setBoards
   );
-  const { pathname } = useLocation();
+  const isDemo = useIsDemo();
 
   useEffect(() => {
-    if (pathname.includes("demo")) {
+    if (isDemo) {
       setBoards(demoBoards);
       return;
     }
@@ -79,7 +80,11 @@ const DashBoardPage = () => {
               <li key={board.id}>
                 <ProjectCard
                   title={board.title}
-                  imgSrc={baseUrl + "/thumbnails/" + board.thumbnail}
+                  imgSrc={
+                    isDemo
+                      ? board.thumbnail
+                      : baseUrl + "/thumbnails/" + board.thumbnail
+                  }
                   description={board.description}
                   date={formattedDate}
                   category={board.category}

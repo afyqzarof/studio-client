@@ -1,28 +1,24 @@
+import demoBoard1 from "../assets/thumbnails/demo-board-1.png";
+import demoBoard2 from "../assets/thumbnails/demo-board-2.png";
+import demoBoard3 from "../assets/thumbnails/demo-board-3.png";
+
 export default [
   {
-    id: "TMFld0860EctVn2",
+    id: "demo-1",
     title: "brand identity",
-    is_public: true,
-    user_id: 1,
     created_at: "2023-06-01",
-    thumbnail: "board-img-1.png",
-    description: "vibes is something that can't be explained with science",
-    category: "music",
+    thumbnail: demoBoard3,
   },
   {
-    id: "dcU4VO1Ik0Oa6cX",
-    title: "blowgun mv",
-    is_public: true,
-    user_id: 1,
+    id: "demo-2",
+    title: "music inspiration",
     created_at: "2023-03-26",
-    thumbnail: "board-img-2.png",
+    thumbnail: demoBoard2,
   },
   {
-    id: "edMDU5I-YtRe0Pu",
+    id: "demo-3",
     title: "fashion",
-    is_public: false,
-    user_id: 1,
     created_at: "2023-10-09",
-    thumbnail: "board-img-3.png",
+    thumbnail: demoBoard1,
   },
 ];

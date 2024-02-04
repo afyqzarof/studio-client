@@ -7,6 +7,9 @@ import { useReactFlow } from "reactflow";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import useHandleThumbnail from "../../hooks/useHandleThumbnail";
+import useIsDemo from "../../hooks/useIsDemo";
+import DemoBtn from "../DemoBtn/DemoBtn";
+import demoBoards from "../../data/demo-dashboard";
 
 const BoardHeader = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -17,8 +20,14 @@ const BoardHeader = () => {
   const { boardId } = useParams();
   const { handleThumbnail } = useHandleThumbnail();
   const navigate = useNavigate();
+  const isDemo = useIsDemo();
 
   useEffect(() => {
+    if (isDemo) {
+      const demoBoard = demoBoards.find((board) => board.id === boardId);
+      setTitle(demoBoard.title);
+      return;
+    }
     const token = localStorage.getItem("token");
     if (!token) {
       navigate("/login");
@@ -38,6 +47,9 @@ const BoardHeader = () => {
     fetchBoard();
   }, []);
   const handleSave = async () => {
+    if (isDemo) {
+      return;
+    }
     setIsLoading(true);
     const pins = getNodes();
     const formattedPins = pins.map((pin) => {
@@ -76,7 +88,7 @@ const BoardHeader = () => {
     <header className="board-header">
       <nav className="nav">
         <div className="nav__left">
-          <Link to="/dashboard">
+          <Link to={isDemo ? "/demo/dashboard" : "/dashboard"}>
             <img
               onMouseEnter={() => {
                 setIsIconSelected(true);
@@ -99,9 +111,14 @@ const BoardHeader = () => {
         <ul className="nav__right-container">
           {/* <button className="nav__btn">collaborate</button>
           <button className="nav__btn">publish</button> */}
-          <button className="nav__btn" onClick={handleSave}>
-            {isLoading ? "loading" : "save"}
-          </button>
+
+          {isDemo ? (
+            <DemoBtn className={"nav__btn"} />
+          ) : (
+            <button className="nav__btn" onClick={handleSave}>
+              {isLoading ? "loading" : "save"}
+            </button>
+          )}
         </ul>
       </nav>
     </header>

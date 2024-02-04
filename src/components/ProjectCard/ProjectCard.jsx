@@ -1,6 +1,7 @@
 import "./ProjectCard.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useIsDemo from "../../hooks/useIsDemo";
 
 const ProjectCard = ({
   title,
@@ -13,8 +14,13 @@ const ProjectCard = ({
 }) => {
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
+  const isDemo = useIsDemo();
 
   const handleClick = () => {
+    if (isDemo) {
+      navigate("/demo/board/" + boardId);
+      return;
+    }
     if (!author) {
       navigate("/board/" + boardId);
       return;
