@@ -5,14 +5,14 @@
 .categories {
   @include flex(column, flex-start, flex-start);
   &__wrapper {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.25rem;
   }
   &__label {
     color: colors.$secondary-gray;
     &--all {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
-    @include nav-btn;
+    @include side-nav-btn;
   }
 
   &__radio {
@@ -34,8 +34,8 @@
   }
   &__label {
     color: colors.$secondary-gray;
-    margin-bottom: 0.8rem;
-    @include nav-btn;
+    margin-bottom: 0.25rem;
+    @include side-nav-btn;
   }
   &__radio {
     display: none;
