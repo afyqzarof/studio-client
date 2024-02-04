@@ -2,6 +2,21 @@
 
 # studio
 
+## To run
+
+1. ensure .env file is filled out with the backend url. See .env.sample
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run development server:
+
+```bash
+npm run dev
+```
+
 ## Overview
 
 An inspiration board where the user can add pictures, videos and text from various different sources e.g. Youtube, Instagram, TikTok, Pinterest, Spotify
