@@ -19,6 +19,10 @@ function App() {
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/explore/:boardId" element={<ExploreBoardPage />} />
         <Route path="/account" element={<ProfilePage />} />
+        <Route path="/demo/explore" element={<ExplorePage />} />
+        <Route path="/demo/dashboard" element={<DashBoardPage />} />
+        <Route path="/demo/board/:boardId" element={<BoardPage />} />
+        <Route path="/demo/account" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );

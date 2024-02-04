@@ -1,0 +1,27 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.tooltip {
+  position: relative;
+  cursor: not-allowed;
+
+  &__text {
+    @include body;
+    @include flex;
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: colors.$secondary-dark;
+    color: colors.$primary-light;
+    padding: 0.3rem;
+    margin-top: 0.5rem;
+    border-radius: 2px;
+    width: 11rem;
+  }
+}
+
+.tooltip:hover .tooltip__text {
+  visibility: visible;
+}

@@ -2,9 +2,11 @@ import { memo } from "react";
 import { NodeResizer } from "reactflow";
 import "./ImageNode.scss";
 import NodeWrapper from "../NodeWrapper/NodeWrapper";
+import useIsDemo from "../../hooks/useIsDemo";
 
 const ImageNode = memo(({ selected, data }) => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
+  const isDemo = useIsDemo();
 
   return (
     <>
@@ -17,7 +19,7 @@ const ImageNode = memo(({ selected, data }) => {
       />
       <NodeWrapper>
         <img
-          src={baseUrl + "/upload/" + data.file}
+          src={isDemo ? data.file : baseUrl + "/upload/" + data.file}
           alt={data.file}
           className="image-node"
         />

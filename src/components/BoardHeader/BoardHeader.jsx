@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./BoardHeader.scss";
 import upIconDefault from "../../assets/icons/arrow-N-default.svg";
 import upIconSelected from "../../assets/icons/arrow-N-selected.svg";
@@ -7,6 +7,9 @@ import { useReactFlow } from "reactflow";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import useHandleThumbnail from "../../hooks/useHandleThumbnail";
+import useIsDemo from "../../hooks/useIsDemo";
+import DemoBtn from "../DemoBtn/DemoBtn";
+import demoBoards from "../../data/demo-dashboard";
 
 const BoardHeader = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -17,8 +20,14 @@ const BoardHeader = () => {
   const { boardId } = useParams();
   const { handleThumbnail } = useHandleThumbnail();
   const navigate = useNavigate();
+  const isDemo = useIsDemo();
 
   useEffect(() => {
+    if (isDemo) {
+      const demoBoard = demoBoards.find((board) => board.id === boardId);
+      setTitle(!demoBoard ? "" : demoBoard.title);
+      return;
+    }
     const token = localStorage.getItem("token");
     if (!token) {
       navigate("/login");
@@ -38,6 +47,9 @@ const BoardHeader = () => {
     fetchBoard();
   }, []);
   const handleSave = async () => {
+    if (isDemo) {
+      return;
+    }
     setIsLoading(true);
     const pins = getNodes();
     const formattedPins = pins.map((pin) => {
@@ -71,12 +83,19 @@ const BoardHeader = () => {
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
-
+  const handleBack = async () => {
+    if (isDemo) {
+      navigate("/demo/dashboard");
+      return;
+    }
+    await handleSave();
+    navigate("/dashboard");
+  };
   return (
     <header className="board-header">
       <nav className="nav">
         <div className="nav__left">
-          <Link to="/dashboard">
+          <div onClick={handleBack}>
             <img
               onMouseEnter={() => {
                 setIsIconSelected(true);
@@ -88,7 +107,7 @@ const BoardHeader = () => {
               alt="up arrow"
               className="nav__icon"
             />
-          </Link>
+          </div>
           <input
             className="nav__title"
             placeholder="untitled"
@@ -99,9 +118,14 @@ const BoardHeader = () => {
         <ul className="nav__right-container">
           {/* <button className="nav__btn">collaborate</button>
           <button className="nav__btn">publish</button> */}
-          <button className="nav__btn" onClick={handleSave}>
-            {isLoading ? "loading" : "save"}
-          </button>
+
+          {isDemo ? (
+            <DemoBtn className={"nav__btn"} name="save" />
+          ) : (
+            <button className="nav__btn" onClick={handleSave}>
+              {isLoading ? "loading" : "save"}
+            </button>
+          )}
         </ul>
       </nav>
     </header>
