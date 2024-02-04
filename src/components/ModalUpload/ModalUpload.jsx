@@ -15,7 +15,6 @@ const ModalUpload = () => {
 
   const onDrop = useCallback(
     (acceptedFiles) => {
-      // console.log("drop");
       setMyFiles(
         acceptedFiles.map((file) =>
           Object.assign(file, {
@@ -32,7 +31,6 @@ const ModalUpload = () => {
     e.preventDefault();
 
     const file = myFiles[0];
-    // console.log(file);
 
     const formData = new FormData();
     formData.append("file", file);

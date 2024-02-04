@@ -18,7 +18,7 @@ const ModalInput = () => {
     e.preventDefault();
     const url = e.target.url.value;
     if (!isUrlValid(url)) {
-      console.log("not valid url");
+      // console.log("not valid url");
 
       return;
     }

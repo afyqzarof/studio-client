@@ -10,7 +10,7 @@ const getRhymes = async (word) => {
   );
   const filteredWords = data.filter((obj) => obj.freq >= 23);
   const words = filteredWords.map((wordObj) => wordObj.word);
-  // console.log(words);
+
   return words;
 };
 

@@ -77,8 +77,6 @@ const LoginBox = () => {
       !!formFields.email &&
       !!formFields.confirmPassword
     ) {
-      console.log(formFields.username);
-
       return true;
     }
     return false;
@@ -89,8 +87,6 @@ const LoginBox = () => {
     if (!isFormValid()) {
       return;
     }
-
-    console.log("form valid");
 
     if (isLogin) {
       const userDetails = {
@@ -126,7 +122,7 @@ const LoginBox = () => {
       username: formFields.username,
       password: formFields.password,
     };
-    // console.log(newUser);
+
     try {
       await axios.post(baseUrl + "/users/register", newUser);
       const user = {

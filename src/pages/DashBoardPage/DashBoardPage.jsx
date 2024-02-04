@@ -40,7 +40,6 @@ const DashBoardPage = () => {
 
   const handleNewProject = async () => {
     const token = localStorage.getItem("token");
-    console.log(token);
 
     try {
       const { data } = await axios.post(
