@@ -1,8 +1,7 @@
 import "./ProjectCard.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useIsDemo from "../../hooks/useIsDemo";
-import { ContextMenuTrigger } from "rctx-contextmenu";
 import BoardContextMenu from "../BoardContextMenu/BoardContextMenu";
 
 const ProjectCard = ({
@@ -17,6 +16,13 @@ const ProjectCard = ({
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
   const isDemo = useIsDemo();
+  const [contextMenu, setContextMenu] = useState({
+    position: {
+      x: 0,
+      y: 0,
+    },
+    toggled: false,
+  });
 
   const handleClick = () => {
     if (author) {
@@ -30,10 +36,35 @@ const ProjectCard = ({
 
     navigate("/board/" + boardId);
   };
+  const handleContextMenu = (e) => {
+    e.preventDefault();
+
+    setContextMenu({
+      position: {
+        x: e.clientX,
+        y: e.clientY,
+      },
+      toggled: true,
+    });
+  };
+  useEffect(() => {
+    const handler = () => {
+      setContextMenu({
+        position: {
+          x: 0,
+          y: 0,
+        },
+        toggled: false,
+      });
+    };
+    document.addEventListener("click", handler);
+    return () => {
+      document.removeEventListener("click", handler);
+    };
+  });
   return (
-    <ContextMenuTrigger id="project-card">
-      <article className="project-wrapper">
-        <BoardContextMenu appendTo=".project-wrapper" />
+    <>
+      <article className="project-wrapper" onContextMenu={handleContextMenu}>
         <h2 className="project__title">{!title ? "untitled" : title}</h2>
         <div
           className="project"
@@ -58,7 +89,14 @@ const ProjectCard = ({
           <p className="project__category">{category}</p>
         </div>
       </article>
-    </ContextMenuTrigger>
+      {!author && (
+        <BoardContextMenu
+          isToggled={contextMenu.toggled}
+          positionX={contextMenu.position.x}
+          positionY={contextMenu.position.y}
+        />
+      )}
+    </>
   );
 };
 

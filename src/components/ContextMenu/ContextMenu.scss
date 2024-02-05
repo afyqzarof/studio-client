@@ -7,6 +7,12 @@
   z-index: 10;
   background-color: colors.$secondary-dark;
 
+  &.not-active {
+    display: none;
+  }
+  &.active {
+    display: block;
+  }
   &__node {
     @include context-menu;
     color: colors.$primary-gray;
