@@ -1,14 +1,21 @@
 import "./LoginPage.scss";
 import LoginBox from "../../components/LoginBox/LoginBox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../../assets/logos/logo-small.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [isLoginShown, setIsLoginShown] = useState(false);
   const showLogin = () => {
     setIsLoginShown(true);
   };
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/dashboard");
+    }
+  });
 
   return (
     <>

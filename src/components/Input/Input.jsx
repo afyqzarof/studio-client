@@ -10,6 +10,7 @@ const Input = ({
   handleChange,
   tabIndex,
   msg,
+  disabled,
 }) => {
   return (
     <div className={`input-container ${className}`}>
@@ -24,6 +25,7 @@ const Input = ({
         placeholder={placeholder}
         onChange={handleChange}
         tabIndex={tabIndex}
+        disabled={disabled}
       />
       {msg && <InputError msg={msg} />}
     </div>
