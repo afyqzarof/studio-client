@@ -139,6 +139,7 @@ const LoginBox = () => {
           placeholder="enter username"
           handleChange={handleChange}
           msg={formErrors.username}
+          disabled={false}
         />
 
         <Input
@@ -149,6 +150,7 @@ const LoginBox = () => {
           handleChange={handleChange}
           tabIndex={isLogin ? -1 : 0}
           msg={formErrors.email}
+          disabled={isLogin ? true : false}
         />
 
         <Input
@@ -158,6 +160,7 @@ const LoginBox = () => {
           isPassword={true}
           handleChange={handleChange}
           msg={formErrors.password}
+          disabled={false}
         />
         <Input
           name="confirmPassword"
@@ -168,6 +171,7 @@ const LoginBox = () => {
           handleChange={handleChange}
           tabIndex={isLogin ? -1 : 0}
           msg={formErrors.confirmPassword}
+          disabled={isLogin ? true : false}
         />
         <button className="form__btn" type="submit">
           {isLogin ? "login" : "verify account"}
