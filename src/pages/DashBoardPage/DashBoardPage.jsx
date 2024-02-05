@@ -30,11 +30,15 @@ const DashBoardPage = () => {
         navigate("/login");
         return;
       }
-
-      const { data } = await axios.get(baseUrl + "/users/boards", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setBoards(data);
+      try {
+        const { data } = await axios.get(baseUrl + "/users/boards", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setBoards(data);
+      } catch (error) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
     };
     fetchUserBoards();
   }, []);
