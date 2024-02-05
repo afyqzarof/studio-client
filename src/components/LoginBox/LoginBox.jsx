@@ -107,12 +107,6 @@ const LoginBox = () => {
           ...formErrors,
           password: "unrecognized password",
         });
-        setFormFields({
-          username: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-        });
       }
     }
 
@@ -134,13 +128,6 @@ const LoginBox = () => {
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
-      setFormFields({
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
-      // e.target.reset();
     }
   };
   return (
