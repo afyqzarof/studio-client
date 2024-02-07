@@ -1,6 +1,7 @@
 import React, { memo, useState } from "react";
 import { NodeResizer, useReactFlow } from "reactflow";
 import "./ColorSelectorNode.scss";
+import { SketchPicker } from "react-color";
 
 const ColorSelectorNode = memo(({ selected, data, id }) => {
   const [color, setColor] = useState(data.color);
@@ -28,9 +29,7 @@ const ColorSelectorNode = memo(({ selected, data, id }) => {
           className="color-select__color"
           style={{ backgroundColor: color }}></div>
         <div className="color-select__container">
-          <label htmlFor="colorSelector" className="nodrag">
-            {color}
-          </label>
+          <p className="nodrag">{color}</p>
           <input
             onChange={handleColorChange}
             className="nodrag color-select__input"
@@ -38,6 +37,7 @@ const ColorSelectorNode = memo(({ selected, data, id }) => {
             value={color}
             id="colorSelector"
           />
+          {/* <SketchPicker /> */}
         </div>
       </article>
     </>
