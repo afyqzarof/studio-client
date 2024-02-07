@@ -1,4 +1,4 @@
-import ReactFlow, { Background, MiniMap } from "reactflow";
+import ReactFlow, { Background, MiniMap, SelectionMode } from "reactflow";
 import "reactflow/dist/base.css";
 import "./Flow.scss";
 import { useRef, useCallback, useState } from "react";
@@ -31,7 +31,7 @@ const Flow = ({ isGrid }) => {
     [setMenu]
   );
   const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
-
+  const panOnDrag = [1, 2];
   return (
     <>
       <ToolBar />
@@ -45,7 +45,9 @@ const Flow = ({ isGrid }) => {
         // snapToGrid={isGrid}
         nodeTypes={nodeTypes}
         onPaneClick={onPaneClick}
-        onNodeContextMenu={onNodeContextMenu}>
+        onNodeContextMenu={onNodeContextMenu}
+        panOnDrag={panOnDrag}
+        selectionMode={SelectionMode.Partial}>
         <Background variant="dots" />
         <MiniMap zoomable pannable />
         {menu && <ContextMenu onClick={onPaneClick} {...menu} />}
