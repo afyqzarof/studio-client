@@ -1,13 +1,11 @@
 import BoardHeader from "../../components/BoardHeader/BoardHeader";
-import ToolBar from "../../components/ToolBar/ToolBar";
 import "./BoardPage.scss";
 import { ReactFlowProvider } from "reactflow";
 import "reactflow/dist/base.css";
 import Flow from "../../components/Flow/Flow";
-import GridBtn from "../../components/GridBtn/GridBtn";
-import DarkModeBtn from "../../components/DarkModeBtn/DarkModeBtn";
-import { useState } from "react";
-import { useIsGrid } from "../../hooks/useIsGrid";
+// import GridBtn from "../../components/GridBtn/GridBtn";
+// import DarkModeBtn from "../../components/DarkModeBtn/DarkModeBtn";
+// import { useIsGrid } from "../../hooks/useIsGrid";
 
 const BoardPage = () => {
   // const { isGrid, handleChangeGrid } = useIsGrid(false);
