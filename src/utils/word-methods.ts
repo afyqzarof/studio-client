@@ -9,7 +9,7 @@ const isOneWord = (str: string): boolean => {
   return str.trim().split(" ").length === 1;
 };
 
-const getRhymes = async (word: string): string[] => {
+const getRhymes = async (word: string): Promise<string[]> => {
   const { data } = await axios.get(
     `https://rhymebrain.com/talk?function=getRhymes&maxResults=20&word=${word}`
   );
