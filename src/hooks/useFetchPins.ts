@@ -2,14 +2,14 @@ import { useNodesState } from "reactflow";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import useIsDemo from "../hooks/useIsDemo";
-import demoPins from "../data/demo-pins";
+import useIsDemo, { IsDemo } from "./useIsDemo";
+import demoPins, { Pin } from "../data/demo-pins";
 
 const useFetchPins = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const { boardId } = useParams();
-  const isDemo = useIsDemo();
+  const isDemo: IsDemo = useIsDemo();
 
   useEffect(() => {
     if (isDemo) {

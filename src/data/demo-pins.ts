@@ -3,7 +3,18 @@ import image2 from "../assets/uploads/demo-2.jpeg";
 import image3 from "../assets/uploads/demo-3.jpeg";
 import image4 from "../assets/uploads/demo-4.png";
 
-export default [
+export type Pin = {
+  board_id: string;
+  width: number;
+  height: number;
+  id: string;
+  type: string;
+  data: object;
+  x_coord: number;
+  y_coord: number;
+};
+
+const demoPins: Pin[] = [
   {
     board_id: "demo-1",
     width: 400,
@@ -217,3 +228,5 @@ export default [
     y_coord: 172,
   },
 ];
+
+export default demoPins;

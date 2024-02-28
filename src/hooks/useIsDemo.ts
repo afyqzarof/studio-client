@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
-const useIsDemo = () => {
+
+export type IsDemo = boolean;
+const useIsDemo = (): IsDemo => {
   const { pathname } = useLocation();
   const isDemo = pathname.includes("demo");
 
