@@ -1,8 +1,8 @@
-const hexToHSL = (H) => {
+const hexToHSL = (H: string) => {
   // Convert hex to RGB first
-  let r = 0,
-    g = 0,
-    b = 0;
+  let r: any = 0,
+    g: any = 0,
+    b: any = 0;
   if (H.length == 4) {
     r = "0x" + H[1] + H[1];
     g = "0x" + H[2] + H[2];
@@ -40,16 +40,16 @@ const hexToHSL = (H) => {
   return "hsl(" + h + "," + s + "%," + l + "%)";
 };
 
-const HSLToHex = (h, s, l) => {
+const HSLToHex = (h: number, s: number, l: number) => {
   s /= 100;
   l /= 100;
 
   let c = (1 - Math.abs(2 * l - 1)) * s,
     x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
     m = l - c / 2,
-    r = 0,
-    g = 0,
-    b = 0;
+    r: any = 0,
+    g: any = 0,
+    b: any = 0;
 
   if (0 <= h && h < 60) {
     r = c;
@@ -88,8 +88,9 @@ const HSLToHex = (h, s, l) => {
 
   return "#" + r + g + b;
 };
+type ParseOutput = [number, number, number];
 
-const parseHSL = (str) => {
+const parseHSL = (str: string): ParseOutput => {
   let hsl, h, s, l;
   hsl = str.replace(/[^\d,]/g, "").split(","); // strip non digits ('%')
   h = Number(hsl[0]); // convert to number
@@ -98,7 +99,12 @@ const parseHSL = (str) => {
   return [h, s, l]; // return parts
 };
 
-const harmonize = (color, start, end, interval) => {
+const harmonize = (
+  color: string,
+  start: number,
+  end: number,
+  interval: number
+) => {
   const colors = [color];
   const [h, s, l] = parseHSL(color);
 
@@ -111,7 +117,7 @@ const harmonize = (color, start, end, interval) => {
   return colors;
 };
 
-const getComplementaryColor = (hexColor) => {
+const getComplementaryColor = (hexColor: string) => {
   const hslColor = hexToHSL(hexColor);
   const hslComplement = harmonize(hslColor, 180, 180, 1);
   const hexComplement = hslComplement.map((color) =>
@@ -120,7 +126,7 @@ const getComplementaryColor = (hexColor) => {
   return hexComplement[1];
 };
 
-const getAnalogousColors = (hexColor) => {
+const getAnalogousColors = (hexColor: string) => {
   const hslColor = hexToHSL(hexColor);
   const hslAnalogous = harmonize(hslColor, 30, 90, 30);
   const hexAnalogous = hslAnalogous.map((color) =>
@@ -129,7 +135,7 @@ const getAnalogousColors = (hexColor) => {
   return hexAnalogous.slice(1);
 };
 
-const getTriadicColors = (hexColor) => {
+const getTriadicColors = (hexColor: string) => {
   const hslColor = hexToHSL(hexColor);
   const hslTriad = harmonize(hslColor, 120, 240, 120);
   const hexTriad = hslTriad.map((color) => HSLToHex(...parseHSL(color)));
