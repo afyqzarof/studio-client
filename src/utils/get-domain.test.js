@@ -1,4 +1,5 @@
-const getDomain = require("./get-domain");
+import { getDomain } from "./get-domain";
+import { describe, test, expect } from "vitest";
 
 describe("domains", () => {
   test("gets youtube domain", () => {
