@@ -7,11 +7,12 @@ import formatDate from "../../utils/format-date";
 import FilterAside from "../../components/FilterAside/FilterAside";
 import useFilterAside from "../../hooks/useFilterAside";
 import useIsDemo from "../../hooks/useIsDemo";
+import { Board } from "../../data/demo-dashboard";
 
 const ExplorePage = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const isDemo = useIsDemo();
-  const [exploreBoards, setExploreBoards] = useState([]);
+  const [exploreBoards, setExploreBoards] = useState<Board[]>([]);
   const { filterOptions, handleOptionChange } = useFilterAside(
     exploreBoards,
     setExploreBoards

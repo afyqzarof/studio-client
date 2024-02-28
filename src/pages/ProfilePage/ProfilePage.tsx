@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, MouseEventHandler } from "react";
 import MainHeader from "../../components/MainHeader/MainHeader";
 import "./ProfilePage.scss";
 import { useNavigate } from "react-router-dom";
@@ -7,10 +7,17 @@ import useIsDemo from "../../hooks/useIsDemo";
 import DemoBtn from "../../components/DemoBtn/DemoBtn";
 
 const ProfilePage = () => {
+  type FormFields = {
+    name: string;
+    bio: string;
+    link: string;
+    email: string;
+    password: string;
+  };
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
   const [isSave, setIsSave] = useState(false);
-  const [formFields, setFormFields] = useState({
+  const [formFields, setFormFields] = useState<FormFields>({
     name: "",
     bio: "",
     link: "",
@@ -54,7 +61,7 @@ const ProfilePage = () => {
     fetchUserDetails();
   }, []);
 
-  const handleUpdateProfile = async (e) => {
+  const handleUpdateProfile = async (e: any) => {
     const token = localStorage.getItem("token");
     e.preventDefault();
     const updatedDetails = {
@@ -85,9 +92,9 @@ const ProfilePage = () => {
       name: "email",
       id: "email",
     },
-  ];
+  ] as const;
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsSave(true);
     setFormFields({
       ...formFields,
@@ -146,6 +153,7 @@ const ProfilePage = () => {
                 />
               ) : (
                 <button
+                  type="submit"
                   onClick={handleUpdateProfile}
                   className={
                     isSave

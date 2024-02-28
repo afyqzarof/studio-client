@@ -6,12 +6,12 @@ import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import useFilterAside from "../../hooks/useFilterAside";
 import FilterAside from "../../components/FilterAside/FilterAside";
-import demoBoards from "../../data/demo-dashboard";
+import demoBoards, { Board } from "../../data/demo-dashboard";
 import useIsDemo from "../../hooks/useIsDemo";
 
 const DashBoardPage = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  const [boards, setBoards] = useState([]);
+  const [boards, setBoards] = useState<Board[]>([]);
   const navigate = useNavigate();
   const { filterOptions, handleOptionChange } = useFilterAside(
     boards,
@@ -97,6 +97,7 @@ const DashBoardPage = () => {
                   date={formattedDate}
                   category={board.category}
                   boardId={board.id}
+                  author={false}
                 />
               </li>
             );

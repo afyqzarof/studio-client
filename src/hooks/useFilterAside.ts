@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import { Board } from "../data/demo-dashboard";
 
 const useFilterAside = (
   boards: Board[],
-  setBoards: (boards: Board[]) => {}
+  setBoards: Dispatch<SetStateAction<Board[]>>
 ) => {
   const [filterOptions, setFilterOptions] = useState({
     category: "all",

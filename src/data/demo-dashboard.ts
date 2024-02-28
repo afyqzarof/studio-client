@@ -7,6 +7,9 @@ export type Board = {
   title: string;
   created_at: string;
   thumbnail: string;
+  description?: string;
+  category?: string;
+  username?: string;
 };
 
 const demoBoards: Board[] = [

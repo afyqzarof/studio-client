@@ -7,7 +7,7 @@ import ToolBar from "../ToolBar/ToolBar";
 import useNodeTypes from "../../hooks/useNodeTypes";
 import useFetchPins from "../../hooks/useFetchPins";
 const nodeTypes = useNodeTypes();
-const Flow = ({ isGrid }) => {
+const Flow = () => {
   const { nodes, onNodesChange } = useFetchPins();
   const [menu, setMenu] = useState(null);
   const ref = useRef(null);

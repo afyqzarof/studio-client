@@ -1,4 +1,9 @@
-import ReactFlow, { Background, ReactFlowProvider, MiniMap } from "reactflow";
+import ReactFlow, {
+  Background,
+  ReactFlowProvider,
+  MiniMap,
+  BackgroundVariant,
+} from "reactflow";
 import "reactflow/dist/base.css";
 import "./ExploreBoardPage.scss";
 import ExploreBoardHeader from "../../components/ExploreBoardHeader/ExploreBoardHeader";
@@ -13,7 +18,7 @@ const ExploreBoardPage = () => {
       <ExploreBoardHeader />
       <ReactFlowProvider>
         <ReactFlow nodes={nodes} fitView panOnScroll nodeTypes={nodeTypes}>
-          <Background variant="dots" />
+          <Background variant={BackgroundVariant.Dots} />
           <MiniMap zoomable pannable />
         </ReactFlow>
       </ReactFlowProvider>
