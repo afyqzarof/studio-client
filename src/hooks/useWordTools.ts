@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useReactFlow } from "reactflow";
 import axios from "axios";
 import { nanoid } from "nanoid";
@@ -7,7 +7,7 @@ import getRandomCoords from "../utils/get-random-coords";
 const useWordTools = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [definitions, setDefinitions] = useState([]);
+  const [definitions, setDefinitions] = useState<object[]>([]);
   const [chosenWord, setChosenWord] = useState("");
   function openModal() {
     setIsModalOpen(true);
@@ -18,11 +18,11 @@ const useWordTools = () => {
   }
   const { addNodes } = useReactFlow();
 
-  const handleWordChange = (e) => {
+  const handleWordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const word = e.target.value;
     setChosenWord(word.replace(/ |[0-9]|[^\w\s]|_/g, ""));
   };
-  const addWordNode = async (type) => {
+  const addWordNode = async (type: string) => {
     if (!chosenWord) {
       return;
     }

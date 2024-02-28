@@ -5,8 +5,8 @@ import axios from "axios";
 const useHandleThumbnail = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const { getNodes } = useReactFlow();
-  const postThumbnail = async (dataUrl) => {
-    const arr = dataUrl.split(",");
+  const postThumbnail = async (dataUrl: string) => {
+    const arr: any = dataUrl.split(",");
     const mime = arr[0].match(/:(.*?);/)[1];
     const bstr = atob(arr[arr.length - 1]);
     let n = bstr.length;
@@ -25,7 +25,7 @@ const useHandleThumbnail = () => {
   const imageHeight = 768;
   const handleThumbnail = async () => {
     const nodesBounds = getNodesBounds(getNodes());
-    const transform = getViewportForBounds(
+    const transform: any = getViewportForBounds(
       nodesBounds,
       imageWidth,
       imageHeight,
@@ -34,14 +34,14 @@ const useHandleThumbnail = () => {
     );
 
     const pngFile = await toPng(
-      document.querySelector(".react-flow__viewport"),
+      document.querySelector(".react-flow__viewport") as HTMLElement,
       {
         backgroundColor: "#fff",
         width: imageWidth,
         height: imageHeight,
         style: {
-          width: imageWidth,
-          height: imageHeight,
+          width: String(imageWidth),
+          height: String(imageHeight),
           transform: `translate(${transform[0]}px, ${transform[1]}px) scale(${transform[2]})`,
         },
       }

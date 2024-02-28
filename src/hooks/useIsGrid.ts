@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useIsGrid = (value) => {
+const useIsGrid = (value: boolean) => {
   const [isGrid, setIsGrid] = useState(value);
   const handleChangeGrid = () => {
     setIsGrid(!isGrid);

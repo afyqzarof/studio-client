@@ -3,18 +3,18 @@ import image2 from "../assets/uploads/demo-2.jpeg";
 import image3 from "../assets/uploads/demo-3.jpeg";
 import image4 from "../assets/uploads/demo-4.png";
 
-export type Pin = {
+export type Pin<T> = {
   board_id: string;
   width: number;
   height: number;
   id: string;
   type: string;
-  data: object;
+  data: T;
   x_coord: number;
   y_coord: number;
 };
 
-const demoPins: Pin[] = [
+const demoPins: Pin<object>[] = [
   {
     board_id: "demo-1",
     width: 400,

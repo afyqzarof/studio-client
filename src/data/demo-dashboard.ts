@@ -2,7 +2,14 @@ import demoBoard1 from "../assets/thumbnails/demo-board-1.png";
 import demoBoard2 from "../assets/thumbnails/demo-board-2.png";
 import demoBoard3 from "../assets/thumbnails/demo-board-3.png";
 
-export default [
+export type Board = {
+  id: string;
+  title: string;
+  created_at: string;
+  thumbnail: string;
+};
+
+const demoBoards: Board[] = [
   {
     id: "demo-1",
     title: "brand identity",
@@ -22,3 +29,5 @@ export default [
     thumbnail: demoBoard1,
   },
 ];
+
+export default demoBoards;

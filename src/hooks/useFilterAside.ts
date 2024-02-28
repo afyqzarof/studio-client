@@ -1,12 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Board } from "../data/demo-dashboard";
 
-const useFilterAside = (boards, setBoards) => {
+const useFilterAside = (
+  boards: Board[],
+  setBoards: (boards: Board[]) => {}
+) => {
   const [filterOptions, setFilterOptions] = useState({
     category: "all",
     filter: "recent",
   });
 
-  const handleOptionChange = (e) => {
+  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilterOptions({
       ...filterOptions,
       [e.target.name]: e.target.value,
@@ -16,14 +20,20 @@ const useFilterAside = (boards, setBoards) => {
       case "oldest":
         setBoards(
           boards.sort((a, b) => {
-            return new Date(a.created_at) - new Date(b.created_at);
+            return (
+              new Date(a.created_at).valueOf() -
+              new Date(b.created_at).valueOf()
+            );
           })
         );
         break;
       case "recent":
         setBoards(
           boards.sort((a, b) => {
-            return new Date(b.created_at) - new Date(a.created_at);
+            return (
+              new Date(b.created_at).valueOf() -
+              new Date(a.created_at).valueOf()
+            );
           })
         );
 

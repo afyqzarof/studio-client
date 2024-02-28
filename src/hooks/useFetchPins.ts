@@ -1,4 +1,4 @@
-import { useNodesState } from "reactflow";
+import { useNodesState, Node } from "reactflow";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -39,7 +39,7 @@ const useFetchPins = () => {
       const { data } = await axios.get(
         baseUrl + "/boards/" + boardId + "/pins"
       );
-      const formattedPins = data.map((pin) => {
+      const formattedPins = data.map((pin: Pin<string>) => {
         return {
           id: pin.id,
           type: pin.type,
