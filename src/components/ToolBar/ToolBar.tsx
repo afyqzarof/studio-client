@@ -1,15 +1,9 @@
 import ToolMenu from "../ToolMenu/ToolMenu";
 import "./ToolBar.scss";
-import axios from "axios";
 import ModalInput from "../ModalInput/ModalInput";
 import useTools from "../../hooks/useTools";
-import { useState } from "react";
 import ColorTools from "../ColorTools/ColorTools";
 import ModalUpload from "../ModalUpload/ModalUpload";
-import { useReactFlow } from "reactflow";
-import { nanoid } from "nanoid";
-import getRandomCoords from "../../utils/get-random-coords";
-import Modal from "react-modal";
 import ModalDefinition from "../ModalDefinition/ModalDefinition";
 import useWordTools from "../../hooks/useWordTools";
 

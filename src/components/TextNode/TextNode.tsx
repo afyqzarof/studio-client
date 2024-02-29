@@ -1,15 +1,15 @@
-import { memo, useState } from "react";
-import { NodeResizer, useReactFlow } from "reactflow";
+import React, { memo, useState } from "react";
+import { NodeProps, NodeResizer, useReactFlow } from "reactflow";
 import "./TextNode.scss";
 import NodeWrapper from "../NodeWrapper/NodeWrapper";
 
-const TextNode = memo(({ selected, data, id }) => {
+const TextNode = memo(({ selected, data, id }: NodeProps) => {
   const [text, setText] = useState(data.text);
   const { setNodes, getNodes, getNode } = useReactFlow();
 
-  const handleTextChange = (e) => {
+  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
-    const selectedNode = getNode(id);
+    const selectedNode: any = getNode(id);
     selectedNode.data.text = e.target.value;
     const nodes = getNodes();
     const filteredNodes = nodes.filter((node) => node.id !== id);

@@ -1,8 +1,8 @@
 import "./YoutubeVidNode.scss";
 import { memo } from "react";
-import { NodeResizer } from "reactflow";
+import { NodeProps, NodeResizer } from "reactflow";
 
-const YoutubeVidNode = memo(({ selected, data }) => {
+const YoutubeVidNode = memo(({ selected, data }: NodeProps) => {
   return (
     <>
       <NodeResizer
@@ -13,6 +13,7 @@ const YoutubeVidNode = memo(({ selected, data }) => {
       />
       <div className="yt-container">
         <iframe
+          title="youtube video"
           className="yt-container__video"
           src={`https://www.youtube.com/embed/${data.youtube_id}`}
           frameBorder="0"

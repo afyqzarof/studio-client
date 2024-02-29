@@ -1,7 +1,15 @@
 import { useState } from "react";
 import "./ToolMenu.scss";
 import WipBtn from "../WipBtn/WipBtn";
-
+type ToolMenuProps = {
+  title: string;
+  list: any[];
+  heightValue: string;
+  className?: string;
+  isWordTool?: boolean;
+  handleWordChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  chosenWord?: string;
+};
 const ToolMenu = ({
   title,
   list,
@@ -10,7 +18,7 @@ const ToolMenu = ({
   isWordTool,
   handleWordChange,
   chosenWord,
-}) => {
+}: ToolMenuProps) => {
   const [isItemShown, setIsItemShown] = useState(false);
 
   const showItems = () => {
@@ -34,13 +42,15 @@ const ToolMenu = ({
         }
         style={isItemShown ? { height: heightValue } : { height: "0px" }}>
         {isWordTool && (
-          <input
-            onChange={handleWordChange}
-            name="word"
-            className="tool__input"
-            value={chosenWord}
-            placeholder="enter word"
-          />
+          <li>
+            <input
+              onChange={handleWordChange}
+              name="word"
+              className="tool__input"
+              value={chosenWord}
+              placeholder="enter word"
+            />
+          </li>
         )}
         {list.map((item) => {
           if (item.notWorking) {
@@ -52,7 +62,10 @@ const ToolMenu = ({
           }
           return (
             <li key={item.id}>
-              <button className="tool__item" onClick={item.onClick}>
+              <button
+                type="button"
+                className="tool__item"
+                onClick={item.onClick}>
                 {item.name}
               </button>
             </li>

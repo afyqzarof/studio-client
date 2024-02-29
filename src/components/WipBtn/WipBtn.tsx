@@ -1,9 +1,13 @@
 import Popup from "reactjs-popup";
-
-const WipBtn = ({ name }) => (
+type WipBtnProps = {
+  name: string;
+};
+const WipBtn = ({ name }: WipBtnProps) => (
   <Popup
-    trigger={(open) => (
-      <button className="tool__item tool__item--cross-out">{name}</button>
+    trigger={() => (
+      <button type="button" className="tool__item tool__item--cross-out">
+        {name}
+      </button>
     )}
     position="right center"
     closeOnDocumentClick
