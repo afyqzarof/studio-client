@@ -2,7 +2,7 @@ import "./FilterAside.scss";
 type FilterAsideProps = {
   filterOptions: any;
   categories: any;
-  handleOptionChange: () => void;
+  handleOptionChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 const FilterAside = ({
   filterOptions,

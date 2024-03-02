@@ -9,7 +9,7 @@ type ProjectCardProps = {
   date: string;
   category: string;
   boardId: string;
-  author: string;
+  author: any;
 };
 const ProjectCard = ({
   title,
