@@ -1,8 +1,8 @@
 import { memo } from "react";
-import { NodeResizer } from "reactflow";
+import { NodeProps, NodeResizer } from "reactflow";
 import NodeWrapper from "../NodeWrapper/NodeWrapper";
 
-const PinterestNode = memo(({ selected, data }) => {
+const PinterestNode = memo(({ selected, data }: NodeProps) => {
   return (
     <>
       <NodeResizer
@@ -13,6 +13,7 @@ const PinterestNode = memo(({ selected, data }) => {
       />
       <NodeWrapper>
         <iframe
+          title="pinterest image"
           src={`https://assets.pinterest.com/ext/embed.html?id=${data.id}`}
           height="100%"
           width="100%"

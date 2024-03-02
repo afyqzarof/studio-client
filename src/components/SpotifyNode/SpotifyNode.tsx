@@ -1,8 +1,8 @@
 import { memo } from "react";
-import { NodeResizer } from "reactflow";
+import { NodeProps, NodeResizer } from "reactflow";
 import NodeWrapper from "../NodeWrapper/NodeWrapper";
 
-const SpotifyNode = memo(({ selected, data }) => {
+const SpotifyNode = memo(({ selected, data }: NodeProps) => {
   return (
     <>
       <NodeResizer
@@ -13,11 +13,12 @@ const SpotifyNode = memo(({ selected, data }) => {
       />
       <NodeWrapper>
         <iframe
+          title="spotify song"
           src={`https://open.spotify.com/embed/track/${data.track_id}?utm_source=generator`}
           width="100%"
           height="100%"
           frameBorder="0"
-          allowFullScreen=""
+          allowFullScreen={false}
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"></iframe>
       </NodeWrapper>

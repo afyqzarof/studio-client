@@ -23,7 +23,7 @@ const TextNode = memo(({ selected, data, id }: NodeProps) => {
         minWidth={300}
         minHeight={100}
       />
-      <NodeWrapper width={data.height} height={data.width}>
+      <NodeWrapper>
         <textarea
           name="text"
           placeholder="write some text"

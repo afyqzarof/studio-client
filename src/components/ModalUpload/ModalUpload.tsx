@@ -2,7 +2,7 @@ import "./ModalUpload.scss";
 import useIsDemo from "../../hooks/useIsDemo";
 import axios from "axios";
 import { useDropzone } from "react-dropzone";
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { useReactFlow } from "reactflow";
 import { nanoid } from "nanoid";
 import getRandomCoords from "../../utils/get-random-coords";
@@ -11,17 +11,17 @@ import DemoBtn from "../DemoBtn/DemoBtn";
 
 const ModalUpload = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  const [myFiles, setMyFiles] = useState(null);
+  const [myFiles, setMyFiles] = useState<any>(null);
   const [modalIsOpen, setIsOpen] = useState(false);
   const isDemo = useIsDemo();
   const [isFileBig, setIsFileBig] = useState(false);
 
   const onDrop = useCallback(
-    (acceptedFiles) => {
+    (acceptedFiles: any) => {
       if (acceptedFiles.length !== 0) {
         setIsFileBig(false);
         setMyFiles(
-          acceptedFiles.map((file) =>
+          acceptedFiles.map((file: MediaSource) =>
             Object.assign(file, {
               preview: URL.createObjectURL(file),
             })
@@ -35,7 +35,7 @@ const ModalUpload = () => {
   );
 
   const { addNodes } = useReactFlow();
-  const handleCreateUploadPin = async (e) => {
+  const handleCreateUploadPin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const file = myFiles[0];
@@ -138,6 +138,7 @@ const ModalUpload = () => {
                 </div>
                 <div>
                   <img
+                    alt={myFiles[0].path}
                     src={myFiles[0].preview}
                     className="file-form__preview"
                   />

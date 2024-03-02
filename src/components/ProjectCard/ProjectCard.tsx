@@ -2,7 +2,15 @@ import "./ProjectCard.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useIsDemo from "../../hooks/useIsDemo";
-
+type ProjectCardProps = {
+  title: string;
+  imgSrc: string;
+  description: string;
+  date: string;
+  category: string;
+  boardId: string;
+  author: string;
+};
 const ProjectCard = ({
   title,
   imgSrc,
@@ -11,7 +19,7 @@ const ProjectCard = ({
   category,
   boardId,
   author,
-}) => {
+}: ProjectCardProps) => {
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
   const isDemo = useIsDemo();
