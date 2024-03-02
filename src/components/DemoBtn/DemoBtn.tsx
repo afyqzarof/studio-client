@@ -1,6 +1,11 @@
 import "./DemoBtn.scss";
 
-const DemoBtn = ({ className, isUpload, name }) => {
+type DemoBtnProps = {
+  className: string;
+  isUpload?: boolean;
+  name: string;
+};
+const DemoBtn = ({ className, isUpload, name }: DemoBtnProps) => {
   return (
     <div className={"tooltip " + className}>
       <p>{name}</p>

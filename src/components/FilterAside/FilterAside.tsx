@@ -1,6 +1,14 @@
 import "./FilterAside.scss";
-
-const FilterAside = ({ filterOptions, categories, handleOptionChange }) => {
+type FilterAsideProps = {
+  filterOptions: any;
+  categories: any;
+  handleOptionChange: () => void;
+};
+const FilterAside = ({
+  filterOptions,
+  categories,
+  handleOptionChange,
+}: FilterAsideProps) => {
   return (
     <>
       <div className="categories">
@@ -10,7 +18,7 @@ const FilterAside = ({ filterOptions, categories, handleOptionChange }) => {
           id="all"
           name="category"
           value="all"
-          checked={filterOptions.category === "all" ? "checked" : ""}
+          checked={filterOptions.category === "all" ? true : false}
           onChange={handleOptionChange}
         />
         <label
@@ -41,7 +49,7 @@ const FilterAside = ({ filterOptions, categories, handleOptionChange }) => {
           id="recent"
           name="filter"
           value="recent"
-          checked={filterOptions.filter === "recent" ? "checked" : ""}
+          checked={filterOptions.filter === "recent" ? true : false}
           onChange={handleOptionChange}
         />
         <label className="filter__label" htmlFor="recent">

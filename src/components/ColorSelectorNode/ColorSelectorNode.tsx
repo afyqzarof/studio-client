@@ -1,14 +1,14 @@
 import React, { memo, useState } from "react";
-import { NodeResizer, useReactFlow } from "reactflow";
+import { NodeProps, NodeResizer, useReactFlow } from "reactflow";
 import "./ColorSelectorNode.scss";
 
-const ColorSelectorNode = memo(({ selected, data, id }) => {
+const ColorSelectorNode = memo(({ selected, data, id }: NodeProps) => {
   const [color, setColor] = useState(data.color);
   const { setNodes, getNodes, getNode } = useReactFlow();
-  const handleColorChange = (e) => {
+  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedColor = e.target.value;
     setColor(selectedColor);
-    const selectedNode = getNode(id);
+    const selectedNode: any = getNode(id);
     selectedNode.data.color = e.target.value;
     const nodes = getNodes();
     const filteredNodes = nodes.filter((node) => node.id !== id);

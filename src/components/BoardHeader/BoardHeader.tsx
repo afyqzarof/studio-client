@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./BoardHeader.scss";
 import upIconDefault from "../../assets/icons/arrow-N-default.svg";
 import upIconSelected from "../../assets/icons/arrow-N-selected.svg";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useReactFlow } from "reactflow";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -80,7 +80,7 @@ const BoardHeader = () => {
     });
     setIsLoading(false);
   };
-  const handleTitleChange = (e) => {
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
   const handleBack = async () => {
@@ -122,9 +122,11 @@ const BoardHeader = () => {
           {isDemo ? (
             <DemoBtn className={"nav__btn"} name="save" />
           ) : (
-            <button className="nav__btn" onClick={handleSave}>
-              {isLoading ? "loading" : "save"}
-            </button>
+            <li>
+              <button className="nav__btn" onClick={handleSave}>
+                {isLoading ? "loading" : "save"}
+              </button>
+            </li>
           )}
         </ul>
       </nav>

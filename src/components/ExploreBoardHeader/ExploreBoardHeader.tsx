@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import arrow from "../../assets/icons/arrow-N-default.svg";
 import arrowHover from "../../assets/icons/arrow-N-selected.svg";
