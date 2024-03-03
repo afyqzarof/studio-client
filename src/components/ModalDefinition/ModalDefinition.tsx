@@ -1,12 +1,23 @@
 import "./ModalDefinition.scss";
 import Modal from "react-modal";
 
+export type Definition = {
+  partOfSpeech: string;
+  definitions: string[];
+};
+type ModalDefinitionProps = {
+  modalIsOpen: boolean;
+  closeModal: () => void;
+  definitions: Definition[];
+  chosenWord: string;
+};
+
 const ModalDefinition = ({
   modalIsOpen,
   closeModal,
   definitions,
   chosenWord,
-}) => {
+}: ModalDefinitionProps) => {
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>
       <article className="def">

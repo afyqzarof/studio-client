@@ -14,13 +14,13 @@ import useNodeTypes from "../../hooks/useNodeTypes";
 import useFetchPins from "../../hooks/useFetchPins";
 const nodeTypes = useNodeTypes();
 const Flow = () => {
-  interface MenuState {
+  type MenuState = {
     id: string;
     top?: number;
     left?: number;
-    right?: number | boolean;
-    bottom?: number | boolean;
-  }
+    right?: number;
+    bottom?: number;
+  };
 
   const { nodes, onNodesChange } = useFetchPins();
   const [menu, setMenu] = useState<MenuState | null>(null);
@@ -38,12 +38,16 @@ const Flow = () => {
         const pane = contextRef.getBoundingClientRect();
         setMenu({
           id: node.id,
-          top: event.clientY < pane.height - 200 && event.clientY,
-          left: event.clientX < pane.width - 200 && event.clientX,
+          top: event.clientY < pane.height - 200 ? event.clientY : undefined,
+          left: event.clientX < pane.width - 200 ? event.clientX : undefined,
           right:
-            event.clientX >= pane.width - 200 && pane.width - event.clientX,
+            event.clientX >= pane.width - 200
+              ? pane.width - event.clientX
+              : undefined,
           bottom:
-            event.clientY >= pane.height - 200 && pane.height - event.clientY,
+            event.clientY >= pane.height - 200
+              ? pane.height - event.clientY
+              : undefined,
         });
       }
     },

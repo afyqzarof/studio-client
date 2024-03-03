@@ -1,6 +1,9 @@
 import "./GridBtn.scss";
-
-const GridBtn = ({ isGrid, handleChangeGrid }) => {
+type GridBtnProps = {
+  isGrid: boolean;
+  handleChangeGrid: () => void;
+};
+const GridBtn = ({ isGrid, handleChangeGrid }: GridBtnProps) => {
   return (
     <button className="grid-btn" onClick={handleChangeGrid}>
       {isGrid ? "grid" : "no grid"}

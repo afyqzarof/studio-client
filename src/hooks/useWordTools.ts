@@ -3,11 +3,12 @@ import { useReactFlow } from "reactflow";
 import axios from "axios";
 import { nanoid } from "nanoid";
 import getRandomCoords from "../utils/get-random-coords";
+import { Definition } from "../components/ModalDefinition/ModalDefinition";
 
 const useWordTools = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [definitions, setDefinitions] = useState<object[]>([]);
+  const [definitions, setDefinitions] = useState<Definition[]>([]);
   const [chosenWord, setChosenWord] = useState("");
   function openModal() {
     setIsModalOpen(true);

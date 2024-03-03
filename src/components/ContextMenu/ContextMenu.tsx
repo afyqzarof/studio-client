@@ -4,10 +4,10 @@ import "./ContextMenu.scss";
 import { nanoid } from "nanoid";
 type ContextMenuProps = {
   id: string;
-  top?: number | boolean | undefined;
-  left?: number | boolean | undefined;
-  right?: number | boolean | undefined;
-  bottom?: number | boolean | undefined;
+  top?: number | undefined;
+  left?: number | undefined;
+  right?: number | undefined;
+  bottom?: number | undefined;
   onClick: () => void;
 };
 const ContextMenu = ({

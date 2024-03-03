@@ -5,9 +5,9 @@ import useIsDemo from "../../hooks/useIsDemo";
 type ProjectCardProps = {
   title: string;
   imgSrc: string;
-  description: string;
+  description: string | undefined;
   date: string;
-  category: string;
+  category: string | undefined;
   boardId: string;
   author: any;
 };
