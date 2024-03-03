@@ -1,4 +1,4 @@
-import { useNodesState, Node } from "reactflow";
+import { useNodesState } from "reactflow";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";

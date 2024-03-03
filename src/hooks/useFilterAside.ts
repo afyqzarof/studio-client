@@ -36,7 +36,7 @@ const useFilterAside = (
             );
           })
         );
-
+        break;
       default:
         break;
     }

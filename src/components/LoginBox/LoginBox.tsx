@@ -1,7 +1,7 @@
 import "./LoginBox.scss";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Input from "../../components/Input/Input";
+import Input from "../Input/Input";
 import axios from "axios";
 
 const LoginBox = () => {
@@ -25,7 +25,7 @@ const LoginBox = () => {
     setIsLogin(!isLogin);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormFields({
       ...formFields,
       [e.target.name]: e.target.value.trim(),
@@ -81,7 +81,7 @@ const LoginBox = () => {
     }
     return false;
   };
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // navigate("/dashboard");
     if (!isFormValid()) {

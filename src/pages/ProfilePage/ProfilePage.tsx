@@ -1,4 +1,4 @@
-import React, { useEffect, useState, MouseEventHandler } from "react";
+import React, { useEffect, useState } from "react";
 import MainHeader from "../../components/MainHeader/MainHeader";
 import "./ProfilePage.scss";
 import { useNavigate } from "react-router-dom";

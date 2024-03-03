@@ -5,7 +5,7 @@ import {
   getTriadicColors,
 } from "../utils/color-methods";
 import { useReactFlow, useOnSelectionChange, Node } from "reactflow";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { nanoid } from "nanoid";
 
 const useColorTools = () => {

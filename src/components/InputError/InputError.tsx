@@ -1,6 +1,8 @@
 import "./InputError.scss";
-
-const InputError = ({ msg }) => {
+type InputErrorProps = {
+  msg: string;
+};
+const InputError = ({ msg }: InputErrorProps) => {
   return (
     <div>
       <p className="error-msg">{msg}</p>

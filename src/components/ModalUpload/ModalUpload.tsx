@@ -68,14 +68,14 @@ const ModalUpload = () => {
     setMyFiles(null);
   };
 
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
-  }
+  };
 
-  function closeModal() {
+  const closeModal = () => {
     setIsFileBig(false);
     setIsOpen(false);
-  }
+  };
   return (
     <>
       <button onClick={openModal} className="btn-container__btn">
@@ -84,8 +84,7 @@ const ModalUpload = () => {
       <Modal
         ariaHideApp={false}
         isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal">
+        onRequestClose={closeModal}>
         <article className="upload">
           <form
             encType="multipart/form-data"

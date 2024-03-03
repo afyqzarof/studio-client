@@ -1,6 +1,17 @@
 import InputError from "../InputError/InputError";
+import React from "react";
 import "./Input.scss";
-
+type InputProps = {
+  name: string;
+  label: string;
+  placeholder: string;
+  className?: string;
+  isPassword?: boolean;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  tabIndex?: number;
+  msg: string;
+  disabled: boolean;
+};
 const Input = ({
   name,
   label,
@@ -11,7 +22,7 @@ const Input = ({
   tabIndex,
   msg,
   disabled,
-}) => {
+}: InputProps) => {
   return (
     <div className={`input-container ${className}`}>
       <label htmlFor={name} className="input-container__label">

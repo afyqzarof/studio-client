@@ -3,7 +3,7 @@ import "./DashBoardPage.scss";
 import MainHeader from "../../components/MainHeader/MainHeader";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useFilterAside from "../../hooks/useFilterAside";
 import FilterAside from "../../components/FilterAside/FilterAside";
 import demoBoards, { Board } from "../../data/demo-dashboard";

@@ -1,5 +1,4 @@
 import "./ModalInput.scss";
-import Popup from "reactjs-popup";
 import {
   getDomain,
   getYoutubeId,
@@ -11,12 +10,16 @@ import {
 import { useReactFlow } from "reactflow";
 import { nanoid } from "nanoid";
 import getRandomCoords from "../../utils/get-random-coords";
+import { FormEvent, useState } from "react";
+import Modal from "react-modal";
 
 const ModalInput = () => {
+  const [modalIsOpen, setIsOpen] = useState(false);
   const { addNodes } = useReactFlow();
-  const handleCreateUrlPin = (e) => {
+  const handleCreateUrlPin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const url = e.target.url.value;
+    const formElement = e.target as HTMLFormElement;
+    const url = formElement.url.value as string;
     if (!isUrlValid(url)) {
       // console.log("not valid url");
 
@@ -74,12 +77,23 @@ const ModalInput = () => {
       });
     }
   };
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <Popup
-      trigger={<button className="btn-container__btn">add link</button>}
-      modal
-      nested>
-      {(close) => (
+    <>
+      <button className="btn-container__btn" onClick={openModal}>
+        add link
+      </button>
+      <Modal
+        ariaHideApp={false}
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}>
         <article className="modal">
           <h2 className="modal__title">enter a url</h2>
           <p className="modal__paragraph">
@@ -89,7 +103,7 @@ const ModalInput = () => {
             className="url-form"
             onSubmit={(e) => {
               handleCreateUrlPin(e);
-              close();
+              closeModal();
             }}>
             <input
               type="text"
@@ -102,8 +116,8 @@ const ModalInput = () => {
             </button>
           </form>
         </article>
-      )}
-    </Popup>
+      </Modal>
+    </>
   );
 };
 

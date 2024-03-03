@@ -1,10 +1,10 @@
 import { memo } from "react";
-import { NodeResizer } from "reactflow";
+import { NodeProps, NodeResizer } from "reactflow";
 import "./ImageNode.scss";
 import NodeWrapper from "../NodeWrapper/NodeWrapper";
 import useIsDemo from "../../hooks/useIsDemo";
 
-const ImageNode = memo(({ selected, data }) => {
+const ImageNode = memo(({ selected, data }: NodeProps) => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const isDemo = useIsDemo();
 
