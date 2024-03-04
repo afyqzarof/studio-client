@@ -5,9 +5,8 @@
 .modal {
   background: colors.$primary-light;
   @include flex(column, center, flex-start);
-  padding: 1rem;
   border-radius: 2px;
-  width: 35vw;
+  width: 100%;
 
   &__title {
     @include section-header;
