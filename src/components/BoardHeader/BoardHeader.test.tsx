@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { screen, fireEvent, waitFor, render } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 import renderWithRouter from "../../__tests__/utils/renderWithRouter";
 import BoardHeader from "./BoardHeader";
 import { ReactFlowProvider } from "reactflow";
