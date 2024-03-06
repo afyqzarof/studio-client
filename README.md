@@ -1,6 +1,11 @@
-<!-- # Project Title -->
-
 # studio
+
+Front End github repository
+
+### Links:
+
+- [website](https://ideation-studio.dev/)
+- [Back End GitHub Repository](https://github.com/afyqzarof/studio-server)
 
 ## To run
 
@@ -15,6 +20,12 @@ npm install
 
 ```bash
 npm run dev
+```
+
+## To test
+
+```bash
+npm test
 ```
 
 ## Overview

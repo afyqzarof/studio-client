@@ -36,6 +36,7 @@ const LoginPage = () => {
           </div>
         </nav>
         <section
+          data-testid={"login-box"}
           className={isLoginShown ? "login-box login-box--shown" : "login-box"}>
           <LoginBox />
         </section>
