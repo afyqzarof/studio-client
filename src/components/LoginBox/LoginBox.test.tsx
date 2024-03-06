@@ -21,4 +21,12 @@ describe("LoginBox tests", () => {
 
     expect(errors.length).toBe(4);
   });
+
+  it("shows different msg when register", () => {
+    renderWithRouter(<LoginBox />);
+
+    fireEvent.click(screen.getByText(/are you new around here?/));
+
+    expect(screen.getByText(/not my first time here/)).toBeInTheDocument();
+  });
 });
