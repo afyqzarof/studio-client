@@ -1,10 +1,14 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { screen, render } from "@testing-library/react";
 import renderWithRouter from "../../__tests__/utils/renderWithRouter";
 import BoardHeader from "./BoardHeader";
 import { ReactFlowProvider } from "reactflow";
 import { Route, Routes, MemoryRouter } from "react-router-dom";
+import { mockReactFlow } from "../../__tests__/utils/mockReactFlow";
 
+beforeEach(() => {
+  mockReactFlow();
+});
 describe("board header tests", () => {
   it("should render", () => {
     renderWithRouter(

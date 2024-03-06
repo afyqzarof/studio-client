@@ -2,8 +2,8 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vitest } from "vitest";
 import Input from "./Input";
 
+const onChangeMock = vitest.fn();
 const renderDefaultInput = () => {
-  const onChangeMock = vitest.fn();
   render(
     <Input
       name="username"
@@ -16,7 +16,7 @@ const renderDefaultInput = () => {
   );
 };
 
-describe("default input test", () => {
+describe("input test", () => {
   it("renders default input", () => {
     renderDefaultInput();
     expect(screen.getByLabelText(/username/)).toBeInTheDocument();
@@ -34,5 +34,19 @@ describe("default input test", () => {
       fireEvent.change(input, event);
     });
     expect(screen.getByDisplayValue(/test username/)).toBeInTheDocument();
+  });
+
+  it("renders error message", () => {
+    render(
+      <Input
+        name="username"
+        label="enter username"
+        handleChange={onChangeMock}
+        placeholder="enter username"
+        disabled={false}
+        msg="test error message"
+      />
+    );
+    expect(screen.getByText(/test error message/)).toBeInTheDocument();
   });
 });

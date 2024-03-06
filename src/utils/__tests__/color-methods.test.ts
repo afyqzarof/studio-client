@@ -18,7 +18,6 @@ describe("correct color methods", () => {
 
   it("should return triadic colors", () => {
     const colors = getTriadicColors("#00ff00");
-    console.log(colors);
     expect(colors).toStrictEqual(["#0000ff", "#ff0000"]);
   });
 });
