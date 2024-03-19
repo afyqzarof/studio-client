@@ -1,7 +1,6 @@
 import React, { memo, useState } from "react";
 import { NodeProps, NodeResizer, useReactFlow } from "reactflow";
 import "./ColorSelectorNode.scss";
-import { SketchPicker } from "react-color";
 
 const ColorSelectorNode = memo(({ selected, data, id }: NodeProps) => {
   const [color, setColor] = useState(data.color);
@@ -14,6 +13,21 @@ const ColorSelectorNode = memo(({ selected, data, id }: NodeProps) => {
     const nodes = getNodes();
     const filteredNodes = nodes.filter((node) => node.id !== id);
     setNodes([...filteredNodes, selectedNode]);
+  };
+
+  const handleTextColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value.slice(1);
+    console.log(input, input.length);
+
+    if (input === "#") {
+      return;
+    }
+    // console.log(input);
+    console.log(/^[0-9a-f]+$/.test(input));
+
+    if (/^[0-9a-f]+$/.test(input)) {
+      setColor(e.target.value);
+    }
   };
 
   return (
@@ -29,7 +43,13 @@ const ColorSelectorNode = memo(({ selected, data, id }: NodeProps) => {
           className="color-select__color"
           style={{ backgroundColor: color }}></div>
         <div className="color-select__container">
-          <p className="nodrag">{color}</p>
+          {/* <p className="nodrag">{color}</p> */}
+          <input
+            type="text"
+            className="color-select__text-input"
+            value={color}
+            onChange={handleTextColorChange}
+          />
           <input
             onChange={handleColorChange}
             className="nodrag color-select__input"
@@ -37,7 +57,6 @@ const ColorSelectorNode = memo(({ selected, data, id }: NodeProps) => {
             value={color}
             id="colorSelector"
           />
-          {/* <SketchPicker /> */}
         </div>
       </article>
     </>
