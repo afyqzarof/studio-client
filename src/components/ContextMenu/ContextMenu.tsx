@@ -20,14 +20,13 @@ const ContextMenu = ({
 }: ContextMenuProps) => {
   const { getNode, setNodes, addNodes, setEdges } = useReactFlow();
   const duplicateNode = useCallback(() => {
-    const node = getNode(id);
-    if (node) {
-      const position = {
-        x: node.position.x + 50,
-        y: node.position.y + 50,
-      };
-      addNodes({ ...node, id: nanoid(10), position });
-    }
+    const node = getNode(id)!;
+
+    const position = {
+      x: node.position.x + 50,
+      y: node.position.y + 50,
+    };
+    addNodes({ ...node, id: nanoid(10), position });
   }, [id, getNode, addNodes]);
 
   const deleteNode = useCallback(() => {

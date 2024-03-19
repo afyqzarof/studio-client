@@ -24,7 +24,7 @@ const Input = ({
   disabled,
 }: InputProps) => {
   return (
-    <div className={`input-container ${className}`}>
+    <div className={`input-container ${className ? className : ""}`}>
       <label htmlFor={name} className="input-container__label">
         {label}
       </label>
