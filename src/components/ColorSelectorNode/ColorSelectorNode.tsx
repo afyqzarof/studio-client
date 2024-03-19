@@ -17,16 +17,13 @@ const ColorSelectorNode = memo(({ selected, data, id }: NodeProps) => {
 
   const handleTextColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value.slice(1);
-    console.log(input, input.length);
 
-    if (input === "#") {
+    if (input.length < 1 || input.length > 6) {
       return;
     }
-    // console.log(input);
-    console.log(/^[0-9a-f]+$/.test(input));
 
-    if (/^[0-9a-f]+$/.test(input)) {
-      setColor(e.target.value);
+    if (/^[0-9a-f]+$/.test(input) || input === "") {
+      setColor("#" + input);
     }
   };
 
