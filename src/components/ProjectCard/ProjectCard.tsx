@@ -3,6 +3,7 @@ import { useState, MouseEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useIsDemo from "../../hooks/useIsDemo";
 import BoardContextMenu from "../BoardContextMenu/BoardContextMenu";
+import useContextMenu from "../../hooks/useContextMenu";
 type ProjectCardProps = {
   title: string;
   imgSrc: string;
@@ -24,18 +25,7 @@ const ProjectCard = ({
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
   const isDemo = useIsDemo();
-  const [clicked, setClicked] = useState(false);
-  const [points, setPoints] = useState({
-    x: 0,
-    y: 0,
-  });
-  useEffect(() => {
-    const handleClick = () => setClicked(false);
-    window.addEventListener("click", handleClick);
-    return () => {
-      window.removeEventListener("click", handleClick);
-    };
-  }, []);
+  const { clicked, points, handleContext } = useContextMenu();
 
   const handleClick = () => {
     if (author) {
@@ -49,12 +39,7 @@ const ProjectCard = ({
 
     navigate("/board/" + boardId);
   };
-  const handleContext = (e: MouseEvent<HTMLTitleElement>) => {
-    e.preventDefault();
-    console.log("Right Click", e.pageX, e.pageY);
-    setClicked(true);
-    setPoints({ x: e.pageX, y: e.pageY });
-  };
+
   return (
     <>
       {clicked && (
