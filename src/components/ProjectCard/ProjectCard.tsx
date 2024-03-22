@@ -1,7 +1,8 @@
 import "./ProjectCard.scss";
-import { useState } from "react";
+import { useState, MouseEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useIsDemo from "../../hooks/useIsDemo";
+import BoardContextMenu from "../BoardContextMenu/BoardContextMenu";
 type ProjectCardProps = {
   title: string;
   imgSrc: string;
@@ -23,6 +24,18 @@ const ProjectCard = ({
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
   const isDemo = useIsDemo();
+  const [clicked, setClicked] = useState(false);
+  const [points, setPoints] = useState({
+    x: 0,
+    y: 0,
+  });
+  useEffect(() => {
+    const handleClick = () => setClicked(false);
+    window.addEventListener("click", handleClick);
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
+  }, []);
 
   const handleClick = () => {
     if (author) {
@@ -36,32 +49,47 @@ const ProjectCard = ({
 
     navigate("/board/" + boardId);
   };
+  const handleContext = (e: MouseEvent<HTMLTitleElement>) => {
+    e.preventDefault();
+    console.log("Right Click", e.pageX, e.pageY);
+    setClicked(true);
+    setPoints({ x: e.pageX, y: e.pageY });
+  };
   return (
-    <article className="project-wrapper">
-      <h2 className="project__title">{!title ? "untitled" : title}</h2>
-      <div
-        className="project"
-        style={{ backgroundImage: `url(${imgSrc})` }}
-        onMouseEnter={() => {
-          setIsShown(true);
-        }}
-        onMouseLeave={() => {
-          setIsShown(false);
-        }}
-        onClick={handleClick}>
-        {author && <p className="project__author">{author}</p>}
-      </div>
-      <div
-        className={
-          isShown
-            ? "project__details-container"
-            : "project__details-container project__details-container--shown"
-        }>
-        <p className="project__caption">{description}</p>
-        <h3 className="project__date">{date}</h3>
-        <p className="project__category">{category}</p>
-      </div>
-    </article>
+    <>
+      {clicked && (
+        <BoardContextMenu
+          isToggled={clicked}
+          positionX={points.x}
+          positionY={points.y}
+        />
+      )}
+      <article className="project-wrapper" onContextMenu={handleContext}>
+        <h2 className="project__title">{!title ? "untitled" : title}</h2>
+        <div
+          className="project"
+          style={{ backgroundImage: `url(${imgSrc})` }}
+          onMouseEnter={() => {
+            setIsShown(true);
+          }}
+          onMouseLeave={() => {
+            setIsShown(false);
+          }}
+          onClick={handleClick}>
+          {author && <p className="project__author">{author}</p>}
+        </div>
+        <div
+          className={
+            isShown
+              ? "project__details-container"
+              : "project__details-container project__details-container--shown"
+          }>
+          <p className="project__caption">{description}</p>
+          <h3 className="project__date">{date}</h3>
+          <p className="project__category">{category}</p>
+        </div>
+      </article>
+    </>
   );
 };
 

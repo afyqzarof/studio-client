@@ -1,7 +1,7 @@
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import "./DashBoardPage.scss";
 import MainHeader from "../../components/MainHeader/MainHeader";
-import { useEffect, useState } from "react";
+import { Context, useEffect, useState, MouseEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useFilterAside from "../../hooks/useFilterAside";
