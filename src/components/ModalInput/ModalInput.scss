@@ -3,10 +3,10 @@
 @use "../../styles/partials/colors";
 
 .modal {
+  width: 50rem;
   background: colors.$primary-light;
   @include flex(column, center, flex-start);
   border-radius: 2px;
-  width: 100%;
 
   &__title {
     @include section-header;

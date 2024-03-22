@@ -15,7 +15,6 @@ const useContextMenu = () => {
   }, []);
   const handleContext = (e: MouseEvent<HTMLTitleElement>) => {
     e.preventDefault();
-    console.log("Right Click", e.pageX, e.pageY);
     setClicked(true);
     setPoints({ x: e.pageX, y: e.pageY });
   };
