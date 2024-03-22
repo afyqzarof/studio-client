@@ -6,6 +6,7 @@ import BoardContextMenu from "../BoardContextMenu/BoardContextMenu";
 import useContextMenu from "../../hooks/useContextMenu";
 import ModalGeneral from "../ModalGeneral/ModalGeneral";
 import useModal from "../../hooks/useModal";
+import axios from "axios";
 type ProjectCardProps = {
   title: string;
   imgSrc: string;
@@ -14,6 +15,7 @@ type ProjectCardProps = {
   category: string | undefined;
   boardId: string;
   author: any;
+  handleDelete: () => void;
 };
 const ProjectCard = ({
   title,
@@ -23,7 +25,9 @@ const ProjectCard = ({
   category,
   boardId,
   author,
+  handleDelete,
 }: ProjectCardProps) => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
   const isDemo = useIsDemo();
@@ -42,6 +46,10 @@ const ProjectCard = ({
 
     navigate("/board/" + boardId);
   };
+  // const handleDelete = async () => {
+  //   await axios.delete(baseUrl + "/boards/" + boardId);
+  //   closeModal();
+  // };
 
   return (
     <>
@@ -83,6 +91,7 @@ const ProjectCard = ({
           modalIsOpen={modalIsOpen}
           closeModal={closeModal}
           title={`delete ${!title ? "untitled" : title}?`}
+          onClick={handleDelete}
         />
       )}
     </>

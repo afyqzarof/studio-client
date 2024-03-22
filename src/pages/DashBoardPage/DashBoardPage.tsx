@@ -1,7 +1,7 @@
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import "./DashBoardPage.scss";
 import MainHeader from "../../components/MainHeader/MainHeader";
-import { Context, useEffect, useState, MouseEvent } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useFilterAside from "../../hooks/useFilterAside";
@@ -18,28 +18,29 @@ const DashBoardPage = () => {
     setBoards
   );
   const isDemo = useIsDemo();
+  const fetchUserBoards = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+    try {
+      const { data } = await axios.get(baseUrl + "/users/boards", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setBoards(data);
+    } catch (error) {
+      localStorage.removeItem("token");
+      navigate("/login");
+    }
+  };
 
   useEffect(() => {
     if (isDemo) {
       setBoards(demoBoards);
       return;
     }
-    const fetchUserBoards = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        navigate("/login");
-        return;
-      }
-      try {
-        const { data } = await axios.get(baseUrl + "/users/boards", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setBoards(data);
-      } catch (error) {
-        localStorage.removeItem("token");
-        navigate("/login");
-      }
-    };
+
     fetchUserBoards();
   }, []);
 
@@ -63,6 +64,10 @@ const DashBoardPage = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+  const handleDelete = async (boardId: string) => {
+    await axios.delete(baseUrl + "/boards/" + boardId);
+    fetchUserBoards();
   };
   return (
     <div className="page-wrapper">
@@ -98,6 +103,9 @@ const DashBoardPage = () => {
                   category={board.category}
                   boardId={board.id}
                   author={false}
+                  handleDelete={() => {
+                    handleDelete(board.id);
+                  }}
                 />
               </li>
             );
