@@ -18,28 +18,29 @@ const DashBoardPage = () => {
     setBoards
   );
   const isDemo = useIsDemo();
+  const fetchUserBoards = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+    try {
+      const { data } = await axios.get(baseUrl + "/users/boards", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setBoards(data);
+    } catch (error) {
+      localStorage.removeItem("token");
+      navigate("/login");
+    }
+  };
 
   useEffect(() => {
     if (isDemo) {
       setBoards(demoBoards);
       return;
     }
-    const fetchUserBoards = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        navigate("/login");
-        return;
-      }
-      try {
-        const { data } = await axios.get(baseUrl + "/users/boards", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setBoards(data);
-      } catch (error) {
-        localStorage.removeItem("token");
-        navigate("/login");
-      }
-    };
+
     fetchUserBoards();
   }, []);
 
@@ -63,6 +64,10 @@ const DashBoardPage = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+  const handleDelete = async (boardId: string) => {
+    await axios.delete(baseUrl + "/boards/" + boardId);
+    fetchUserBoards();
   };
   return (
     <div className="page-wrapper">
@@ -98,6 +103,9 @@ const DashBoardPage = () => {
                   category={board.category}
                   boardId={board.id}
                   author={false}
+                  handleDelete={() => {
+                    handleDelete(board.id);
+                  }}
                 />
               </li>
             );
