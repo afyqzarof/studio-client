@@ -6,7 +6,6 @@ import BoardContextMenu from "../BoardContextMenu/BoardContextMenu";
 import useContextMenu from "../../hooks/useContextMenu";
 import ModalGeneral from "../ModalGeneral/ModalGeneral";
 import useModal from "../../hooks/useModal";
-import axios from "axios";
 type ProjectCardProps = {
   title: string;
   imgSrc: string;
@@ -27,7 +26,6 @@ const ProjectCard = ({
   author,
   handleDelete,
 }: ProjectCardProps) => {
-  const baseUrl = import.meta.env.VITE_BASE_URL;
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
   const isDemo = useIsDemo();
@@ -46,14 +44,10 @@ const ProjectCard = ({
 
     navigate("/board/" + boardId);
   };
-  // const handleDelete = async () => {
-  //   await axios.delete(baseUrl + "/boards/" + boardId);
-  //   closeModal();
-  // };
 
   return (
     <>
-      {clicked && (
+      {clicked && !author && (
         <BoardContextMenu
           isToggled={clicked}
           positionX={points.x}
