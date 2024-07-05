@@ -10,6 +10,7 @@ import useHandleThumbnail from "../../hooks/useHandleThumbnail";
 import useIsDemo from "../../hooks/useIsDemo";
 import DemoBtn from "../DemoBtn/DemoBtn";
 import demoBoards from "../../data/demo-dashboard";
+import LoadingModal from "../LoadingModal/LoadingModal";
 
 const BoardHeader = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -130,6 +131,7 @@ const BoardHeader = () => {
           )}
         </ul>
       </nav>
+      <LoadingModal modalIsOpen={isLoading} />
     </header>
   );
 };
