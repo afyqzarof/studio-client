@@ -59,7 +59,7 @@ const BoardHeader = () => {
         height: pin.height,
         id: pin.id,
         type: pin.type,
-        data: pin.data,
+        data: JSON.stringify(pin.data),
         x_coord: Math.floor(pin.position.x),
         y_coord: Math.floor(pin.position.y),
       };
