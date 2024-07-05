@@ -5,7 +5,7 @@ import NodeWrapper from "../NodeWrapper/NodeWrapper";
 import useIsDemo from "../../hooks/useIsDemo";
 
 const ImageNode = memo(({ selected, data }: NodeProps) => {
-  const baseUrl = process.env.VITE_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const isDemo = useIsDemo();
 
   return (

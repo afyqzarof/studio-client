@@ -6,7 +6,7 @@ import getRandomCoords from "../utils/get-random-coords";
 import { Definition } from "../components/ModalDefinition/ModalDefinition";
 
 const useWordTools = () => {
-  const baseUrl = process.env.VITE_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [definitions, setDefinitions] = useState<Definition[]>([]);
   const [chosenWord, setChosenWord] = useState("");

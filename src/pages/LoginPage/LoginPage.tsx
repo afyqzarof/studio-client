@@ -1,19 +1,23 @@
+"use client";
 import "./LoginPage.scss";
 import LoginBox from "../../components/LoginBox/LoginBox";
 import { useEffect, useState } from "react";
 import logo from "../../assets/logos/logo-small.svg";
-import { Link, useNavigate } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from 'next/navigation'
+import Image from "next/image";
 
 const LoginPage = () => {
   const [isLoginShown, setIsLoginShown] = useState(false);
   const showLogin = () => {
     setIsLoginShown(true);
   };
-  const navigate = useNavigate();
+  const router = useRouter();
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      navigate("/dashboard");
+      router.push("/dashboard");
     }
   });
 
@@ -68,7 +72,7 @@ const LoginPage = () => {
               boards can be published for others to view, as well.
             </p>
             <div className="info__link-container">
-              <Link to="/demo/dashboard" className="info__link">
+              <Link href="/demo/dashboard" className="info__link">
                 view example
               </Link>
             </div>
@@ -85,7 +89,7 @@ const LoginPage = () => {
               need some inspiration
             </p>
             <div className="info__link-container">
-              <Link to="/demo/explore" className="info__link">
+              <Link href="/demo/explore" className="info__link">
                 explore a bit
               </Link>
             </div>
@@ -94,7 +98,12 @@ const LoginPage = () => {
       </section>
       <footer className="login-footer">
         <p className="login-footer__name">studio</p>
-        <img src={logo} alt="studio logo" />
+        <Image
+          src="/logos/logo-small.svg"
+          alt="studio logo"
+          width={100}
+          height={100}
+        />
       </footer>
     </>
   );

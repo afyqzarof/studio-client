@@ -1,10 +1,11 @@
 import "./LoginBox.scss";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Input from "../Input/Input";
 import axios from "axios";
 
 const LoginBox = () => {
+  const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
   const [formFields, setFormFields] = useState({
     username: "",
@@ -18,8 +19,7 @@ const LoginBox = () => {
     password: "",
     confirmPassword: "",
   });
-  const navigate = useNavigate();
-  const baseUrl = process.env.VITE_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const handleClick = () => {
     setIsLogin(!isLogin);
@@ -100,7 +100,7 @@ const LoginBox = () => {
         );
 
         localStorage.setItem("token", data.token);
-        navigate("/dashboard");
+        router.push("/dashboard");
         return;
       } catch (error) {
         setFormErrors({

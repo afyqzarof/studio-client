@@ -10,7 +10,7 @@ import demoBoards, { Board } from "../../data/demo-dashboard";
 import useIsDemo from "../../hooks/useIsDemo";
 
 const DashBoardPage = () => {
-  const baseUrl = process.env.VITE_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const [boards, setBoards] = useState<Board[]>([]);
   const navigate = useNavigate();
   const { filterOptions, handleOptionChange } = useFilterAside(

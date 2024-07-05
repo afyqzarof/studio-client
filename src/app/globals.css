@@ -1,4 +1,6 @@
-@use "./typography";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 *,
 *::before,
@@ -7,7 +9,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  font-family: primary-font;
+  font-family: var(--font-ibm-mono);
 }
 
 li {

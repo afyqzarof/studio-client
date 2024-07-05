@@ -14,7 +14,7 @@ const ProfilePage = () => {
     email: string;
     password: string;
   };
-  const baseUrl = process.env.VITE_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const navigate = useNavigate();
   const [isSave, setIsSave] = useState(false);
   const [formFields, setFormFields] = useState<FormFields>({

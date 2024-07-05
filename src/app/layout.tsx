@@ -1,9 +1,6 @@
+import "./globals.css";
 import type { Metadata } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
-const inter = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["200", "300", "400"],
-});
+import { ibm_mono, corporate_pro } from "./fonts";
 
 export const metadata: Metadata = {
   title: "studio",
@@ -17,13 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <head> */}
-      {/* <link rel="icon" type="image/svg+xml" href="/studio-favicon.svg" /> */}
-      {/* <title>studio</title> */}
-      {/* </head> */}
-      <body className={inter.className}>
+      <body className={`${ibm_mono.variable} ${corporate_pro.variable}`}>
         <div id="root">{children}</div>
-        {/* <script type="module" src="/src/main.tsx"></script> */}
       </body>
     </html>
   );
