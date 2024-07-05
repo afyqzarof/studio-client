@@ -85,7 +85,7 @@ const ModalUpload = () => {
         ariaHideApp={false}
         isOpen={modalIsOpen}
         onRequestClose={closeModal}>
-        <article className="upload">
+        <article className="upload bg-white">
           <form
             encType="multipart/form-data"
             className="file-form"
