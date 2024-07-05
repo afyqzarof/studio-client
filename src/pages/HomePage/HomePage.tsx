@@ -4,7 +4,6 @@ import logoBlack from "../../assets/logos/logo-black.svg";
 import logoBlue from "../../assets/logos/logo-blue.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import LoadingModal from "../../components/LoadingModal/LoadingModal";
 
 const HomePage = () => {
   const [isLogoBlack, setIsLogoBlack] = useState(true);
@@ -39,7 +38,6 @@ const HomePage = () => {
           </p>
         </Link>
       </div>
-      <LoadingModal modalIsOpen={true} closeModal={() => {}} />
     </main>
   );
 };

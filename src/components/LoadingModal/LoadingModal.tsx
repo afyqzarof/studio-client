@@ -8,7 +8,7 @@ const LoadingModal = ({ modalIsOpen }: LoadingModalProps) => {
   return (
     <Modal isOpen={modalIsOpen} ariaHideApp={false}>
       <article className=" overflow-visible">
-        <img src={studioLogo} alt="" className="w-52 animate-bounce"/>
+        <img src={studioLogo} alt="studio" className="w-52 animate-bounce"/>
       </article>
     </Modal>
   );
