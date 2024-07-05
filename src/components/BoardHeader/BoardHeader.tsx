@@ -13,7 +13,7 @@ import demoBoards from "../../data/demo-dashboard";
 import LoadingModal from "../LoadingModal/LoadingModal";
 
 const BoardHeader = () => {
-  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const baseUrl = process.env.VITE_BASE_URL;
   const [isIconSelected, setIsIconSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState("");

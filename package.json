@@ -4,11 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "host": "vite --host",
-    "build": "tsc && vite build",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
     "test": "vitest"
   },
   "dependencies": {
@@ -16,6 +15,7 @@
     "axios": "^1.6.5",
     "html-to-image": "^1.11.11",
     "nanoid": "^5.0.4",
+    "next": "^14.2.4",
     "rctx-contextmenu": "^1.4.1",
     "react": "^18.2.0",
     "react-color": "^2.19.3",

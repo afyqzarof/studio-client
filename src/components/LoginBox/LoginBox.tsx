@@ -19,7 +19,7 @@ const LoginBox = () => {
     confirmPassword: "",
   });
   const navigate = useNavigate();
-  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const baseUrl = process.env.VITE_BASE_URL;
 
   const handleClick = () => {
     setIsLogin(!isLogin);

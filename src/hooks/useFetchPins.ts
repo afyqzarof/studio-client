@@ -6,7 +6,7 @@ import useIsDemo, { IsDemo } from "./useIsDemo";
 import demoPins, { Pin } from "../data/demo-pins";
 
 const useFetchPins = () => {
-  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const baseUrl = process.env.VITE_BASE_URL;
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const { boardId } = useParams();
   const isDemo: IsDemo = useIsDemo();

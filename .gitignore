@@ -25,3 +25,7 @@ dist-ssr
 .env
 .hintrc
 coverage
+
+.next
+next-env.d.ts
+dist
