@@ -1,14 +1,15 @@
 import "./ProjectCard.scss";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import useIsDemo from "../../hooks/useIsDemo";
 import BoardContextMenu from "../BoardContextMenu/BoardContextMenu";
 import useContextMenu from "../../hooks/useContextMenu";
 import ModalGeneral from "../ModalGeneral/ModalGeneral";
 import useModal from "../../hooks/useModal";
+import { StaticImageData } from "next/image";
 type ProjectCardProps = {
   title: string;
-  imgSrc: string;
+  imgSrc: string | StaticImageData;
   description: string | undefined;
   date: string;
   category: string | undefined;
@@ -27,22 +28,22 @@ const ProjectCard = ({
   handleDelete,
 }: ProjectCardProps) => {
   const [isShown, setIsShown] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
   const isDemo = useIsDemo();
   const { clicked, points, handleContext } = useContextMenu();
   const { openModal, closeModal, modalIsOpen } = useModal();
 
   const handleClick = () => {
     if (author) {
-      navigate("/explore/" + boardId);
+      router.push("/explore/" + boardId);
       return;
     }
     if (isDemo) {
-      navigate("/demo/board/" + boardId);
+      router.push("/demo/board/" + boardId);
       return;
     }
 
-    navigate("/board/" + boardId);
+    router.push("/board/" + boardId);
   };
 
   return (

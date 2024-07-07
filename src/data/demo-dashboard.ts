@@ -1,12 +1,13 @@
-import demoBoard1 from "../assets/thumbnails/demo-board-1.png";
-import demoBoard2 from "../assets/thumbnails/demo-board-2.png";
-import demoBoard3 from "../assets/thumbnails/demo-board-3.png";
+import { StaticImageData } from "next/image";
+import demoBoard1 from "../../public/thumbnails/demo-board-1.png";
+import demoBoard2 from "../../public/thumbnails/demo-board-2.png";
+import demoBoard3 from "../../public/thumbnails/demo-board-3.png";
 
 export type Board = {
   id: string;
   title: string;
   created_at: string;
-  thumbnail: string;
+  thumbnail: StaticImageData;
   description?: string;
   category?: string;
   username?: string;

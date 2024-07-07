@@ -1,11 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
 
 export type IsDemo = boolean;
 const useIsDemo = (): IsDemo => {
-  const { pathname } = useLocation();
-  const isDemo = pathname.includes("demo");
+  const pathname = usePathname();
+  const isDemo = pathname?.includes("demo");
 
-  return isDemo;
+  return isDemo || false;
 };
 
 export default useIsDemo;
