@@ -1,6 +1,6 @@
 import { useNodesState } from "reactflow";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
 import axios from "axios";
 import useIsDemo, { IsDemo } from "./useIsDemo";
 import demoPins, { Pin } from "../data/demo-pins";
@@ -8,7 +8,8 @@ import demoPins, { Pin } from "../data/demo-pins";
 const useFetchPins = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const { boardId } = useParams();
+  const params = useParams<{ boardId: string }>();
+  const boardId = params?.boardId;
   const isDemo: IsDemo = useIsDemo();
 
   useEffect(() => {

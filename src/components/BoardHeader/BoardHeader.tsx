@@ -1,16 +1,17 @@
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import "./BoardHeader.scss";
-import upIconDefault from "../../assets/icons/arrow-N-default.svg";
-import upIconSelected from "../../assets/icons/arrow-N-selected.svg";
+// import upIconDefault from "../../assets/icons/arrow-N-default.svg";
+// import upIconSelected from "/icons/arrow-N-selected.svg";
 import React, { useEffect, useState } from "react";
 import { useReactFlow } from "reactflow";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
 import useHandleThumbnail from "../../hooks/useHandleThumbnail";
 import useIsDemo from "../../hooks/useIsDemo";
 import DemoBtn from "../DemoBtn/DemoBtn";
 import demoBoards from "../../data/demo-dashboard";
 import LoadingModal from "../LoadingModal/LoadingModal";
+import Image from "next/image";
 
 const BoardHeader = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -18,9 +19,10 @@ const BoardHeader = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState("");
   const { getNodes } = useReactFlow();
-  const { boardId } = useParams();
+  const params = useParams<{ boardId: string }>();
+  const boardId = params?.boardId;
   const { handleThumbnail } = useHandleThumbnail();
-  const navigate = useNavigate();
+  const router = useRouter();
   const isDemo = useIsDemo();
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const BoardHeader = () => {
     }
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login");
+      router.push("/login");
       return;
     }
     const fetchBoard = async () => {
@@ -41,7 +43,7 @@ const BoardHeader = () => {
         });
         setTitle(data.title);
       } catch (error) {
-        navigate("/dashboard");
+        router.push("/dashboard");
         console.log(error);
       }
     };
@@ -86,27 +88,33 @@ const BoardHeader = () => {
   };
   const handleBack = async () => {
     if (isDemo) {
-      navigate("/demo/dashboard");
+      router.push("/demo/dashboard");
       return;
     }
     await handleSave();
-    navigate("/dashboard");
+    router.push("/dashboard");
   };
   return (
     <header className="board-header">
       <nav className="nav">
         <div className="nav__left">
           <div onClick={handleBack}>
-            <img
+            <Image
               onMouseEnter={() => {
                 setIsIconSelected(true);
               }}
               onMouseLeave={() => {
                 setIsIconSelected(false);
               }}
-              src={isIconSelected ? upIconSelected : upIconDefault}
+              src={
+                isIconSelected
+                  ? "/icons/arrow-N-selected.svg"
+                  : "/icons/arrow-N-default.svg"
+              }
               alt="up arrow"
               className="nav__icon"
+              width={100}
+              height={100}
             />
           </div>
           <input

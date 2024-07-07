@@ -1,7 +1,7 @@
-import image1 from "../assets/uploads/demo-1.jpeg";
-import image2 from "../assets/uploads/demo-2.jpeg";
-import image3 from "../assets/uploads/demo-3.jpeg";
-import image4 from "../assets/uploads/demo-4.png";
+const image1 = "/uploads/demo-1.jpeg";
+const image2 = "/uploads/demo-2.jpeg";
+const image3 = "/uploads/demo-3.jpeg";
+const image4 = "/uploads/demo-4.png";
 
 export type Pin<T> = {
   board_id: string;

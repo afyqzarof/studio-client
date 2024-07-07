@@ -1,13 +1,12 @@
-import { StaticImageData } from "next/image";
-import demoBoard1 from "../../public/thumbnails/demo-board-1.png";
-import demoBoard2 from "../../public/thumbnails/demo-board-2.png";
-import demoBoard3 from "../../public/thumbnails/demo-board-3.png";
+const demoBoard1 = "/thumbnails/demo-board-1.png";
+const demoBoard2 = "/thumbnails/demo-board-2.png";
+const demoBoard3 = "/thumbnails/demo-board-3.png";
 
 export type Board = {
   id: string;
   title: string;
   created_at: string;
-  thumbnail: StaticImageData;
+  thumbnail: string;
   description?: string;
   category?: string;
   username?: string;
