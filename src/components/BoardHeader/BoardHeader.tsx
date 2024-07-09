@@ -51,6 +51,21 @@ const BoardHeader = () => {
   }, []);
   const handleSave = async () => {
     if (isDemo) {
+      const pins = getNodes();
+      const formattedPins = pins.map((pin) => {
+        return {
+          board_id: boardId,
+          width: pin.width,
+          height: pin.height,
+          id: pin.id,
+          type: pin.type,
+          data: JSON.stringify(pin.data),
+          x_coord: Math.floor(pin.position.x),
+          y_coord: Math.floor(pin.position.y),
+        };
+      });
+      console.log(formattedPins);
+
       return;
     }
     setIsLoading(true);
@@ -128,15 +143,15 @@ const BoardHeader = () => {
           {/* <button className="nav__btn">collaborate</button>
           <button className="nav__btn">publish</button> */}
 
-          {isDemo ? (
+          {/* {isDemo ? (
             <DemoBtn className={"nav__btn"} name="save" />
-          ) : (
-            <li>
-              <button className="nav__btn" onClick={handleSave}>
-                {isLoading ? "loading" : "save"}
-              </button>
-            </li>
-          )}
+          ) : ( */}
+          <li>
+            <button className="nav__btn" onClick={handleSave}>
+              {isLoading ? "loading" : "save"}
+            </button>
+          </li>
+          {/* )} */}
         </ul>
       </nav>
       <LoadingModal modalIsOpen={isLoading} />
