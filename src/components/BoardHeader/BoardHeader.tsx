@@ -67,8 +67,7 @@ const BoardHeader = () => {
         y_coord: Math.floor(pin.position.y),
       };
     });
-    console.log(formattedPins);
-    
+
     const { filename } = await handleThumbnail();
     if (title) {
       const boardBody = {
