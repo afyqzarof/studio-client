@@ -4,11 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "host": "vite --host",
-    "build": "tsc && vite build",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
     "test": "vitest"
   },
   "dependencies": {
@@ -16,17 +15,16 @@
     "axios": "^1.6.5",
     "html-to-image": "^1.11.11",
     "nanoid": "^5.0.4",
+    "next": "^14.2.4",
     "rctx-contextmenu": "^1.4.1",
     "react": "^18.2.0",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-modal": "^3.16.1",
-    "react-router-dom": "^6.21.3",
     "react-type-animation": "^3.2.0",
     "reactflow": "^11.10.2",
-    "reactjs-popup": "^2.0.6",
-    "sass": "^1.70.0"
+    "reactjs-popup": "^2.0.6"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.2",
@@ -46,6 +44,7 @@
     "jsdom": "^24.0.0",
     "postcss": "^8.4.39",
     "postcss-import": "^16.1.0",
+    "sass": "^1.77.6",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.3.3",
     "vite": "^5.0.8",

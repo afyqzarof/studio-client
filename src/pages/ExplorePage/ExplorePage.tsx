@@ -10,7 +10,7 @@ import useIsDemo from "../../hooks/useIsDemo";
 import { Board } from "../../data/demo-dashboard";
 
 const ExplorePage = () => {
-  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const isDemo = useIsDemo();
   const [exploreBoards, setExploreBoards] = useState<Board[]>([]);
   const { filterOptions, handleOptionChange } = useFilterAside(

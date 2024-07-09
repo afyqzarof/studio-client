@@ -3,16 +3,16 @@ import "./DashBoardPage.scss";
 import MainHeader from "../../components/MainHeader/MainHeader";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import useFilterAside from "../../hooks/useFilterAside";
 import FilterAside from "../../components/FilterAside/FilterAside";
 import demoBoards, { Board } from "../../data/demo-dashboard";
 import useIsDemo from "../../hooks/useIsDemo";
 
 const DashBoardPage = () => {
-  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const [boards, setBoards] = useState<Board[]>([]);
-  const navigate = useNavigate();
+  const router = useRouter();
   const { filterOptions, handleOptionChange } = useFilterAside(
     boards,
     setBoards
@@ -21,7 +21,7 @@ const DashBoardPage = () => {
   const fetchUserBoards = async () => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login");
+      router.push("/login");
       return;
     }
     try {
@@ -31,7 +31,7 @@ const DashBoardPage = () => {
       setBoards(data);
     } catch (error) {
       localStorage.removeItem("token");
-      navigate("/login");
+      router.push("/login");
     }
   };
 
@@ -46,7 +46,7 @@ const DashBoardPage = () => {
 
   const handleNewProject = async () => {
     if (isDemo) {
-      navigate("/demo/board/new-board");
+      router.push("/demo/board/new-board");
       return;
     }
 
@@ -60,7 +60,7 @@ const DashBoardPage = () => {
         }
       );
       const { id: boardId } = data;
-      navigate("/board/" + boardId);
+      router.push("/board/" + boardId);
     } catch (error) {
       console.log(error);
     }

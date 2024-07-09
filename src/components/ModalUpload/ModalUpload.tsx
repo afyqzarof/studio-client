@@ -10,7 +10,7 @@ import Modal from "react-modal";
 import DemoBtn from "../DemoBtn/DemoBtn";
 
 const ModalUpload = () => {
-  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const [myFiles, setMyFiles] = useState<any>(null);
   const [modalIsOpen, setIsOpen] = useState(false);
   const isDemo = useIsDemo();

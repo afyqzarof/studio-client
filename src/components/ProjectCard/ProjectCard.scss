@@ -49,7 +49,7 @@
 
   &__caption {
     @include caption;
-    font-family: secondary-font;
+    font-family: var(--font-corporate-pro);
   }
 
   &__category {

@@ -3,7 +3,7 @@ import { getViewportForBounds, getNodesBounds, useReactFlow } from "reactflow";
 import axios from "axios";
 
 const useHandleThumbnail = () => {
-  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const { getNodes } = useReactFlow();
   const postThumbnail = async (dataUrl: string) => {
     const arr: any = dataUrl.split(",");

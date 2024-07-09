@@ -1,28 +1,36 @@
+import { usePathname } from "next/navigation";
 import useIsDemo from "../../hooks/useIsDemo";
 import "./MainHeader.scss";
-import { NavLink } from "react-router-dom";
+import Link from "next/link";
 
 const MainHeader = () => {
   const isDemo = useIsDemo();
+  const pathname = usePathname();
 
   return (
     <header className="dash-header">
       <nav className="dash-nav">
-        <NavLink
-          to={isDemo ? "/demo/account" : "/account"}
-          className="dash-nav__link">
+        <Link
+          href={isDemo ? "/demo/account" : "/account"}
+          className={`dash-nav__link ${
+            pathname?.includes("/account") ? "active" : ""
+          }`}>
           account
-        </NavLink>
-        <NavLink
-          to={isDemo ? "/demo/dashboard" : "/dashboard"}
-          className="dash-nav__link">
+        </Link>
+        <Link
+          href={isDemo ? "/demo/dashboard" : "/dashboard"}
+          className={`dash-nav__link ${
+            pathname?.includes("/dashboard") ? "active" : ""
+          }`}>
           dashboard
-        </NavLink>
-        <NavLink
-          to={isDemo ? "/demo/explore" : "/explore"}
-          className="dash-nav__link">
+        </Link>
+        <Link
+          href={isDemo ? "/demo/explore" : "/explore"}
+          className={`dash-nav__link ${
+            pathname?.includes("/explore") ? "active" : ""
+          }`}>
           explore
-        </NavLink>
+        </Link>
       </nav>
     </header>
   );
