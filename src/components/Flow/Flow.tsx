@@ -55,8 +55,7 @@ const Flow = () => {
   );
   const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
   const panOnDrag = [1, 2];
-  console.log(nodes);
-  
+
   return (
     <>
       <ToolBar />
