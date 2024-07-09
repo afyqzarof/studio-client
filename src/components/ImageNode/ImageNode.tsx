@@ -19,7 +19,7 @@ const ImageNode = memo(({ selected, data }: NodeProps) => {
       />
       <NodeWrapper>
         <img
-          src={isDemo ? data.file : baseUrl + "/upload/" + data.file}
+          src={isDemo ? "/uploads/" + data.file : baseUrl + "/upload/" + data.file}
           alt={data.file}
           className="image-node"
         />

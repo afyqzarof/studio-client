@@ -51,7 +51,6 @@ const useWordTools = () => {
       const { data } = await axios.get(
         baseUrl + "/word/" + chosenWord + "/definition"
       );
-      console.log(data);
       setDefinitions(data);
       openModal();
     } catch (error) {
