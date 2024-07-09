@@ -94,7 +94,7 @@ const ModalInput = () => {
         ariaHideApp={false}
         isOpen={modalIsOpen}
         onRequestClose={closeModal}>
-        <article className="modal">
+        <article className="modal bg-white p-4">
           <h2 className="modal__title">enter a url</h2>
           <p className="modal__paragraph">
             we currently support youtube, pinterest and spotify

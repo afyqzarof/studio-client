@@ -10,12 +10,12 @@
   z-index: 150;
 }
 .ReactModal__Content {
-  background-color: white !important;
+  background-color: transparent !important;
   border: none !important;
   @include flex(row, space-between);
-  width: 50rem;
   position: relative !important;
   border-radius: 2px !important;
+  overflow: visible !important;
 }
 
 .dropzone {
@@ -74,8 +74,8 @@
 }
 
 .upload {
-  padding: 1rem;
-  width: auto;
+  width: 50rem;
+  padding: 2rem;
   border-radius: 2px;
   @include flex(column, center, flex-start);
   flex: 1;

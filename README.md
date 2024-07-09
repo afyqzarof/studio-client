@@ -70,7 +70,7 @@ People that need space for articulating ideas
 
 ### Tech Stack
 
-<a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" alt="react" width="50" height="40"/> </a>
+<a href="https://nextjs.org/" target="_blank" rel="noreferrer"> <img src="https://logowik.com/content/uploads/images/nextjs7685.logowik.com.webp" alt="react" width="50" height="40"/> </a>
 <a href="https://nodejs.org/en/about" target="_blank" rel="noreferrer"> <img src="https://static-00.iconduck.com/assets.00/node-js-icon-227x256-913nazt0.png" alt="node.js" width="40" height="40"/> </a>
 <a href="https://expressjs.com/" target="_blank" rel="noreferrer"> <img src="https://miro.medium.com/v2/resize:fit:1400/1*i2fRBk3GsYLeUk_Rh7AzHw.png" alt="express.js" width="90" /> </a>
 <a href="https://nodejs.org/en/about" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/mysql/mysql-ar21.png" alt="node.js" width="90" > </a>

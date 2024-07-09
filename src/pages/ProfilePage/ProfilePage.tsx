@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MainHeader from "../../components/MainHeader/MainHeader";
 import "./ProfilePage.scss";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import useIsDemo from "../../hooks/useIsDemo";
 import DemoBtn from "../../components/DemoBtn/DemoBtn";
@@ -14,8 +14,8 @@ const ProfilePage = () => {
     email: string;
     password: string;
   };
-  const baseUrl = import.meta.env.VITE_BASE_URL;
-  const navigate = useNavigate();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const router = useRouter();
   const [isSave, setIsSave] = useState(false);
   const [formFields, setFormFields] = useState<FormFields>({
     name: "",
@@ -39,7 +39,7 @@ const ProfilePage = () => {
     }
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login");
+      router.push("/login");
       return;
     }
     const fetchUserDetails = async () => {
@@ -103,7 +103,7 @@ const ProfilePage = () => {
   };
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/");
+    router.push("/");
   };
   return (
     <div className="page-wrapper">

@@ -1,10 +1,5 @@
 @use "../../styles/partials/mixins" as *;
 
-.board-wrapper {
-  height: 100vh;
-  @include flex(column);
-}
-
 .board {
   width: 100vw;
   flex: 1;

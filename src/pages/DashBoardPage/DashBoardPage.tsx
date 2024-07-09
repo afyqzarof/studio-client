@@ -3,49 +3,50 @@ import "./DashBoardPage.scss";
 import MainHeader from "../../components/MainHeader/MainHeader";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import useFilterAside from "../../hooks/useFilterAside";
 import FilterAside from "../../components/FilterAside/FilterAside";
 import demoBoards, { Board } from "../../data/demo-dashboard";
 import useIsDemo from "../../hooks/useIsDemo";
 
 const DashBoardPage = () => {
-  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const [boards, setBoards] = useState<Board[]>([]);
-  const navigate = useNavigate();
+  const router = useRouter();
   const { filterOptions, handleOptionChange } = useFilterAside(
     boards,
     setBoards
   );
   const isDemo = useIsDemo();
+  const fetchUserBoards = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/login");
+      return;
+    }
+    try {
+      const { data } = await axios.get(baseUrl + "/users/boards", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setBoards(data);
+    } catch (error) {
+      localStorage.removeItem("token");
+      router.push("/login");
+    }
+  };
 
   useEffect(() => {
     if (isDemo) {
       setBoards(demoBoards);
       return;
     }
-    const fetchUserBoards = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        navigate("/login");
-        return;
-      }
-      try {
-        const { data } = await axios.get(baseUrl + "/users/boards", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setBoards(data);
-      } catch (error) {
-        localStorage.removeItem("token");
-        navigate("/login");
-      }
-    };
+
     fetchUserBoards();
   }, []);
 
   const handleNewProject = async () => {
     if (isDemo) {
-      navigate("/demo/board/new-board");
+      router.push("/demo/board/new-board");
       return;
     }
 
@@ -59,10 +60,14 @@ const DashBoardPage = () => {
         }
       );
       const { id: boardId } = data;
-      navigate("/board/" + boardId);
+      router.push("/board/" + boardId);
     } catch (error) {
       console.log(error);
     }
+  };
+  const handleDelete = async (boardId: string) => {
+    await axios.delete(baseUrl + "/boards/" + boardId);
+    fetchUserBoards();
   };
   return (
     <div className="page-wrapper">
@@ -98,6 +103,9 @@ const DashBoardPage = () => {
                   category={board.category}
                   boardId={board.id}
                   author={false}
+                  handleDelete={() => {
+                    handleDelete(board.id);
+                  }}
                 />
               </li>
             );

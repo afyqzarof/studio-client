@@ -1,0 +1,28 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/font-mixins" as *;
+@use "../../styles/partials/colors";
+
+.general {
+  @include flex(column, space-between, flex-start);
+  padding: 0.6rem;
+  height: 20rem;
+  min-width: 30rem;
+
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  &__buttons {
+    @include flex(column, space-between, flex-start);
+    height: 4rem;
+  }
+  &__btn {
+    @include primary-btn;
+
+    &--cta {
+      @include cta-btn;
+      color: colors.$primary-light;
+      padding: 0.5rem 0.7rem;
+    }
+  }
+}

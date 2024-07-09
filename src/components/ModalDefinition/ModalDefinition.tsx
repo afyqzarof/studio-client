@@ -20,7 +20,7 @@ const ModalDefinition = ({
 }: ModalDefinitionProps) => {
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>
-      <article className="def">
+      <article className="def bg-white p-4">
         <h2 className="def__word">{chosenWord}</h2>
         {definitions.map((word, index) => (
           <div className="def__wrapper">
