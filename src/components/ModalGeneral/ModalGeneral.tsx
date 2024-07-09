@@ -4,7 +4,7 @@ type ModalGeneralProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
   title: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const ModalGeneral = ({

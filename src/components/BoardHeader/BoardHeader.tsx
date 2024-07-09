@@ -8,7 +8,7 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import useHandleThumbnail from "../../hooks/useHandleThumbnail";
 import useIsDemo from "../../hooks/useIsDemo";
-import DemoBtn from "../DemoBtn/DemoBtn";
+// import DemoBtn from "../DemoBtn/DemoBtn";
 import demoBoards from "../../data/demo-dashboard";
 import LoadingModal from "../LoadingModal/LoadingModal";
 import Image from "next/image";

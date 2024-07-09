@@ -15,7 +15,7 @@ type ProjectCardProps = {
   category: string | undefined;
   boardId: string;
   author: any;
-  handleDelete: () => void;
+  handleDelete?: () => void;
 };
 const ProjectCard = ({
   title,

@@ -125,7 +125,7 @@ const LoginBox = () => {
       };
       const { data } = await axios.post(baseUrl + "/users/login", user);
       localStorage.setItem("token", data.token);
-      navigate("/dashboard");
+      router.push("/dashboard");
     } catch (error) {
       console.log(error);
     }

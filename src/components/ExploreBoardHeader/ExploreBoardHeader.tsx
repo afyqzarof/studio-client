@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const ExploreBoardHeader = () => {
@@ -6,7 +6,10 @@ const ExploreBoardHeader = () => {
   const arrowHover = "/icons/arrow-N-selected.svg";
   const router = useRouter();
   const [isHover, setIsHover] = useState(false);
-  const token = localStorage.getItem("token");
+  let token: string | null;
+  useEffect(() => {
+    token = localStorage.getItem("token");
+  });
 
   const handleArrowClick = () => {
     if (!token) {
