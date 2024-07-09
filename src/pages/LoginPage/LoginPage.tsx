@@ -2,8 +2,6 @@
 import "./LoginPage.scss";
 import LoginBox from "../../components/LoginBox/LoginBox";
 import { useEffect, useState } from "react";
-import logo from "../../assets/logos/logo-small.svg";
-// import { Link, useNavigate } from "react-router-dom";
 import Link from "next/link";
 import { useRouter } from 'next/navigation'
 import Image from "next/image";

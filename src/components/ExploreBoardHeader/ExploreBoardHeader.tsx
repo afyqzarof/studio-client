@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import arrow from "../../assets/icons/arrow-N-default.svg";
-import arrowHover from "../../assets/icons/arrow-N-selected.svg";
+import { useRouter } from "next/navigation";
 
 const ExploreBoardHeader = () => {
-  const navigate = useNavigate();
+  const arrow = "/icons/arrow-N-default.svg";
+  const arrowHover = "/icons/arrow-N-selected.svg";
+  const router = useRouter();
   const [isHover, setIsHover] = useState(false);
   const token = localStorage.getItem("token");
 
   const handleArrowClick = () => {
     if (!token) {
-      navigate("/demo/explore");
+      router.push("/demo/explore");
       return;
     }
-    navigate("/explore");
+    router.push("/explore");
   };
   return (
     <img

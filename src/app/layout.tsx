@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./globals.scss";
 import type { Metadata } from "next";
 import { ibm_mono, corporate_pro } from "./fonts";
 
