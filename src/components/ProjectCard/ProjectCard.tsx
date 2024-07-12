@@ -48,7 +48,7 @@ const ProjectCard = ({
 
   return (
     <>
-      {clicked && !author && (
+      {clicked && !author && !isDemo &&(
         <BoardContextMenu
           isToggled={clicked}
           positionX={points.x}

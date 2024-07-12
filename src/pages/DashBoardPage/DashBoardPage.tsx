@@ -25,10 +25,16 @@ const DashBoardPage = () => {
       return;
     }
     try {
-      const { data } = await axios.get(baseUrl + "/users/boards", {
+      const { data } = await axios.get<Board[]>(baseUrl + "/users/boards", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setBoards(data);
+      setBoards(
+        data.sort((a, b) => {
+          return (
+            new Date(b.created_at).valueOf() - new Date(a.created_at).valueOf()
+          );
+        })
+      );
     } catch (error) {
       localStorage.removeItem("token");
       router.push("/login");
