@@ -8,7 +8,6 @@
   cursor: pointer;
 }
 .project {
-  margin-right: 2rem;
   min-width: 45rem;
   height: 35rem;
   background-repeat: no-repeat;
@@ -39,7 +38,6 @@
   }
 
   &__details-container {
-    width: 30%;
     opacity: 0;
 
     &--shown {

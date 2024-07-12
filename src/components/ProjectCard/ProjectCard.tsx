@@ -16,6 +16,7 @@ type ProjectCardProps = {
   boardId: string;
   author: any;
   handleDelete?: () => void;
+  is_public: boolean;
 };
 const ProjectCard = ({
   title,
@@ -26,6 +27,7 @@ const ProjectCard = ({
   boardId,
   author,
   handleDelete,
+  is_public,
 }: ProjectCardProps) => {
   const [isShown, setIsShown] = useState(false);
   const router = useRouter();
@@ -48,7 +50,7 @@ const ProjectCard = ({
 
   return (
     <>
-      {clicked && !author && !isDemo &&(
+      {clicked && !author && !isDemo && (
         <BoardContextMenu
           isToggled={clicked}
           positionX={points.x}
@@ -71,13 +73,14 @@ const ProjectCard = ({
           {author && <p className="project__author">{author}</p>}
         </div>
         <div
-          className={
+          className={`${
             isShown
               ? "project__details-container"
               : "project__details-container project__details-container--shown"
-          }>
-          <p className="project__caption">{description}</p>
+          } w-full`}>
           <h3 className="project__date">{date}</h3>
+          <h4 className="project__date">{is_public ? "public" : "private"}</h4>
+          <p className="project__caption">{description}</p>
           <p className="project__category">{category}</p>
         </div>
       </article>

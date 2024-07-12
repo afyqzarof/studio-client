@@ -67,22 +67,26 @@ const BoardHeader = () => {
         y_coord: Math.floor(pin.position.y),
       };
     });
+    try {
+      const { filename } = await handleThumbnail();
+      if (title) {
+        const boardBody = {
+          boardId,
+          title,
+          filename,
+        };
 
-    const { filename } = await handleThumbnail();
-    if (title) {
-      const boardBody = {
-        boardId,
-        title,
-        filename,
-      };
+        await axios.patch(baseUrl + "/boards/save", boardBody);
+      }
 
-      await axios.patch(baseUrl + "/boards/save", boardBody);
+      await axios.patch(baseUrl + "/boards/" + boardId + "/pins", {
+        newPins: formattedPins,
+      });
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false)
+      console.log(error);
     }
-
-    await axios.patch(baseUrl + "/boards/" + boardId + "/pins", {
-      newPins: formattedPins,
-    });
-    setIsLoading(false);
   };
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);

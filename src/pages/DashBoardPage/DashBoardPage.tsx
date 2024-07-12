@@ -6,8 +6,9 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import useFilterAside from "../../hooks/useFilterAside";
 import FilterAside from "../../components/FilterAside/FilterAside";
-import demoBoards, { Board } from "../../data/demo-dashboard";
+import demoBoards from "../../data/demo-dashboard";
 import useIsDemo from "../../hooks/useIsDemo";
+import { Board } from "../../types/board";
 
 const DashBoardPage = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -112,6 +113,7 @@ const DashBoardPage = () => {
                   handleDelete={() => {
                     handleDelete(board.id);
                   }}
+                  is_public={board.is_public}
                 />
               </li>
             );
