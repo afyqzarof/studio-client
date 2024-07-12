@@ -2,21 +2,6 @@
 @use "../../styles/partials/font-mixins" as *;
 @use "../../styles/partials/colors";
 
-.ReactModal__Overlay {
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-  background-color: colors.$modal-overlay !important;
-  @include flex;
-  z-index: 150;
-}
-.ReactModal__Content {
-  background-color: transparent !important;
-  border: none !important;
-  @include flex(row, space-between);
-  position: relative !important;
-  border-radius: 2px !important;
-  overflow: visible !important;
-}
 
 .dropzone {
   background-color: #ffffffc0;

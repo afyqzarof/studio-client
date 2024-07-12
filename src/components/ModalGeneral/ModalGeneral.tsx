@@ -15,7 +15,7 @@ const ModalGeneral = ({
 }: ModalGeneralProps) => {
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>
-      <article className="general">
+      <article className="general bg-white p-4">
         <h2 className="general__title">{title}</h2>
         <div className="general__buttons">
           <button className="general__btn" onClick={closeModal}>

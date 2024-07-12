@@ -4,11 +4,11 @@
 
 .general {
   @include flex(column, space-between, flex-start);
-  padding: 0.6rem;
   height: 20rem;
   min-width: 30rem;
 
   &__title {
+    @include section-header;
     margin-bottom: 1rem;
   }
 

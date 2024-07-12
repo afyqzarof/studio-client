@@ -1,3 +1,5 @@
+import "../ContextMenu/ContextMenu.scss";
+
 type BoardContextMenuProps = {
   positionX: number;
   positionY: number;
